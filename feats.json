@@ -1,0 +1,828 @@
+{
+  "schema_version": "2.0",
+  "extraction_notes": {
+    "extracted_books": ["PHB-2024", "TCE", "XGE"],
+    "no_feats_in_book": ["VRGR"],
+    "comment": "Van Richten's Guide to Ravenloft (verified by full-document scan) contains no character feats; its character options are Dark Gifts and lineages, not feats. PHB 2024 feats are tagged with category Origin / General / Fighting Style / Epic Boon. TCE and XGE feats predate the 2024 category system; TCE feats are tagged category 'General (legacy)' and XGE feats category 'Racial'. Several feats (Chef, Crusher, Fey Touched, Piercer, Poisoner, Shadow Touched, Skill Expert, Slasher, Telekinetic, Telepathic) appear in both TCE and the PHB 2024 in revised form; both printings are included and distinguished by source_book. Feats requiring build-time decisions carry an interaction_type and a choices[] array of selectable data fields; ability_score_picker entries carry a max value (20 for normal feats, 30 for Epic Boons).",
+    "total_feats": 105
+  },
+  "items": [
+    {
+      "name": "Alert", "key": "alert", "source_book": "PHB-2024", "category": "Origin",
+      "prerequisite": null, "repeatable": false,
+      "description": "You gain the following benefits.\n\nInitiative Proficiency. When you roll Initiative, you can add your Proficiency Bonus to the roll.\n\nInitiative Swap. Immediately after you roll Initiative, you can swap your Initiative with the Initiative of one willing ally in the same combat. You can't make this swap if you or the ally has the Incapacitated condition.",
+      "interaction_type": null, "choices": []
+    },
+    {
+      "name": "Crafter", "key": "crafter", "source_book": "PHB-2024", "category": "Origin",
+      "prerequisite": null, "repeatable": false,
+      "description": "You gain the following benefits.\n\nTool Proficiency. You gain proficiency with three different Artisan's Tools of your choice from the Fast Crafting table.\n\nDiscount. Whenever you buy a nonmagical item, you receive a 20 percent discount on it.\n\nFast Crafting. When you finish a Long Rest, you can craft one piece of gear from the Fast Crafting table, provided you have the Artisan's Tools associated with that item and have proficiency with those tools. The item lasts until you finish another Long Rest, at which point the item falls apart.",
+      "interaction_type": "proficiency_allocation_matrix",
+      "choices": [
+        { "label": "Artisan's Tools (choose 3)", "choice_type": "proficiency_allocation_matrix", "pick_count": 3, "target": "tools",
+          "from": ["Carpenter's Tools","Leatherworker's Tools","Mason's Tools","Potter's Tools","Smith's Tools","Tinker's Tools","Weaver's Tools","Woodcarver's Tools"] }
+      ]
+    },
+    {
+      "name": "Healer", "key": "healer", "source_book": "PHB-2024", "category": "Origin",
+      "prerequisite": null, "repeatable": false,
+      "description": "You gain the following benefits.\n\nBattle Medic. If you have a Healer's Kit, you can expend one use of it and tend to a creature within 5 feet of yourself as a Utilize action. That creature can expend one of its Hit Point Dice, and you then roll that die. The creature regains a number of Hit Points equal to the roll plus your Proficiency Bonus.\n\nHealing Rerolls. Whenever you roll a die to determine the number of Hit Points you restore with a spell or with this feat's Battle Medic benefit, you can reroll the die if it rolls a 1, and you must use the new roll.",
+      "interaction_type": null, "choices": [],
+      "actions": [{ "name": "Battle Medic", "type": "action", "casting_time": "Utilize action", "range": "5 feet", "effect": "Expend a Healer's Kit use; target spends a Hit Die and regains that roll + your Proficiency Bonus HP" }]
+    },
+    {
+      "name": "Lucky", "key": "lucky", "source_book": "PHB-2024", "category": "Origin",
+      "prerequisite": null, "repeatable": false,
+      "description": "You gain the following benefits.\n\nLuck Points. You have a number of Luck Points equal to your Proficiency Bonus and can spend the points on the benefits below. You regain your expended Luck Points when you finish a Long Rest.\n\nAdvantage. When you roll a d20 for a D20 Test, you can spend 1 Luck Point to give yourself Advantage on the roll.\n\nDisadvantage. When a creature rolls a d20 for an attack roll against you, you can spend 1 Luck Point to impose Disadvantage on that roll.",
+      "interaction_type": null, "choices": [],
+      "actions": [{ "name": "Luck Point", "type": "other", "casting_time": "No action", "range": "Self", "effect": "Spend 1 Luck Point for Advantage on a D20 Test, or to impose Disadvantage on an attack against you", "uses_max": 2, "uses_recharge": "long", "uses_note": "Uses equal Proficiency Bonus" }]
+    },
+    {
+      "name": "Magic Initiate", "key": "magic_initiate", "source_book": "PHB-2024", "category": "Origin",
+      "prerequisite": null, "repeatable": true,
+      "description": "You gain the following benefits.\n\nTwo Cantrips. You learn two cantrips of your choice from the Cleric, Druid, or Wizard spell list. Intelligence, Wisdom, or Charisma is your spellcasting ability for this feat's spells (choose when you select this feat).\n\nLevel 1 Spell. Choose a level 1 spell from the same list you selected for this feat's cantrips. You always have that spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest. You can also cast the spell using any spell slots you have.\n\nSpell Change. Whenever you gain a new level, you can replace one of the spells you chose for this feat with a different spell of the same level from the chosen spell list.\n\nRepeatable. You can take this feat more than once, but you must choose a different spell list each time.",
+      "interaction_type": "nested_subchoice_tree",
+      "choices": [
+        { "label": "Spell List", "choice_type": "list_pick", "pick_count": 1, "from": ["Cleric","Druid","Wizard"] },
+        { "label": "Spellcasting Ability", "choice_type": "list_pick", "pick_count": 1, "from": ["INT","WIS","CHA"] },
+        { "label": "Cantrips (choose 2 from the chosen list)", "choice_type": "spell_picker", "pick_count": 2, "spell_level": 0, "from_list": "selected" },
+        { "label": "1st-Level Spell (from the chosen list)", "choice_type": "spell_picker", "pick_count": 1, "spell_level": 1, "from_list": "selected" }
+      ]
+    },
+    {
+      "name": "Musician", "key": "musician", "source_book": "PHB-2024", "category": "Origin",
+      "prerequisite": null, "repeatable": false,
+      "description": "You gain the following benefits.\n\nInstrument Training. You gain proficiency with three Musical Instruments of your choice.\n\nEncouraging Song. As you finish a Short or Long Rest, you can play a song on a Musical Instrument with which you have proficiency and give Heroic Inspiration to allies who hear the song. The number of allies you can affect in this way equals your Proficiency Bonus.",
+      "interaction_type": "proficiency_allocation_matrix",
+      "choices": [
+        { "label": "Musical Instruments (choose 3)", "choice_type": "proficiency_allocation_matrix", "pick_count": 3, "target": "tools",
+          "from": ["Bagpipes","Drum","Dulcimer","Flute","Horn","Lute","Lyre","Pan Flute","Shawm","Viol"] }
+      ]
+    },
+    {
+      "name": "Savage Attacker", "key": "savage_attacker", "source_book": "PHB-2024", "category": "Origin",
+      "prerequisite": null, "repeatable": false,
+      "description": "You've trained to deal particularly damaging strikes. Once per turn when you hit a target with a weapon, you can roll the weapon's damage dice twice and use either roll against the target.",
+      "interaction_type": null, "choices": []
+    },
+    {
+      "name": "Skilled", "key": "skilled", "source_book": "PHB-2024", "category": "Origin",
+      "prerequisite": null, "repeatable": true,
+      "description": "You gain proficiency in any combination of three skills or tools of your choice.\n\nRepeatable. You can take this feat more than once.",
+      "interaction_type": "proficiency_allocation_matrix",
+      "choices": [
+        { "label": "Skills or Tools (choose 3)", "choice_type": "proficiency_allocation_matrix", "pick_count": 3, "target": "skills_or_tools",
+          "from": ["Acrobatics","Animal Handling","Arcana","Athletics","Deception","History","Insight","Intimidation","Investigation","Medicine","Nature","Perception","Performance","Persuasion","Religion","Sleight of Hand","Stealth","Survival","(any tool)"] }
+      ]
+    },
+    {
+      "name": "Tavern Brawler", "key": "tavern_brawler", "source_book": "PHB-2024", "category": "Origin",
+      "prerequisite": null, "repeatable": false,
+      "description": "You gain the following benefits.\n\nEnhanced Unarmed Strike. When you hit with your Unarmed Strike and deal damage, you can deal Bludgeoning damage equal to 1d4 plus your Strength modifier instead of the normal damage of an Unarmed Strike.\n\nDamage Rerolls. Whenever you roll a damage die for your Unarmed Strike, you can reroll the die if it rolls a 1, and you must use the new roll.\n\nImprovised Weaponry. You have proficiency with improvised weapons.\n\nPush. When you hit a creature with an Unarmed Strike as part of the Attack action on your turn, you can deal damage to the target and also push it 5 feet away from you. You can use this benefit only once per turn.",
+      "interaction_type": null, "choices": []
+    },
+    {
+      "name": "Tough", "key": "tough", "source_book": "PHB-2024", "category": "Origin",
+      "prerequisite": null, "repeatable": false,
+      "description": "Your Hit Point maximum increases by an amount equal to twice your character level when you gain this feat. Whenever you gain a character level thereafter, your Hit Point maximum increases by an additional 2 Hit Points.",
+      "interaction_type": "derived_value_multiplier",
+      "choices": [
+        { "label": "HP per level", "choice_type": "derived_value_multiplier", "target": "HP_PER_LEVEL", "delta": 2, "per": "character_level" }
+      ]
+    },
+    {
+      "name": "Ability Score Improvement", "key": "ability_score_improvement", "source_book": "PHB-2024", "category": "General",
+      "prerequisite": "Level 4+", "repeatable": true,
+      "description": "Increase one ability score of your choice by 2, or increase two ability scores of your choice by 1. This feat can't increase an ability score above 20.\n\nRepeatable. You can take this feat more than once.",
+      "interaction_type": "ability_score_picker",
+      "choices": [
+        { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "patterns": ["+2 to one", "+1 to two"], "max": 20, "from": ["STR","DEX","CON","INT","WIS","CHA"] }
+      ]
+    },
+    {
+      "name": "Actor", "key": "actor", "source_book": "PHB-2024", "category": "General",
+      "prerequisite": "Level 4+, Charisma 13+", "repeatable": false,
+      "description": "You gain the following benefits.\n\nAbility Score Increase. Increase your Charisma score by 1, to a maximum of 20.\n\nImpersonation. While you're disguised as a real or fictional person, you have Advantage on Charisma (Deception or Performance) checks to convince others that you are that person.\n\nMimicry. You can mimic the sounds of other creatures, including speech. A creature that hears the mimicry must succeed on a Wisdom (Insight) check to determine the effect is faked (DC 8 plus your Charisma modifier and Proficiency Bonus).",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "fixed": "CHA", "amount": 1, "max": 20 } ]
+    },
+    {
+      "name": "Athlete", "key": "athlete", "source_book": "PHB-2024", "category": "General",
+      "prerequisite": "Level 4+, Strength or Dexterity 13+", "repeatable": false,
+      "description": "You gain the following benefits.\n\nAbility Score Increase. Increase your Strength or Dexterity score by 1, to a maximum of 20.\n\nClimb Speed. You gain a Climb Speed equal to your Speed.\n\nHop Up. When you have the Prone condition, you can right yourself with only 5 feet of movement.\n\nJumping. You can make a running Long or High Jump after moving only 5 feet.",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 20, "from": ["STR","DEX"] } ]
+    },
+    {
+      "name": "Charger", "key": "charger", "source_book": "PHB-2024", "category": "General",
+      "prerequisite": "Level 4+, Strength or Dexterity 13+", "repeatable": false,
+      "description": "You gain the following benefits.\n\nAbility Score Increase. Increase your Strength or Dexterity score by 1, to a maximum of 20.\n\nImproved Dash. When you take the Dash action, your Speed increases by 10 feet for that action.\n\nCharge Attack. If you move at least 10 feet in a straight line toward a target immediately before hitting it with a melee attack roll as part of the Attack action, choose one of the following effects: gain a 1d8 bonus to the attack's damage roll, or push the target up to 10 feet away if it is no more than one size larger than you. You can use this benefit only once on each of your turns.",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 20, "from": ["STR","DEX"] } ]
+    },
+    {
+      "name": "Chef", "key": "chef", "source_book": "PHB-2024", "category": "General",
+      "prerequisite": "Level 4+", "repeatable": false,
+      "description": "You gain the following benefits.\n\nAbility Score Increase. Increase your Constitution or Wisdom score by 1, to a maximum of 20.\n\nCook's Utensils. You gain proficiency with Cook's Utensils if you don't already have it.\n\nReplenishing Meal. As part of a Short Rest, you can cook special food if you have ingredients and Cook's Utensils on hand. You can prepare enough of this food for a number of creatures equal to 4 plus your Proficiency Bonus. At the end of the Short Rest, any creature who eats the food and spends one or more Hit Dice to regain Hit Points regains an extra 1d8 Hit Points.\n\nBolstering Treats. With 1 hour of work or when you finish a Long Rest, you can cook a number of treats equal to your Proficiency Bonus if you have ingredients and Cook's Utensils on hand. These special treats last 8 hours after being made. A creature can use a Bonus Action to eat one of those treats to gain a number of Temporary Hit Points equal to your Proficiency Bonus.",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 20, "from": ["CON","WIS"] } ]
+    },
+    {
+      "name": "Crossbow Expert", "key": "crossbow_expert", "source_book": "PHB-2024", "category": "General",
+      "prerequisite": "Level 4+, Dexterity 13+", "repeatable": false,
+      "description": "You gain the following benefits.\n\nAbility Score Increase. Increase your Dexterity score by 1, to a maximum of 20.\n\nIgnore Loading. You ignore the Loading property of the Hand Crossbow, Heavy Crossbow, and Light Crossbow. If you're holding one of them, you can load a piece of ammunition into it even if you lack a free hand.\n\nFiring in Melee. Being within 5 feet of an enemy doesn't impose Disadvantage on your attack rolls with crossbows.\n\nDual Wielding. When you make the extra attack of the Light property, you can add your ability modifier to the damage of the extra attack if that attack is with a crossbow that has the Light property and you aren't already adding that modifier to the damage.",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "fixed": "DEX", "amount": 1, "max": 20 } ]
+    },
+    {
+      "name": "Crusher", "key": "crusher", "source_book": "PHB-2024", "category": "General",
+      "prerequisite": "Level 4+", "repeatable": false,
+      "description": "You gain the following benefits.\n\nAbility Score Increase. Increase your Strength or Constitution score by 1, to a maximum of 20.\n\nPush. Once per turn, when you hit a creature with an attack that deals Bludgeoning damage, you can move it 5 feet to an unoccupied space if the target is no more than one size larger than you.\n\nEnhanced Critical. When you score a Critical Hit that deals Bludgeoning damage to a creature, attack rolls against that creature have Advantage until the start of your next turn.",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 20, "from": ["STR","CON"] } ]
+    },
+    {
+      "name": "Defensive Duelist", "key": "defensive_duelist", "source_book": "PHB-2024", "category": "General",
+      "prerequisite": "Level 4+, Dexterity 13+", "repeatable": false,
+      "description": "You gain the following benefits.\n\nAbility Score Increase. Increase your Dexterity score by 1, to a maximum of 20.\n\nParry. If you're holding a Finesse weapon and another creature hits you with a melee attack, you can take a Reaction to add your Proficiency Bonus to your Armor Class, potentially causing the attack to miss you. You gain this bonus to your AC against melee attacks until the start of your next turn.",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "fixed": "DEX", "amount": 1, "max": 20 } ]
+    },
+    {
+      "name": "Dual Wielder", "key": "dual_wielder", "source_book": "PHB-2024", "category": "General",
+      "prerequisite": "Level 4+, Strength or Dexterity 13+", "repeatable": false,
+      "description": "You gain the following benefits.\n\nAbility Score Increase. Increase your Strength or Dexterity score by 1, to a maximum of 20.\n\nEnhanced Dual Wielding. When you take the Attack action on your turn and attack with a weapon that has the Light property, you can make one extra attack as a Bonus Action later on the same turn with a different weapon, which must be a Melee weapon that lacks the Two-Handed property. You don't add your ability modifier to the extra attack's damage unless that modifier is negative.\n\nQuick Draw. You can draw or stow two weapons that lack the Two-Handed property when you would normally be able to draw or stow only one.",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 20, "from": ["STR","DEX"] } ]
+    },
+    {
+      "name": "Durable", "key": "durable", "source_book": "PHB-2024", "category": "General",
+      "prerequisite": "Level 4+", "repeatable": false,
+      "description": "You gain the following benefits.\n\nAbility Score Increase. Increase your Constitution score by 1, to a maximum of 20.\n\nDefy Death. You have Advantage on Death Saving Throws.\n\nSpeedy Recovery. As a Bonus Action, you can expend one of your Hit Point Dice, roll the die, and regain a number of Hit Points equal to the roll.",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "fixed": "CON", "amount": 1, "max": 20 } ]
+    },
+    {
+      "name": "Elemental Adept", "key": "elemental_adept", "source_book": "PHB-2024", "category": "General",
+      "prerequisite": "Level 4+, Spellcasting or Pact Magic Feature", "repeatable": true,
+      "description": "You gain the following benefits.\n\nAbility Score Increase. Increase your Intelligence, Wisdom, or Charisma score by 1, to a maximum of 20.\n\nEnergy Mastery. Choose one of the following damage types: Acid, Cold, Fire, Lightning, or Thunder. Spells you cast ignore Resistance to damage of the chosen type. In addition, when you roll damage for a spell you cast that deals damage of that type, you can treat any 1 on a damage die as a 2.\n\nRepeatable. You can take this feat more than once, but you must choose a different damage type each time for Energy Mastery.",
+      "interaction_type": "ability_score_picker",
+      "choices": [
+        { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 20, "from": ["INT","WIS","CHA"] },
+        { "label": "Energy Mastery damage type", "choice_type": "list_pick", "pick_count": 1, "from": ["Acid","Cold","Fire","Lightning","Thunder"] }
+      ]
+    },
+    {
+      "name": "Fey-Touched", "key": "fey_touched", "source_book": "PHB-2024", "category": "General",
+      "prerequisite": "Level 4+", "repeatable": false,
+      "description": "Your exposure to the Feywild's magic grants you the following benefits.\n\nAbility Score Increase. Increase your Intelligence, Wisdom, or Charisma score by 1, to a maximum of 20.\n\nFey Magic. Choose one level 1 spell from the Divination or Enchantment school of magic. You always have that spell and the Misty Step spell prepared. You can cast each of these spells without expending a spell slot. Once you cast either spell in this way, you can't cast that spell in this way again until you finish a Long Rest. You can also cast these spells using spell slots you have of the appropriate level. The spells' spellcasting ability is the ability increased by this feat.",
+      "interaction_type": "ability_score_picker",
+      "choices": [
+        { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 20, "from": ["INT","WIS","CHA"] },
+        { "label": "Fey Magic 1st-level spell (Divination or Enchantment)", "choice_type": "spell_picker", "pick_count": 1, "spell_level": 1, "schools": ["Divination","Enchantment"] }
+      ],
+      "spells": [{ "name": "Misty Step", "level": 2, "school": "Conjuration", "casting_time": "1 Bonus Action", "range": "Self", "components": "V", "duration": "Instantaneous", "effect": "Teleport up to 30 ft to an unoccupied space you can see. Always prepared; castable once per Long Rest without a slot." }]
+    },
+    {
+      "name": "Grappler", "key": "grappler", "source_book": "PHB-2024", "category": "General",
+      "prerequisite": "Level 4+, Strength or Dexterity 13+", "repeatable": false,
+      "description": "You gain the following benefits.\n\nAbility Score Increase. Increase your Strength or Dexterity score by 1, to a maximum of 20.\n\nPunch and Grab. When you hit a creature with an Unarmed Strike as part of the Attack action on your turn, you can use both the Damage and the Grapple option. You can use this benefit only once per turn.\n\nAttack Advantage. You have Advantage on attack rolls against a creature Grappled by you.\n\nFast Wrestler. Your Speed isn't halved when you move a creature Grappled by you if the creature is your size or smaller.",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 20, "from": ["STR","DEX"] } ]
+    },
+    {
+      "name": "Great Weapon Master", "key": "great_weapon_master", "source_book": "PHB-2024", "category": "General",
+      "prerequisite": "Level 4+, Strength 13+", "repeatable": false,
+      "description": "You gain the following benefits.\n\nAbility Score Increase. Increase your Strength score by 1, to a maximum of 20.\n\nHeavy Weapon Mastery. When you hit a creature with a weapon that has the Heavy property as part of the Attack action on your turn, you can cause the weapon to deal extra damage to the target. The extra damage equals your Proficiency Bonus.\n\nHew. Immediately after you score a Critical Hit with a Melee weapon or reduce a creature to 0 Hit Points with one, you can make one attack with the same weapon as a Bonus Action.",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "fixed": "STR", "amount": 1, "max": 20 } ]
+    },
+    {
+      "name": "Heavily Armored", "key": "heavily_armored", "source_book": "PHB-2024", "category": "General",
+      "prerequisite": "Level 4+, Medium Armor Training", "repeatable": false,
+      "description": "You gain the following benefits.\n\nAbility Score Increase. Increase your Constitution or Strength score by 1, to a maximum of 20.\n\nArmor Training. You gain training with Heavy armor.",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 20, "from": ["CON","STR"] } ]
+    },
+    {
+      "name": "Heavy Armor Master", "key": "heavy_armor_master", "source_book": "PHB-2024", "category": "General",
+      "prerequisite": "Level 4+, Heavy Armor Training", "repeatable": false,
+      "description": "You gain the following benefits.\n\nAbility Score Increase. Increase your Constitution or Strength score by 1, to a maximum of 20.\n\nDamage Reduction. When you're hit by an attack while you're wearing Heavy armor, any Bludgeoning, Piercing, and Slashing damage dealt to you by that attack is reduced by an amount equal to your Proficiency Bonus.",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 20, "from": ["CON","STR"] } ]
+    },
+    {
+      "name": "Inspiring Leader", "key": "inspiring_leader", "source_book": "PHB-2024", "category": "General",
+      "prerequisite": "Level 4+, Wisdom or Charisma 13+", "repeatable": false,
+      "description": "You gain the following benefits.\n\nAbility Score Increase. Increase your Wisdom or Charisma score by 1, to a maximum of 20.\n\nBolstering Performance. When you finish a Short or Long Rest, you can give an inspiring performance: a speech, song, or dance. When you do so, choose up to six allies (which can include yourself) within 30 feet of yourself who witness the performance. The chosen creatures each gain Temporary Hit Points equal to your character level plus the modifier of the ability you increased with this feat.",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 20, "from": ["WIS","CHA"] } ]
+    },
+    {
+      "name": "Keen Mind", "key": "keen_mind", "source_book": "PHB-2024", "category": "General",
+      "prerequisite": "Level 4+, Intelligence 13+", "repeatable": false,
+      "description": "You gain the following benefits.\n\nAbility Score Increase. Increase your Intelligence score by 1, to a maximum of 20.\n\nLore Knowledge. Choose one of the following skills: Arcana, History, Investigation, Nature, or Religion. If you lack proficiency in the chosen skill, you gain proficiency in it, and if you already have proficiency in it, you gain Expertise in it.\n\nQuick Study. You can take the Study action as a Bonus Action.",
+      "interaction_type": "ability_score_picker",
+      "choices": [
+        { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "fixed": "INT", "amount": 1, "max": 20 },
+        { "label": "Lore Knowledge skill", "choice_type": "proficiency_allocation_matrix", "pick_count": 1, "target": "skills", "value_per_pick": "proficiency_or_expertise", "from": ["Arcana","History","Investigation","Nature","Religion"] }
+      ]
+    },
+    {
+      "name": "Lightly Armored", "key": "lightly_armored", "source_book": "PHB-2024", "category": "General",
+      "prerequisite": "Level 4+", "repeatable": false,
+      "description": "You gain the following benefits.\n\nAbility Score Increase. Increase your Strength or Dexterity score by 1, to a maximum of 20.\n\nArmor Training. You gain training with Light armor and Shields.",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 20, "from": ["STR","DEX"] } ]
+    },
+    {
+      "name": "Mage Slayer", "key": "mage_slayer", "source_book": "PHB-2024", "category": "General",
+      "prerequisite": "Level 4+", "repeatable": false,
+      "description": "You gain the following benefits.\n\nAbility Score Increase. Increase your Strength or Dexterity score by 1, to a maximum of 20.\n\nConcentration Breaker. When you damage a creature that is concentrating, it has Disadvantage on the saving throw it makes to maintain Concentration.\n\nGuarded Mind. If you fail an Intelligence, a Wisdom, or a Charisma saving throw, you can cause yourself to succeed instead. Once you use this benefit, you can't use it again until you finish a Short or Long Rest.",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 20, "from": ["STR","DEX"] } ]
+    },
+    {
+      "name": "Martial Weapon Training", "key": "martial_weapon_training", "source_book": "PHB-2024", "category": "General",
+      "prerequisite": "Level 4+", "repeatable": false,
+      "description": "You gain the following benefits.\n\nAbility Score Increase. Increase your Strength or Dexterity score by 1, to a maximum of 20.\n\nWeapon Proficiency. You gain proficiency with Martial weapons.",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 20, "from": ["STR","DEX"] } ]
+    },
+    {
+      "name": "Medium Armor Master", "key": "medium_armor_master", "source_book": "PHB-2024", "category": "General",
+      "prerequisite": "Level 4+, Medium Armor Training", "repeatable": false,
+      "description": "You gain the following benefits.\n\nAbility Score Increase. Increase your Strength or Dexterity score by 1, to a maximum of 20.\n\nDexterous Wearer. While you're wearing Medium armor, you can add 3, rather than 2, to your AC if you have a Dexterity score of 16 or higher.",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 20, "from": ["STR","DEX"] } ]
+    },
+    {
+      "name": "Moderately Armored", "key": "moderately_armored", "source_book": "PHB-2024", "category": "General",
+      "prerequisite": "Level 4+, Light Armor Training", "repeatable": false,
+      "description": "You gain the following benefits.\n\nAbility Score Increase. Increase your Strength or Dexterity score by 1, to a maximum of 20.\n\nArmor Training. You gain training with Medium armor.",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 20, "from": ["STR","DEX"] } ]
+    },
+    {
+      "name": "Mounted Combatant", "key": "mounted_combatant", "source_book": "PHB-2024", "category": "General",
+      "prerequisite": "Level 4+", "repeatable": false,
+      "description": "You gain the following benefits.\n\nAbility Score Increase. Increase your Strength, Dexterity, or Wisdom score by 1, to a maximum of 20.\n\nMounted Strike. While mounted, you have Advantage on attack rolls against any unmounted creature within 5 feet of your mount that is at least one size smaller than the mount.\n\nLeap Aside. If your mount is subjected to an effect that allows it to make a Dexterity saving throw to take only half damage, it instead takes no damage if it succeeds on the saving throw and only half damage if it fails. For your mount to gain this benefit, you must be riding it, and neither of you can have the Incapacitated condition.\n\nVeer. While mounted, you can force an attack that hits your mount to hit you instead if you don't have the Incapacitated condition.",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 20, "from": ["STR","DEX","WIS"] } ]
+    },
+    {
+      "name": "Observant", "key": "observant", "source_book": "PHB-2024", "category": "General",
+      "prerequisite": "Level 4+, Intelligence or Wisdom 13+", "repeatable": false,
+      "description": "You gain the following benefits.\n\nAbility Score Increase. Increase your Intelligence or Wisdom score by 1, to a maximum of 20.\n\nKeen Observer. Choose one of the following skills: Insight, Investigation, or Perception. If you lack proficiency with the chosen skill, you gain proficiency in it, and if you already have proficiency in it, you gain Expertise in it.\n\nQuick Search. You can take the Search action as a Bonus Action.",
+      "interaction_type": "ability_score_picker",
+      "choices": [
+        { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 20, "from": ["INT","WIS"] },
+        { "label": "Keen Observer skill", "choice_type": "proficiency_allocation_matrix", "pick_count": 1, "target": "skills", "value_per_pick": "proficiency_or_expertise", "from": ["Insight","Investigation","Perception"] }
+      ]
+    },
+    {
+      "name": "Piercer", "key": "piercer", "source_book": "PHB-2024", "category": "General",
+      "prerequisite": "Level 4+", "repeatable": false,
+      "description": "You gain the following benefits.\n\nAbility Score Increase. Increase your Strength or Dexterity by 1, to a maximum of 20.\n\nPuncture. Once per turn, when you hit a creature with an attack that deals Piercing damage, you can reroll one of the attack's damage dice, and you must use the new roll.\n\nEnhanced Critical. When you score a Critical Hit that deals Piercing damage to a creature, you can roll one additional damage die when determining the extra Piercing damage the target takes.",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 20, "from": ["STR","DEX"] } ]
+    },
+    {
+      "name": "Poisoner", "key": "poisoner", "source_book": "PHB-2024", "category": "General",
+      "prerequisite": "Level 4+", "repeatable": false,
+      "description": "You gain the following benefits.\n\nAbility Score Increase. Increase your Dexterity or Intelligence score by 1, to a maximum of 20.\n\nPotent Poison. When you make a damage roll that deals Poison damage, it ignores Resistance to Poison damage.\n\nBrew Poison. You gain proficiency with the Poisoner's Kit. With 1 hour of work using such a kit and expending 50 GP worth of materials, you can create a number of poison doses equal to your Proficiency Bonus. As a Bonus Action, you can apply a poison dose to a weapon or piece of ammunition. Once applied, the poison retains its potency for 1 minute or until you hit with the poisoned item, whichever is shorter. When a creature takes damage from the poisoned item, that creature must succeed on a Constitution saving throw (DC 8 plus the modifier of the ability increased by this feat and your Proficiency Bonus) or take 2d8 Poison damage and have the Poisoned condition until the end of your next turn.",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 20, "from": ["DEX","INT"] } ]
+    },
+    {
+      "name": "Polearm Master", "key": "polearm_master", "source_book": "PHB-2024", "category": "General",
+      "prerequisite": "Level 4+, Strength or Dexterity 13+", "repeatable": false,
+      "description": "You gain the following benefits.\n\nAbility Score Increase. Increase your Dexterity or Strength score by 1, to a maximum of 20.\n\nPole Strike. Immediately after you take the Attack action and attack with a Quarterstaff, a Spear, or a weapon that has the Heavy and Reach properties, you can use a Bonus Action to make a melee attack with the opposite end of the weapon. The weapon deals Bludgeoning damage, and the weapon's damage die for this attack is a d4.\n\nReactive Strike. While you're holding a Quarterstaff, a Spear, or a weapon that has the Heavy and Reach properties, you can take a Reaction to make one melee attack against a creature that enters the reach you have with that weapon.",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 20, "from": ["DEX","STR"] } ]
+    },
+    {
+      "name": "Resilient", "key": "resilient", "source_book": "PHB-2024", "category": "General",
+      "prerequisite": "Level 4+", "repeatable": false,
+      "description": "You gain the following benefits.\n\nAbility Score Increase. Choose one ability in which you lack saving throw proficiency. Increase the chosen ability score by 1, to a maximum of 20.\n\nSaving Throw Proficiency. You gain saving throw proficiency with the chosen ability.",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability (must lack save proficiency); +1 and gain its save proficiency", "choice_type": "ability_score_picker", "amount": 1, "max": 20, "from": ["STR","DEX","CON","INT","WIS","CHA"], "also_grants": "saving_throw_proficiency" } ]
+    },
+    {
+      "name": "Ritual Caster", "key": "ritual_caster", "source_book": "PHB-2024", "category": "General",
+      "prerequisite": "Level 4+; Intelligence, Wisdom, or Charisma 13+", "repeatable": false,
+      "description": "You gain the following benefits.\n\nAbility Score Increase. Increase your Intelligence, Wisdom, or Charisma score by 1, to a maximum of 20.\n\nRitual Spells. Choose a number of level 1 spells equal to your Proficiency Bonus that have the Ritual tag. You always have those spells prepared, and you can cast them with any spell slots you have. The spells' spellcasting ability is the ability increased by this feat. Whenever your Proficiency Bonus increases thereafter, you can add an additional level 1 spell with the Ritual tag to the spells always prepared with this feature.\n\nQuick Ritual. With this benefit, you can cast a Ritual spell that you have prepared using its regular casting time rather than the extended time for a Ritual. Doing so doesn't require a spell slot. Once you cast the spell in this way, you can't use this benefit again until you finish a Long Rest.",
+      "interaction_type": "ability_score_picker",
+      "choices": [
+        { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 20, "from": ["INT","WIS","CHA"] },
+        { "label": "Ritual Spells (choose Proficiency Bonus level-1 ritual spells; scales with PB)", "choice_type": "spell_picker", "pick_count": "proficiency_bonus", "scaling": true, "spell_level": 1, "tag": "Ritual" }
+      ]
+    },
+    {
+      "name": "Sentinel", "key": "sentinel", "source_book": "PHB-2024", "category": "General",
+      "prerequisite": "Level 4+, Strength or Dexterity 13+", "repeatable": false,
+      "description": "You gain the following benefits.\n\nAbility Score Increase. Increase your Strength or Dexterity score by 1, to a maximum of 20.\n\nGuardian. Immediately after a creature within 5 feet of you takes the Disengage action or hits a target other than you with an attack, you can make an Opportunity Attack against that creature.\n\nHalt. When you hit a creature with an Opportunity Attack, the creature's Speed becomes 0 for the rest of the current turn.",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 20, "from": ["STR","DEX"] } ]
+    },
+    {
+      "name": "Shadow-Touched", "key": "shadow_touched", "source_book": "PHB-2024", "category": "General",
+      "prerequisite": "Level 4+", "repeatable": false,
+      "description": "Your exposure to the Shadowfell's magic grants you the following benefits.\n\nAbility Score Increase. Increase your Intelligence, Wisdom, or Charisma score by 1, to a maximum of 20.\n\nShadow Magic. Choose one level 1 spell from the Illusion or Necromancy school of magic. You always have that spell and the Invisibility spell prepared. You can cast each of these spells without expending a spell slot. Once you cast either spell in this way, you can't cast that spell in this way again until you finish a Long Rest. You can also cast these spells using spell slots you have of the appropriate level. The spells' spellcasting ability is the ability increased by this feat.",
+      "interaction_type": "ability_score_picker",
+      "choices": [
+        { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 20, "from": ["INT","WIS","CHA"] },
+        { "label": "Shadow Magic 1st-level spell (Illusion or Necromancy)", "choice_type": "spell_picker", "pick_count": 1, "spell_level": 1, "schools": ["Illusion","Necromancy"] }
+      ],
+      "spells": [{ "name": "Invisibility", "level": 2, "school": "Illusion", "casting_time": "1 Action", "range": "Touch", "components": "V, S, M (an eyelash in gum arabic)", "duration": "Concentration, up to 1 hour", "effect": "A creature you touch has the Invisible condition until the spell ends; it ends early if the target attacks or casts a spell. Always prepared; castable once per Long Rest without a slot." }]
+    },
+    {
+      "name": "Sharpshooter", "key": "sharpshooter", "source_book": "PHB-2024", "category": "General",
+      "prerequisite": "Level 4+, Dexterity 13+", "repeatable": false,
+      "description": "You gain the following benefits.\n\nAbility Score Increase. Increase your Dexterity score by 1, to a maximum of 20.\n\nBypass Cover. Your ranged attacks with weapons ignore Half Cover and Three-Quarters Cover.\n\nFiring in Melee. Being within 5 feet of an enemy doesn't impose Disadvantage on your attack rolls with Ranged weapons.\n\nLong Shots. Attacking at long range doesn't impose Disadvantage on your attack rolls with Ranged weapons.",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "fixed": "DEX", "amount": 1, "max": 20 } ]
+    },
+    {
+      "name": "Shield Master", "key": "shield_master", "source_book": "PHB-2024", "category": "General",
+      "prerequisite": "Level 4+, Shield Training", "repeatable": false,
+      "description": "You gain the following benefits.\n\nAbility Score Increase. Increase your Strength score by 1, to a maximum of 20.\n\nShield Bash. If you attack a creature within 5 feet of you as part of the Attack action and hit with a Melee weapon, you can immediately bash the target with your Shield if it's equipped, forcing the target to make a Strength saving throw (DC 8 plus your Strength modifier and Proficiency Bonus). On a failed save, you either push the target 5 feet from you or cause it to have the Prone condition (your choice). You can use this benefit only once on each of your turns.\n\nInterpose Shield. If you're subjected to an effect that allows you to make a Dexterity saving throw to take only half damage, you can take a Reaction to take no damage if you succeed on the saving throw and are holding a Shield.",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "fixed": "STR", "amount": 1, "max": 20 } ]
+    },
+    {
+      "name": "Skill Expert", "key": "skill_expert", "source_book": "PHB-2024", "category": "General",
+      "prerequisite": "Level 4+", "repeatable": false,
+      "description": "You gain the following benefits.\n\nAbility Score Increase. Increase one ability score of your choice by 1, to a maximum of 20.\n\nSkill Proficiency. You gain proficiency in one skill of your choice.\n\nExpertise. Choose one skill in which you have proficiency but lack Expertise. You gain Expertise with that skill.",
+      "interaction_type": "ability_score_picker",
+      "choices": [
+        { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 20, "from": ["STR","DEX","CON","INT","WIS","CHA"] },
+        { "label": "Skill Proficiency (choose 1)", "choice_type": "proficiency_allocation_matrix", "pick_count": 1, "target": "skills", "value_per_pick": 1, "from": ["Acrobatics","Animal Handling","Arcana","Athletics","Deception","History","Insight","Intimidation","Investigation","Medicine","Nature","Perception","Performance","Persuasion","Religion","Sleight of Hand","Stealth","Survival"] },
+        { "label": "Expertise (a proficient skill)", "choice_type": "proficiency_allocation_matrix", "pick_count": 1, "target": "skills", "value_per_pick": 2, "from": "proficient_skills" }
+      ]
+    },
+    {
+      "name": "Skulker", "key": "skulker", "source_book": "PHB-2024", "category": "General",
+      "prerequisite": "Level 4+, Dexterity 13+", "repeatable": false,
+      "description": "You gain the following benefits.\n\nAbility Score Increase. Increase your Dexterity score by 1, to a maximum of 20.\n\nBlindsight. You have Blindsight with a range of 10 feet.\n\nFog of War. You exploit the distractions of battle, gaining Advantage on any Dexterity (Stealth) check you make as part of the Hide action during combat.\n\nSniper. If you make an attack roll while hidden and the roll misses, making the attack roll doesn't reveal your location.",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "fixed": "DEX", "amount": 1, "max": 20 } ],
+      "senses": [{ "name": "Blindsight", "range": 10 }]
+    },
+    {
+      "name": "Slasher", "key": "slasher", "source_book": "PHB-2024", "category": "General",
+      "prerequisite": "Level 4+", "repeatable": false,
+      "description": "You gain the following benefits.\n\nAbility Score Increase. Increase your Strength or Dexterity score by 1, to a maximum of 20.\n\nHamstring. Once per turn when you hit a creature with an attack that deals Slashing damage, you can reduce the Speed of that creature by 10 feet until the start of your next turn.\n\nEnhanced Critical. When you score a Critical Hit that deals Slashing damage to a creature, it has Disadvantage on attack rolls until the start of your next turn.",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 20, "from": ["STR","DEX"] } ]
+    },
+    {
+      "name": "Speedy", "key": "speedy", "source_book": "PHB-2024", "category": "General",
+      "prerequisite": "Level 4+, Dexterity or Constitution 13+", "repeatable": false,
+      "description": "You gain the following benefits.\n\nAbility Score Increase. Increase your Dexterity or Constitution score by 1, to a maximum of 20.\n\nSpeed Increase. Your Speed increases by 10 feet.\n\nDash over Difficult Terrain. When you take the Dash action on your turn, Difficult Terrain doesn't cost you extra movement for the rest of that turn.\n\nAgile Movement. Opportunity Attacks have Disadvantage against you.",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 20, "from": ["DEX","CON"] } ],
+      "derived_modifiers": [{ "target": "SPEED", "delta": 10 }]
+    },
+    {
+      "name": "Spell Sniper", "key": "spell_sniper", "source_book": "PHB-2024", "category": "General",
+      "prerequisite": "Level 4+, Spellcasting or Pact Magic Feature", "repeatable": false,
+      "description": "You gain the following benefits.\n\nAbility Score Increase. Increase your Intelligence, Wisdom, or Charisma score by 1, to a maximum of 20.\n\nBypass Cover. Your attack rolls for spells ignore Half Cover and Three-Quarters Cover.\n\nCasting in Melee. Being within 5 feet of an enemy doesn't impose Disadvantage on your attack rolls with spells.\n\nIncreased Range. When you cast a spell that has a range of at least 10 feet and requires you to make an attack roll, you can increase the spell's range by 60 feet.",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 20, "from": ["INT","WIS","CHA"] } ]
+    },
+    {
+      "name": "Telekinetic", "key": "telekinetic", "source_book": "PHB-2024", "category": "General",
+      "prerequisite": "Level 4+", "repeatable": false,
+      "description": "You gain the following benefits.\n\nAbility Score Increase. Increase your Intelligence, Wisdom, or Charisma score by 1, to a maximum of 20.\n\nMinor Telekinesis. You learn the Mage Hand spell. You can cast it without Verbal or Somatic components, you can make the spectral hand Invisible, and its range increases by 30 feet when you cast it. The spell's spellcasting ability is the ability increased by this feat.\n\nTelekinetic Shove. As a Bonus Action, you can telekinetically shove one creature you can see within 30 feet of yourself. When you do so, the target must succeed on a Strength saving throw (DC 8 plus the ability modifier of the score increased by this feat and your Proficiency Bonus) or be moved 5 feet toward or away from you.",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 20, "from": ["INT","WIS","CHA"] } ],
+      "spells": [{ "name": "Mage Hand", "level": 0, "school": "Conjuration", "casting_time": "1 Action", "range": "30 feet (+30 from this feat)", "components": "V, S", "duration": "1 minute", "effect": "A spectral hand manipulates objects up to 10 lb; via this feat castable with no V/S components and the hand can be Invisible." }],
+      "actions": [{ "name": "Telekinetic Shove", "type": "bonus", "casting_time": "Bonus Action", "range": "30 feet", "effect": "Target STR save (DC 8 + feat ability mod + Prof) or move 5 ft toward/away from you" }]
+    },
+    {
+      "name": "Telepathic", "key": "telepathic", "source_book": "PHB-2024", "category": "General",
+      "prerequisite": "Level 4+", "repeatable": false,
+      "description": "You gain the following benefits.\n\nAbility Score Increase. Increase your Intelligence, Wisdom, or Charisma score by 1, to a maximum of 20.\n\nTelepathic Utterance. You can speak telepathically to any creature you can see within 60 feet of yourself. Your telepathic utterances are in a language you know, and the creature understands you only if it knows that language. Your communication doesn't give the creature the ability to respond to you telepathically.\n\nDetect Thoughts. You always have the Detect Thoughts spell prepared. You can cast it without a spell slot or spell components, and you must finish a Long Rest before you can cast it in this way again. You can also cast it using spell slots you have of the appropriate level. Your spellcasting ability for the spell is the ability increased by this feat.",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 20, "from": ["INT","WIS","CHA"] } ],
+      "spells": [{ "name": "Detect Thoughts", "level": 2, "school": "Divination", "casting_time": "1 Action", "range": "Self", "components": "V, S, M (a copper piece)", "duration": "Concentration, up to 1 minute", "effect": "Read the surface thoughts of creatures within 30 ft; probe deeper with a contested check. Always prepared; castable once per Long Rest without a slot." }]
+    },
+    {
+      "name": "War Caster", "key": "war_caster", "source_book": "PHB-2024", "category": "General",
+      "prerequisite": "Level 4+, Spellcasting or Pact Magic Feature", "repeatable": false,
+      "description": "You gain the following benefits.\n\nAbility Score Increase. Increase your Intelligence, Wisdom, or Charisma score by 1, to a maximum of 20.\n\nConcentration. You have Advantage on Constitution saving throws that you make to maintain Concentration.\n\nReactive Spell. When a creature provokes an Opportunity Attack from you by leaving your reach, you can take a Reaction to cast a spell at the creature rather than making an Opportunity Attack. The spell must have a casting time of one action and must target only that creature.\n\nSomatic Components. You can perform the Somatic components of spells even when you have weapons or a Shield in one or both hands.",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 20, "from": ["INT","WIS","CHA"] } ]
+    },
+    {
+      "name": "Weapon Master", "key": "weapon_master", "source_book": "PHB-2024", "category": "General",
+      "prerequisite": "Level 4+", "repeatable": false,
+      "description": "You gain the following benefits.\n\nAbility Score Increase. Increase your Strength or Dexterity score by 1, to a maximum of 20.\n\nMastery Property. Your training with weapons allows you to use the mastery property of one kind of Simple or Martial weapon of your choice, provided you have proficiency with it. Whenever you finish a Long Rest, you can change the kind of weapon to another eligible kind.",
+      "interaction_type": "ability_score_picker",
+      "choices": [
+        { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 20, "from": ["STR","DEX"] },
+        { "label": "Weapon Mastery (choose 1 weapon)", "choice_type": "list_pick", "pick_count": 1, "from_source": "EQUIPMENT (weapons you are proficient with)" }
+      ]
+    },
+    {
+      "name": "Archery", "key": "fs_archery", "source_book": "PHB-2024", "category": "Fighting Style",
+      "prerequisite": "Fighting Style Feature", "repeatable": false,
+      "description": "You gain a +2 bonus to attack rolls you make with Ranged weapons.",
+      "interaction_type": null, "choices": []
+    },
+    {
+      "name": "Blind Fighting", "key": "fs_blind_fighting", "source_book": "PHB-2024", "category": "Fighting Style",
+      "prerequisite": "Fighting Style Feature", "repeatable": false,
+      "description": "You have Blindsight with a range of 10 feet.",
+      "interaction_type": null, "choices": [],
+      "senses": [{ "name": "Blindsight", "range": 10 }]
+    },
+    {
+      "name": "Defense", "key": "fs_defense", "source_book": "PHB-2024", "category": "Fighting Style",
+      "prerequisite": "Fighting Style Feature", "repeatable": false,
+      "description": "While you're wearing Light, Medium, or Heavy armor, you gain a +1 bonus to Armor Class.",
+      "interaction_type": "derived_value_multiplier",
+      "choices": [ { "label": "AC bonus while armored", "choice_type": "derived_value_multiplier", "target": "AC", "delta": 1, "condition": "wearing armor" } ]
+    },
+    {
+      "name": "Dueling", "key": "fs_dueling", "source_book": "PHB-2024", "category": "Fighting Style",
+      "prerequisite": "Fighting Style Feature", "repeatable": false,
+      "description": "When you're holding a Melee weapon in one hand and no other weapons, you gain a +2 bonus to damage rolls with that weapon.",
+      "interaction_type": null, "choices": []
+    },
+    {
+      "name": "Great Weapon Fighting", "key": "fs_great_weapon_fighting", "source_book": "PHB-2024", "category": "Fighting Style",
+      "prerequisite": "Fighting Style Feature", "repeatable": false,
+      "description": "When you roll damage for an attack you make with a Melee weapon that you are holding with two hands, you can treat any 1 or 2 on a damage die as a 3. The weapon must have the Two-Handed or Versatile property to gain this benefit.",
+      "interaction_type": null, "choices": []
+    },
+    {
+      "name": "Interception", "key": "fs_interception", "source_book": "PHB-2024", "category": "Fighting Style",
+      "prerequisite": "Fighting Style Feature", "repeatable": false,
+      "description": "When a creature you can see hits another creature within 5 feet of you with an attack roll, you can take a Reaction to reduce the damage dealt to the target by 1d10 plus your Proficiency Bonus. You must be holding a Shield or a Simple or Martial weapon to use this Reaction.",
+      "interaction_type": null, "choices": []
+    },
+    {
+      "name": "Protection", "key": "fs_protection", "source_book": "PHB-2024", "category": "Fighting Style",
+      "prerequisite": "Fighting Style Feature", "repeatable": false,
+      "description": "When a creature you can see attacks a target other than you that is within 5 feet of you, you can take a Reaction to interpose your Shield if you're holding one. You impose Disadvantage on the triggering attack roll and all other attack rolls against the target until the start of your next turn if you remain within 5 feet of the target.",
+      "interaction_type": null, "choices": []
+    },
+    {
+      "name": "Thrown Weapon Fighting", "key": "fs_thrown_weapon_fighting", "source_book": "PHB-2024", "category": "Fighting Style",
+      "prerequisite": "Fighting Style Feature", "repeatable": false,
+      "description": "When you hit with a ranged attack roll using a weapon that has the Thrown property, you gain a +2 bonus to the damage roll.",
+      "interaction_type": null, "choices": []
+    },
+    {
+      "name": "Two-Weapon Fighting", "key": "fs_two_weapon_fighting", "source_book": "PHB-2024", "category": "Fighting Style",
+      "prerequisite": "Fighting Style Feature", "repeatable": false,
+      "description": "When you make an extra attack as a result of using a weapon that has the Light property, you can add your ability modifier to the damage of that attack if you aren't already adding it to the damage.",
+      "interaction_type": null, "choices": []
+    },
+    {
+      "name": "Unarmed Fighting", "key": "fs_unarmed_fighting", "source_book": "PHB-2024", "category": "Fighting Style",
+      "prerequisite": "Fighting Style Feature", "repeatable": false,
+      "description": "When you hit with your Unarmed Strike and deal damage, you can deal Bludgeoning damage equal to 1d6 plus your Strength modifier instead of the normal damage of an Unarmed Strike. If you aren't holding any weapons or a Shield when you make the attack roll, the d6 becomes a d8. At the start of each of your turns, you can deal 1d4 Bludgeoning damage to one creature Grappled by you.",
+      "interaction_type": null, "choices": []
+    },
+    {
+      "name": "Boon of Combat Prowess", "key": "boon_combat_prowess", "source_book": "PHB-2024", "category": "Epic Boon",
+      "prerequisite": "Level 19+", "repeatable": false,
+      "description": "You gain the following benefits.\n\nAbility Score Increase. Increase one ability score of your choice by 1, to a maximum of 30.\n\nPeerless Aim. When you miss with an attack roll, you can hit instead. Once you use this benefit, you can't use it again until the start of your next turn.",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 30, "from": ["STR","DEX","CON","INT","WIS","CHA"] } ]
+    },
+    {
+      "name": "Boon of Dimensional Travel", "key": "boon_dimensional_travel", "source_book": "PHB-2024", "category": "Epic Boon",
+      "prerequisite": "Level 19+", "repeatable": false,
+      "description": "You gain the following benefits.\n\nAbility Score Increase. Increase one ability score of your choice by 1, to a maximum of 30.\n\nBlink Steps. Immediately after you take the Attack action or the Magic action, you can teleport up to 30 feet to an unoccupied space you can see.",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 30, "from": ["STR","DEX","CON","INT","WIS","CHA"] } ]
+    },
+    {
+      "name": "Boon of Energy Resistance", "key": "boon_energy_resistance", "source_book": "PHB-2024", "category": "Epic Boon",
+      "prerequisite": "Level 19+", "repeatable": false,
+      "description": "You gain the following benefits.\n\nAbility Score Increase. Increase one ability score of your choice by 1, to a maximum of 30.\n\nEnergy Resistances. You gain Resistance to two of the following damage types of your choice: Acid, Cold, Fire, Lightning, Necrotic, Poison, Psychic, Radiant, or Thunder. Whenever you finish a Long Rest, you can change your choices.\n\nEnergy Redirection. When you take damage of one of the types chosen for the Energy Resistances benefit, you can take a Reaction to direct damage of the same type toward another creature you can see within 60 feet of yourself that isn't behind Total Cover. If you do so, that creature must succeed on a Dexterity saving throw (DC 8 plus your Constitution modifier and Proficiency Bonus) or take damage equal to 2d12 plus your Constitution modifier.",
+      "interaction_type": "ability_score_picker",
+      "choices": [
+        { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 30, "from": ["STR","DEX","CON","INT","WIS","CHA"] },
+        { "label": "Energy Resistances (choose 2 damage types)", "choice_type": "list_pick", "pick_count": 2, "from": ["Acid","Cold","Fire","Lightning","Necrotic","Poison","Psychic","Radiant","Thunder"] }
+      ]
+    },
+    {
+      "name": "Boon of Fate", "key": "boon_fate", "source_book": "PHB-2024", "category": "Epic Boon",
+      "prerequisite": "Level 19+", "repeatable": false,
+      "description": "You gain the following benefits.\n\nAbility Score Increase. Increase one ability score of your choice by 1, to a maximum of 30.\n\nImprove Fate. When you or another creature within 60 feet of you succeeds on or fails a D20 Test, you can roll 2d4 and apply the total rolled as a bonus or penalty to the d20 roll. Once you use this benefit, you can't use it again until you roll Initiative or finish a Short or Long Rest.",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 30, "from": ["STR","DEX","CON","INT","WIS","CHA"] } ]
+    },
+    {
+      "name": "Boon of Fortitude", "key": "boon_fortitude", "source_book": "PHB-2024", "category": "Epic Boon",
+      "prerequisite": "Level 19+", "repeatable": false,
+      "description": "You gain the following benefits.\n\nAbility Score Increase. Increase one ability score of your choice by 1, to a maximum of 30.\n\nFortified Health. Your Hit Point maximum increases by 40. In addition, whenever you regain Hit Points, you can regain additional Hit Points equal to your Constitution modifier. Once you've regained these additional Hit Points, you can't do so again until the start of your next turn.",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 30, "from": ["STR","DEX","CON","INT","WIS","CHA"] } ],
+      "derived_modifiers": [{ "target": "HP", "delta": 40 }]
+    },
+    {
+      "name": "Boon of Irresistible Offense", "key": "boon_irresistible_offense", "source_book": "PHB-2024", "category": "Epic Boon",
+      "prerequisite": "Level 19+", "repeatable": false,
+      "description": "You gain the following benefits.\n\nAbility Score Increase. Increase your Strength or Dexterity score by 1, to a maximum of 30.\n\nOvercome Defenses. The Bludgeoning, Piercing, and Slashing damage you deal always ignores Resistance.\n\nOverwhelming Strike. When you roll a 20 on the d20 for an attack roll, you can deal extra damage to the target equal to the ability score increased by this feat. The extra damage's type is the same as the attack's type.",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 30, "from": ["STR","DEX"] } ]
+    },
+    {
+      "name": "Boon of Recovery", "key": "boon_recovery", "source_book": "PHB-2024", "category": "Epic Boon",
+      "prerequisite": "Level 19+", "repeatable": false,
+      "description": "You gain the following benefits.\n\nAbility Score Increase. Increase one ability score of your choice by 1, to a maximum of 30.\n\nLast Stand. When you would be reduced to 0 Hit Points, you can drop to 1 Hit Point instead and regain a number of Hit Points equal to half your Hit Point maximum. Once you use this benefit, you can't use it again until you finish a Long Rest.\n\nRecover Vitality. You have a pool of ten d10s. As a Bonus Action, you can expend dice from the pool, roll those dice, and regain a number of Hit Points equal to the roll's total. You regain all the expended dice when you finish a Long Rest.",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 30, "from": ["STR","DEX","CON","INT","WIS","CHA"] } ]
+    },
+    {
+      "name": "Boon of Skill", "key": "boon_skill", "source_book": "PHB-2024", "category": "Epic Boon",
+      "prerequisite": "Level 19+", "repeatable": false,
+      "description": "You gain the following benefits.\n\nAbility Score Increase. Increase one ability score of your choice by 1, to a maximum of 30.\n\nAll-Around Adept. You gain proficiency in all skills.\n\nExpertise. Choose one skill in which you lack Expertise. You gain Expertise in that skill.",
+      "interaction_type": "ability_score_picker",
+      "choices": [
+        { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 30, "from": ["STR","DEX","CON","INT","WIS","CHA"] },
+        { "label": "Expertise (a skill you lack Expertise in)", "choice_type": "proficiency_allocation_matrix", "pick_count": 1, "target": "skills", "value_per_pick": 2, "from": "proficient_skills" }
+      ]
+    },
+    {
+      "name": "Boon of Speed", "key": "boon_speed", "source_book": "PHB-2024", "category": "Epic Boon",
+      "prerequisite": "Level 19+", "repeatable": false,
+      "description": "You gain the following benefits.\n\nAbility Score Increase. Increase one ability score of your choice by 1, to a maximum of 30.\n\nEscape Artist. As a Bonus Action, you can take the Disengage action, which also ends the Grappled condition on you.\n\nQuickness. Your Speed increases by 30 feet.",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 30, "from": ["STR","DEX","CON","INT","WIS","CHA"] } ],
+      "derived_modifiers": [{ "target": "SPEED", "delta": 30 }]
+    },
+    {
+      "name": "Boon of Spell Recall", "key": "boon_spell_recall", "source_book": "PHB-2024", "category": "Epic Boon",
+      "prerequisite": "Level 19+, Spellcasting Feature", "repeatable": false,
+      "description": "You gain the following benefits.\n\nAbility Score Increase. Increase your Intelligence, Wisdom, or Charisma score by 1, to a maximum of 30.\n\nFree Casting. Whenever you cast a spell with a level 1-4 spell slot, roll 1d4. If the number you roll is the same as the slot's level, the slot isn't expended.",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 30, "from": ["INT","WIS","CHA"] } ]
+    },
+    {
+      "name": "Boon of the Night Spirit", "key": "boon_night_spirit", "source_book": "PHB-2024", "category": "Epic Boon",
+      "prerequisite": "Level 19+", "repeatable": false,
+      "description": "You gain the following benefits.\n\nAbility Score Increase. Increase one ability score of your choice by 1, to a maximum of 30.\n\nMerge with Shadows. While within Dim Light or Darkness, you can give yourself the Invisible condition as a Bonus Action. The condition ends on you immediately after you take an action, a Bonus Action, or a Reaction.\n\nShadowy Form. While within Dim Light or Darkness, you have Resistance to all damage except Psychic and Radiant.",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 30, "from": ["STR","DEX","CON","INT","WIS","CHA"] } ]
+    },
+    {
+      "name": "Boon of Truesight", "key": "boon_truesight", "source_book": "PHB-2024", "category": "Epic Boon",
+      "prerequisite": "Level 19+", "repeatable": false,
+      "description": "You gain the following benefits.\n\nAbility Score Increase. Increase one ability score of your choice by 1, to a maximum of 30.\n\nTruesight. You have Truesight with a range of 60 feet.",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 30, "from": ["STR","DEX","CON","INT","WIS","CHA"] } ],
+      "senses": [{ "name": "Truesight", "range": 60 }]
+    },
+    {
+      "name": "Artificer Initiate", "key": "tce_artificer_initiate", "source_book": "TCE", "category": "General (legacy)",
+      "prerequisite": null, "repeatable": false,
+      "description": "You've learned some of an artificer's inventiveness:\n\n- You learn one cantrip of your choice from the artificer spell list, and you learn one 1st-level spell of your choice from that list. Intelligence is your spellcasting ability for these spells.\n\n- You can cast this feat's 1st-level spell without a spell slot, and you must finish a long rest before you can cast it in this way again. You can also cast the spell using any spell slots you have.\n\n- You gain proficiency with one type of artisan's tools of your choice, and you can use that type of tool as a spellcasting focus for any spell you cast that uses Intelligence as its spellcasting ability.",
+      "interaction_type": "nested_subchoice_tree",
+      "choices": [
+        { "label": "Artificer Cantrip", "choice_type": "spell_picker", "pick_count": 1, "spell_level": 0, "from_list": "Artificer" },
+        { "label": "Artificer 1st-Level Spell", "choice_type": "spell_picker", "pick_count": 1, "spell_level": 1, "from_list": "Artificer" },
+        { "label": "Artisan's Tools proficiency", "choice_type": "proficiency_allocation_matrix", "pick_count": 1, "target": "tools",
+          "from": ["Alchemist's Supplies","Brewer's Supplies","Calligrapher's Supplies","Carpenter's Tools","Cartographer's Tools","Cobbler's Tools","Cook's Utensils","Glassblower's Tools","Jeweler's Tools","Leatherworker's Tools","Mason's Tools","Painter's Supplies","Potter's Tools","Smith's Tools","Tinker's Tools","Weaver's Tools","Woodcarver's Tools"] }
+      ]
+    },
+    {
+      "name": "Chef", "key": "tce_chef", "source_book": "TCE", "category": "General (legacy)",
+      "prerequisite": null, "repeatable": false,
+      "description": "Time spent mastering the culinary arts has paid off, granting you the following benefits:\n\n- Increase your Constitution or Wisdom score by 1, to a maximum of 20.\n\n- You gain proficiency with cook's utensils if you don't already have it.\n\n- As part of a short rest, you can cook special food, provided you have ingredients and cook's utensils on hand. You can prepare enough of this food for a number of creatures equal to 4 + your proficiency bonus. At the end of the short rest, any creature who eats the food and spends one or more Hit Dice to regain hit points regains an extra 1d8 hit points.\n\n- With one hour of work or when you finish a long rest, you can cook a number of treats equal to your proficiency bonus. These special treats last 8 hours after being made. A creature can use a bonus action to eat one of those treats to gain temporary hit points equal to your proficiency bonus.",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 20, "from": ["CON","WIS"] } ]
+    },
+    {
+      "name": "Crusher", "key": "tce_crusher", "source_book": "TCE", "category": "General (legacy)",
+      "prerequisite": null, "repeatable": false,
+      "description": "You are practiced in the art of crushing your enemies, granting you the following benefits:\n\n- Increase your Strength or Constitution by 1, to a maximum of 20.\n\n- Once per turn, when you hit a creature with an attack that deals bludgeoning damage, you can move it 5 feet to an unoccupied space, provided the target is no more than one size larger than you.\n\n- When you score a critical hit that deals bludgeoning damage to a creature, attack rolls against that creature are made with advantage until the start of your next turn.",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 20, "from": ["STR","CON"] } ]
+    },
+    {
+      "name": "Eldritch Adept", "key": "tce_eldritch_adept", "source_book": "TCE", "category": "General (legacy)",
+      "prerequisite": "Spellcasting or Pact Magic feature", "repeatable": false,
+      "description": "Studying occult lore, you have unlocked eldritch power within yourself: you learn one Eldritch Invocation option of your choice from the warlock class. If the invocation has a prerequisite of any kind, you can choose that invocation only if you're a warlock who meets the prerequisite. Whenever you gain a level, you can replace the invocation with another one from the warlock class.",
+      "interaction_type": "list_pick",
+      "choices": [ { "label": "Eldritch Invocation", "choice_type": "list_pick", "pick_count": 1, "from_source": "Warlock Eldritch Invocations" } ]
+    },
+    {
+      "name": "Fey Touched", "key": "tce_fey_touched", "source_book": "TCE", "category": "General (legacy)",
+      "prerequisite": null, "repeatable": false,
+      "description": "Your exposure to the Feywild's magic has changed you, granting you the following benefits:\n\n- Increase your Intelligence, Wisdom, or Charisma score by 1, to a maximum of 20.\n\n- You learn the misty step spell and one 1st-level spell of your choice. The 1st-level spell must be from the divination or enchantment school of magic. You can cast each of these spells without expending a spell slot. Once you cast either of these spells in this way, you can't cast that spell in this way again until you finish a long rest. You can also cast these spells using spell slots you have of the appropriate level. The spells' spellcasting ability is the ability increased by this feat.",
+      "interaction_type": "ability_score_picker",
+      "choices": [
+        { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 20, "from": ["INT","WIS","CHA"] },
+        { "label": "1st-level spell (Divination or Enchantment)", "choice_type": "spell_picker", "pick_count": 1, "spell_level": 1, "schools": ["Divination","Enchantment"] }
+      ]
+    },
+    {
+      "name": "Fighting Initiate", "key": "tce_fighting_initiate", "source_book": "TCE", "category": "General (legacy)",
+      "prerequisite": "Proficiency with a martial weapon", "repeatable": true,
+      "description": "Your martial training has helped you develop a particular style of fighting. As a result, you learn one Fighting Style option of your choice from the fighter class. If you already have a style, the one you choose must be different. Whenever you reach a level that grants the Ability Score Improvement feature, you can replace this feat's fighting style with another one from the fighter class that you don't have.",
+      "interaction_type": "list_pick",
+      "choices": [ { "label": "Fighting Style", "choice_type": "list_pick", "pick_count": 1, "from": ["Archery","Blind Fighting","Defense","Dueling","Great Weapon Fighting","Interception","Protection","Thrown Weapon Fighting","Two-Weapon Fighting","Unarmed Fighting"] } ]
+    },
+    {
+      "name": "Gunner", "key": "tce_gunner", "source_book": "TCE", "category": "General (legacy)",
+      "prerequisite": null, "repeatable": false,
+      "description": "You have a quick hand and keen eye when employing firearms, granting you the following benefits:\n\n- Increase your Dexterity score by 1, to a maximum of 20.\n\n- You gain proficiency with firearms (see Firearms in the Dungeon Master's Guide).\n\n- You ignore the loading property of firearms.\n\n- Being within 5 feet of a hostile creature doesn't impose disadvantage on your ranged attack rolls.",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "fixed": "DEX", "amount": 1, "max": 20 } ]
+    },
+    {
+      "name": "Metamagic Adept", "key": "tce_metamagic_adept", "source_book": "TCE", "category": "General (legacy)",
+      "prerequisite": "Spellcasting or Pact Magic feature", "repeatable": false,
+      "description": "You've learned how to exert your will on your spells to alter how they function:\n\n- You learn two Metamagic options of your choice from the sorcerer class. You can use only one Metamagic option on a spell when you cast it, unless the option says otherwise. Whenever you reach a level that grants the Ability Score Improvement feature, you can replace one of these Metamagic options with another one from the sorcerer class.\n\n- You gain 2 sorcery points to spend on Metamagic (these points are added to any sorcery points you have from another source but can be used only on Metamagic). You regain all spent sorcery points when you finish a long rest.",
+      "interaction_type": "list_pick",
+      "choices": [ { "label": "Metamagic Options (choose 2)", "choice_type": "list_pick", "pick_count": 2, "from": ["Careful Spell","Distant Spell","Empowered Spell","Extended Spell","Heightened Spell","Quickened Spell","Seeking Spell","Subtle Spell","Transmuted Spell","Twinned Spell"] } ]
+    },
+    {
+      "name": "Piercer", "key": "tce_piercer", "source_book": "TCE", "category": "General (legacy)",
+      "prerequisite": null, "repeatable": false,
+      "description": "You have achieved a penetrating precision in combat, granting you the following benefits:\n\n- Increase your Strength or Dexterity by 1, to a maximum of 20.\n\n- Once per turn, when you hit a creature with an attack that deals piercing damage, you can reroll one of the attack's damage dice, and you must use the new roll.\n\n- When you score a critical hit that deals piercing damage to a creature, you can roll one additional damage die when determining the extra piercing damage the target takes.",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 20, "from": ["STR","DEX"] } ]
+    },
+    {
+      "name": "Poisoner", "key": "tce_poisoner", "source_book": "TCE", "category": "General (legacy)",
+      "prerequisite": null, "repeatable": false,
+      "description": "You can prepare and deliver deadly poisons, granting you the following benefits:\n\n- When you make a damage roll that deals poison damage, it ignores resistance to poison damage.\n\n- You can apply poison to a weapon or piece of ammunition as a bonus action, instead of an action.\n\n- You gain proficiency with the poisoner's kit if you don't already have it. With one hour of work using a poisoner's kit and expending 50 gp worth of materials, you can create a number of doses of potent poison equal to your proficiency bonus. Once applied to a weapon or piece of ammunition, the poison retains its potency for 1 minute or until you hit with the weapon or ammunition. When a creature takes damage from the coated weapon or ammunition, that creature must succeed on a DC 14 Constitution saving throw or take 2d8 poison damage and become poisoned until the end of your next turn.",
+      "interaction_type": null, "choices": []
+    },
+    {
+      "name": "Shadow Touched", "key": "tce_shadow_touched", "source_book": "TCE", "category": "General (legacy)",
+      "prerequisite": null, "repeatable": false,
+      "description": "Your exposure to the Shadowfell's magic has changed you, granting you the following benefits:\n\n- Increase your Intelligence, Wisdom, or Charisma score by 1, to a maximum of 20.\n\n- You learn the invisibility spell and one 1st-level spell of your choice. The 1st-level spell must be from the illusion or necromancy school of magic. You can cast each of these spells without expending a spell slot. Once you cast either of these spells in this way, you can't cast that spell in this way again until you finish a long rest. You can also cast these spells using spell slots you have of the appropriate level. The spells' spellcasting ability is the ability increased by this feat.",
+      "interaction_type": "ability_score_picker",
+      "choices": [
+        { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 20, "from": ["INT","WIS","CHA"] },
+        { "label": "1st-level spell (Illusion or Necromancy)", "choice_type": "spell_picker", "pick_count": 1, "spell_level": 1, "schools": ["Illusion","Necromancy"] }
+      ]
+    },
+    {
+      "name": "Skill Expert", "key": "tce_skill_expert", "source_book": "TCE", "category": "General (legacy)",
+      "prerequisite": null, "repeatable": false,
+      "description": "You have honed your proficiency with particular skills, granting you the following benefits:\n\n- Increase one ability score of your choice by 1, to a maximum of 20.\n\n- You gain proficiency in one skill of your choice.\n\n- Choose one skill in which you have proficiency. You gain expertise with that skill, which means your proficiency bonus is doubled for any ability check you make with it. The skill you choose must be one that isn't already benefiting from a feature, such as Expertise, that doubles your proficiency bonus.",
+      "interaction_type": "ability_score_picker",
+      "choices": [
+        { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 20, "from": ["STR","DEX","CON","INT","WIS","CHA"] },
+        { "label": "Skill Proficiency (choose 1)", "choice_type": "proficiency_allocation_matrix", "pick_count": 1, "target": "skills", "value_per_pick": 1, "from": ["Acrobatics","Animal Handling","Arcana","Athletics","Deception","History","Insight","Intimidation","Investigation","Medicine","Nature","Perception","Performance","Persuasion","Religion","Sleight of Hand","Stealth","Survival"] },
+        { "label": "Expertise (a proficient skill)", "choice_type": "proficiency_allocation_matrix", "pick_count": 1, "target": "skills", "value_per_pick": 2, "from": "proficient_skills" }
+      ]
+    },
+    {
+      "name": "Slasher", "key": "tce_slasher", "source_book": "TCE", "category": "General (legacy)",
+      "prerequisite": null, "repeatable": false,
+      "description": "You've learned where to cut to have the greatest results, granting you the following benefits:\n\n- Increase your Strength or Dexterity by 1, to a maximum of 20.\n\n- Once per turn when you hit a creature with an attack that deals slashing damage, you can reduce the speed of the target by 10 feet until the start of your next turn.\n\n- When you score a critical hit that deals slashing damage to a creature, you grievously wound it. Until the start of your next turn, the target has disadvantage on all attack rolls.",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 20, "from": ["STR","DEX"] } ]
+    },
+    {
+      "name": "Telekinetic", "key": "tce_telekinetic", "source_book": "TCE", "category": "General (legacy)",
+      "prerequisite": null, "repeatable": false,
+      "description": "You learn to move things with your mind, granting you the following benefits:\n\n- Increase your Intelligence, Wisdom, or Charisma score by 1, to a maximum of 20.\n\n- You learn the mage hand cantrip. You can cast it without verbal or somatic components, and you can make the spectral hand invisible. If you already know this spell, its range increases by 30 feet when you cast it. Its spellcasting ability is the ability increased by this feat.\n\n- As a bonus action, you can try to telekinetically shove one creature you can see within 30 feet of you. When you do so, the target must succeed on a Strength saving throw (DC 8 + your proficiency bonus + the ability modifier of the score increased by this feat) or be moved 5 feet toward you or away from you. A creature can willingly fail this save.",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 20, "from": ["INT","WIS","CHA"] } ]
+    },
+    {
+      "name": "Telepathic", "key": "tce_telepathic", "source_book": "TCE", "category": "General (legacy)",
+      "prerequisite": null, "repeatable": false,
+      "description": "You awaken the ability to mentally connect with others, granting you the following benefits:\n\n- Increase your Intelligence, Wisdom, or Charisma score by 1, to a maximum of 20.\n\n- You can speak telepathically to any creature you can see within 60 feet of you. Your telepathic utterances are in a language you know, and the creature understands you only if it knows that language. Your communication doesn't give the creature the ability to respond to you telepathically.\n\n- You can cast the detect thoughts spell, requiring no spell slot or components, and you must finish a long rest before you can cast it this way again. Your spellcasting ability for the spell is the ability increased by this feat. If you have spell slots of 2nd level or higher, you can cast this spell with them.",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 20, "from": ["INT","WIS","CHA"] } ]
+    },
+    {
+      "name": "Bountiful Luck", "key": "xge_bountiful_luck", "source_book": "XGE", "category": "Racial",
+      "prerequisite": "Halfling", "repeatable": false,
+      "description": "Your people have extraordinary luck, which you have learned to mystically lend to your companions when you see them falter. When an ally you can see within 30 feet of you rolls a 1 on the d20 for an attack roll, an ability check, or a saving throw, you can use your reaction to let the ally reroll the die. The ally must use the new roll. When you use this ability, you can't use your Lucky racial trait before the end of your next turn.",
+      "interaction_type": null, "choices": []
+    },
+    {
+      "name": "Dragon Fear", "key": "xge_dragon_fear", "source_book": "XGE", "category": "Racial",
+      "prerequisite": "Dragonborn", "repeatable": false,
+      "description": "When angered, you can radiate menace. You gain the following benefits:\n\n- Increase your Strength, Constitution, or Charisma score by 1, to a maximum of 20.\n\n- Instead of exhaling destructive energy, you can expend a use of your Breath Weapon trait to roar, forcing each creature of your choice within 30 feet of you to make a Wisdom saving throw (DC 8 + your proficiency bonus + your Charisma modifier). A target automatically succeeds on the save if it can't hear or see you. On a failed save, a target becomes frightened of you for 1 minute. If the frightened target takes any damage, it can repeat the saving throw, ending the effect on itself on a success.",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 20, "from": ["STR","CON","CHA"] } ]
+    },
+    {
+      "name": "Dragon Hide", "key": "xge_dragon_hide", "source_book": "XGE", "category": "Racial",
+      "prerequisite": "Dragonborn", "repeatable": false,
+      "description": "You manifest scales and claws reminiscent of your draconic ancestors. You gain the following benefits:\n\n- Increase your Strength, Constitution, or Charisma score by 1, to a maximum of 20.\n\n- Your scales harden. While you aren't wearing armor, you can calculate your AC as 13 + your Dexterity modifier. You can use a shield and still gain this benefit.\n\n- You grow retractable claws from the tips of your fingers. Extending or retracting the claws requires no action. The claws are natural weapons, which you can use to make unarmed strikes. If you hit with them, you deal slashing damage equal to 1d4 + your Strength modifier, instead of the normal bludgeoning damage for an unarmed strike.",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 20, "from": ["STR","CON","CHA"] } ],
+      "actions": [{ "name": "Claws", "type": "attack", "casting_time": "Part of the Attack action", "range": "Melee (5 ft)", "effect": "1d4 + STR modifier slashing damage", "damage": { "count": 1, "die": 4, "type": "slashing" } }]
+    },
+    {
+      "name": "Drow High Magic", "key": "xge_drow_high_magic", "source_book": "XGE", "category": "Racial",
+      "prerequisite": "Elf (drow)", "repeatable": false,
+      "description": "You learn more of the magic typical of dark elves. You learn the detect magic spell and can cast it at will, without expending a spell slot. You also learn levitate and dispel magic, each of which you can cast once without expending a spell slot. You regain the ability to cast those two spells in this way when you finish a long rest. Charisma is your spellcasting ability for all three spells.",
+      "interaction_type": null, "choices": [],
+      "spells": [
+        { "name": "Detect Magic", "level": 1, "school": "Divination", "casting_time": "1 Action", "range": "Self", "components": "V, S", "duration": "Concentration, up to 10 minutes", "effect": "Sense magic within 30 ft. Castable at will via this feat." },
+        { "name": "Levitate", "level": 2, "school": "Transmutation", "casting_time": "1 Action", "range": "60 feet", "components": "V, S, M (a small leather loop or a golden wire bent into a cup)", "duration": "Concentration, up to 10 minutes", "effect": "A creature or object rises vertically up to 20 ft. Castable once per Long Rest without a slot via this feat." },
+        { "name": "Dispel Magic", "level": 3, "school": "Abjuration", "casting_time": "1 Action", "range": "120 feet", "components": "V, S", "duration": "Instantaneous", "effect": "End spells on a target; ability check vs spell DC for spells above 3rd level. Castable once per Long Rest without a slot via this feat." }
+      ]
+    },
+    {
+      "name": "Dwarven Fortitude", "key": "xge_dwarven_fortitude", "source_book": "XGE", "category": "Racial",
+      "prerequisite": "Dwarf", "repeatable": false,
+      "description": "You have the blood of dwarf heroes flowing through your veins. You gain the following benefits:\n\n- Increase your Constitution score by 1, to a maximum of 20.\n\n- Whenever you take the Dodge action in combat, you can spend one Hit Die to heal yourself. Roll the die, add your Constitution modifier, and regain a number of hit points equal to the total (minimum of 1).",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "fixed": "CON", "amount": 1, "max": 20 } ]
+    },
+    {
+      "name": "Elven Accuracy", "key": "xge_elven_accuracy", "source_book": "XGE", "category": "Racial",
+      "prerequisite": "Elf or half-elf", "repeatable": false,
+      "description": "The accuracy of elves is legendary, especially that of elf archers and spellcasters. You have uncanny aim with attacks that rely on precision rather than brute force. You gain the following benefits:\n\n- Increase your Dexterity, Intelligence, Wisdom, or Charisma score by 1, to a maximum of 20.\n\n- Whenever you have advantage on an attack roll using Dexterity, Intelligence, Wisdom, or Charisma, you can reroll one of the dice once.",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 20, "from": ["DEX","INT","WIS","CHA"] } ]
+    },
+    {
+      "name": "Fade Away", "key": "xge_fade_away", "source_book": "XGE", "category": "Racial",
+      "prerequisite": "Gnome", "repeatable": false,
+      "description": "Your people are clever, with a knack for illusion magic. You have learned a magical trick for fading away when you suffer harm. You gain the following benefits:\n\n- Increase your Dexterity or Intelligence score by 1, to a maximum of 20.\n\n- Immediately after you take damage, you can use a reaction to magically become invisible until the end of your next turn or until you attack, deal damage, or force someone to make a saving throw. Once you use this ability, you can't do so again until you finish a short or long rest.",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 20, "from": ["DEX","INT"] } ]
+    },
+    {
+      "name": "Fey Teleportation", "key": "xge_fey_teleportation", "source_book": "XGE", "category": "Racial",
+      "prerequisite": "Elf (high)", "repeatable": false,
+      "description": "Your study of high elven lore has unlocked fey power that few other elves possess, except your eladrin cousins. Drawing on your fey ancestry, you can momentarily stride through the Feywild to shorten your path from one place to another. You gain the following benefits:\n\n- Increase your Intelligence or Charisma score by 1, to a maximum of 20.\n\n- You learn to speak, read, and write Sylvan.\n\n- You learn the misty step spell and can cast it once without expending a spell slot. You regain the ability to cast it in this way when you finish a short or long rest. Intelligence is your spellcasting ability for this spell.",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 20, "from": ["INT","CHA"] } ],
+      "spells": [{ "name": "Misty Step", "level": 2, "school": "Conjuration", "casting_time": "1 Bonus Action", "range": "Self", "components": "V", "duration": "Instantaneous", "effect": "Teleport up to 30 ft to an unoccupied space you can see. Castable once per Short/Long Rest without a slot via this feat." }]
+    },
+    {
+      "name": "Flames of Phlegethos", "key": "xge_flames_of_phlegethos", "source_book": "XGE", "category": "Racial",
+      "prerequisite": "Tiefling", "repeatable": false,
+      "description": "You learn to call on hellfire to serve your commands. You gain the following benefits:\n\n- Increase your Intelligence or Charisma score by 1, to a maximum of 20.\n\n- When you roll fire damage for a spell you cast, you can reroll any roll of 1 on the fire damage dice, but you must use the new roll, even if it is another 1.\n\n- Whenever you cast a spell that deals fire damage, you can cause flames to wreathe you until the end of your next turn. The flames don't harm you or your possessions, and they shed bright light out to 30 feet and dim light for an additional 30 feet. While the flames are present, any creature within 5 feet of you that hits you with a melee attack takes 1d4 fire damage.",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 20, "from": ["INT","CHA"] } ]
+    },
+    {
+      "name": "Infernal Constitution", "key": "xge_infernal_constitution", "source_book": "XGE", "category": "Racial",
+      "prerequisite": "Tiefling", "repeatable": false,
+      "description": "Fiendish blood runs strong in you, unlocking a resilience akin to that possessed by some fiends. You gain the following benefits:\n\n- Increase your Constitution score by 1, to a maximum of 20.\n\n- You have resistance to cold damage and poison damage.\n\n- You have advantage on saving throws against being poisoned.",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "fixed": "CON", "amount": 1, "max": 20 } ],
+      "derived_modifiers": [{ "target": "RESISTANCE", "value": "Cold" }, { "target": "RESISTANCE", "value": "Poison" }]
+    },
+    {
+      "name": "Orcish Fury", "key": "xge_orcish_fury", "source_book": "XGE", "category": "Racial",
+      "prerequisite": "Half-orc", "repeatable": false,
+      "description": "Your inner fury burns tirelessly. You gain the following benefits:\n\n- Increase your Strength or Constitution score by 1, to a maximum of 20.\n\n- When you hit with an attack using a simple or martial weapon, you can roll one of the weapon's damage dice an additional time and add it as extra damage of the weapon's damage type. Once you use this ability, you can't use it again until you finish a short or long rest.\n\n- Immediately after you use your Relentless Endurance trait, you can use your reaction to make one weapon attack.",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 20, "from": ["STR","CON"] } ]
+    },
+    {
+      "name": "Prodigy", "key": "xge_prodigy", "source_book": "XGE", "category": "Racial",
+      "prerequisite": "Half-elf, half-orc, or human", "repeatable": false,
+      "description": "You have a knack for learning new things. You gain the following benefits:\n\n- You gain one skill proficiency of your choice, one tool proficiency of your choice, and fluency in one language of your choice.\n\n- Choose one skill in which you have proficiency. You gain expertise with that skill, which means your proficiency bonus is doubled for any ability check you make with it. The skill you choose must be one that isn't already benefiting from a feature, such as Expertise, that doubles your proficiency bonus.",
+      "interaction_type": "proficiency_allocation_matrix",
+      "choices": [
+        { "label": "Skill Proficiency (choose 1)", "choice_type": "proficiency_allocation_matrix", "pick_count": 1, "target": "skills", "value_per_pick": 1, "from": ["Acrobatics","Animal Handling","Arcana","Athletics","Deception","History","Insight","Intimidation","Investigation","Medicine","Nature","Perception","Performance","Persuasion","Religion","Sleight of Hand","Stealth","Survival"] },
+        { "label": "Tool Proficiency (choose 1)", "choice_type": "proficiency_allocation_matrix", "pick_count": 1, "target": "tools", "from_source": "any tool" },
+        { "label": "Expertise (a proficient skill)", "choice_type": "proficiency_allocation_matrix", "pick_count": 1, "target": "skills", "value_per_pick": 2, "from": "proficient_skills" }
+      ]
+    },
+    {
+      "name": "Second Chance", "key": "xge_second_chance", "source_book": "XGE", "category": "Racial",
+      "prerequisite": "Halfling", "repeatable": false,
+      "description": "Fortune favors you when someone tries to strike you. You gain the following benefits:\n\n- Increase your Dexterity, Constitution, or Charisma score by 1, to a maximum of 20.\n\n- When a creature you can see hits you with an attack roll, you can use your reaction to force that creature to reroll. Once you use this ability, you can't use it again until you roll initiative at the start of combat or until you finish a short or long rest.",
+      "interaction_type": "ability_score_picker",
+      "choices": [ { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 20, "from": ["DEX","CON","CHA"] } ]
+    },
+    {
+      "name": "Squat Nimbleness", "key": "xge_squat_nimbleness", "source_book": "XGE", "category": "Racial",
+      "prerequisite": "Dwarf or a Small race", "repeatable": false,
+      "description": "You are uncommonly nimble for your race. You gain the following benefits:\n\n- Increase your Strength or Dexterity score by 1, to a maximum of 20.\n\n- Increase your walking speed by 5 feet.\n\n- You gain proficiency in the Acrobatics or Athletics skill (your choice).\n\n- You have advantage on any Strength (Athletics) or Dexterity (Acrobatics) check you make to escape from being grappled.",
+      "interaction_type": "ability_score_picker",
+      "choices": [
+        { "label": "Ability Score Increase", "choice_type": "ability_score_picker", "amount": 1, "max": 20, "from": ["STR","DEX"] },
+        { "label": "Skill Proficiency", "choice_type": "proficiency_allocation_matrix", "pick_count": 1, "target": "skills", "value_per_pick": 1, "from": ["Acrobatics","Athletics"] }
+      ],
+      "derived_modifiers": [{ "target": "SPEED", "delta": 5 }]
+    },
+    {
+      "name": "Wood Elf Magic", "key": "xge_wood_elf_magic", "source_book": "XGE", "category": "Racial",
+      "prerequisite": "Elf (wood)", "repeatable": false,
+      "description": "You learn the magic of the primeval woods, which are revered and protected by your people. You learn one druid cantrip of your choice. You also learn the longstrider and pass without trace spells, each of which you can cast once without expending a spell slot. You regain the ability to cast these two spells in this way when you finish a long rest. Wisdom is your spellcasting ability for all three spells.",
+      "interaction_type": "spell_picker",
+      "choices": [
+        { "label": "Druid Cantrip", "choice_type": "spell_picker", "pick_count": 1, "spell_level": 0, "from_list": "Druid" }
+      ],
+      "spells": [
+        { "name": "Longstrider", "level": 1, "school": "Transmutation", "casting_time": "1 Action", "range": "Touch", "components": "V, S, M (a pinch of dirt)", "duration": "1 hour", "effect": "Target's Speed increases by 10 ft. Castable once per Long Rest without a slot via this feat." },
+        { "name": "Pass without Trace", "level": 2, "school": "Abjuration", "casting_time": "1 Action", "range": "Self", "components": "V, S, M (ashes from a burned leaf of mistletoe and a sprig of spruce)", "duration": "Concentration, up to 1 hour", "effect": "You and creatures within 30 ft gain +10 to Stealth and can't be tracked nonmagically. Castable once per Long Rest without a slot via this feat." }
+      ]
+    }
+  ]
+}

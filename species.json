@@ -1,0 +1,523 @@
+{
+  "schema_version": "2.0",
+  "extraction_notes": {
+    "extracted_books": ["PHB-2024", "GGR", "VRGR", "TCE"],
+    "no_new_species_in_book": ["XGE"],
+    "comment": "Xanathar's Guide to Everything (verified via full-document scan of the readable text PDF) adds racial feats and subclasses but no new species/races. Tasha's Cauldron of Everything contributes one species-equivalent option: the Custom Lineage. PHB 2024 species use the term 'species' with lineage sub-choices; GGR and VRGR predate that term and use 'race'/'lineage' - all are normalised here under the same schema. Spell objects carry literal casting_time, range, components, duration, and effect so the frontend can inject them into the Spells/Actions tabs.",
+    "total_species": 20
+  },
+  "items": [
+    {
+      "name": "Aasimar",
+      "key": "aasimar",
+      "source_book": "PHB-2024",
+      "summary": "Aasimar are mortals who carry a spark of the Upper Planes within their souls. They can fan that spark to bring light, healing, and heavenly fury. They live up to 160 years and have features hinting at their celestial heritage.",
+      "creature_type": "Humanoid",
+      "size_options": ["Medium", "Small"],
+      "speed": 30,
+      "senses": [{ "name": "Darkvision", "range": 60 }],
+      "traits": [
+        { "key": "celestial_resistance", "name": "Celestial Resistance", "text": "You have Resistance to Necrotic damage and Radiant damage." },
+        { "key": "darkvision", "name": "Darkvision", "text": "You have Darkvision with a range of 60 feet." },
+        { "key": "healing_hands", "name": "Healing Hands", "text": "As a Magic action, you touch a creature and roll a number of d4s equal to your Proficiency Bonus. The creature regains a number of Hit Points equal to the total rolled. Once you use this trait, you can't use it again until you finish a Long Rest.",
+          "actions": [{ "name": "Healing Hands", "type": "action", "casting_time": "Magic action", "range": "Touch", "effect": "Heal d4 x Proficiency Bonus HP", "uses_max": 1, "uses_recharge": "long" }] },
+        { "key": "light_bearer", "name": "Light Bearer", "text": "You know the Light cantrip. Charisma is your spellcasting ability for it.",
+          "spells": [{ "name": "Light", "level": 0, "school": "Evocation", "casting_time": "1 Action", "range": "Touch", "components": "V, M (a firefly or phosphorescent moss)", "duration": "1 hour", "effect": "Object sheds Bright Light in a 20-foot radius and Dim Light for an additional 20 feet (DEX save negates if cast on an unwilling creature's item)." }] },
+        { "key": "celestial_revelation", "name": "Celestial Revelation", "text": "When you reach character level 3, you can transform as a Bonus Action using one of the options below (choose the option each time you transform). The transformation lasts for 1 minute or until you end it (no action required). Once you transform, you can't do so again until you finish a Long Rest. Once on each of your turns before the transformation ends, you can deal extra damage to one target when you deal damage to it with an attack or a spell; the extra damage equals your Proficiency Bonus.",
+          "interaction_type": "nested_subchoice_tree",
+          "choice_label": "Celestial Revelation (unlocks at character level 3)",
+          "level_locked": 3,
+          "options": [
+            { "key": "heavenly_wings", "name": "Heavenly Wings", "text": "Two spectral wings sprout from your back temporarily. Until the transformation ends, you have a Fly Speed equal to your Speed. The extra damage of Celestial Revelation is Radiant.",
+              "derived_modifiers": [{ "target": "FLY_SPEED", "delta": 0, "note": "Fly Speed equals walking Speed while transformed" }] },
+            { "key": "inner_radiance", "name": "Inner Radiance", "text": "Searing light temporarily radiates from your eyes and mouth. For the duration, you shed Bright Light in a 10-foot radius and Dim Light for an additional 10 feet, and at the end of each of your turns, each creature within 10 feet of you takes Radiant damage equal to your Proficiency Bonus. The extra damage of Celestial Revelation is Radiant." },
+            { "key": "necrotic_shroud", "name": "Necrotic Shroud", "text": "Your eyes briefly become pools of darkness, and flightless wings sprout from your back temporarily. Creatures other than your allies within 10 feet of you must succeed on a Charisma saving throw (DC 8 plus your Charisma modifier and Proficiency Bonus) or have the Frightened condition until the end of your next turn. The extra damage of Celestial Revelation is Necrotic." }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Dragonborn",
+      "key": "dragonborn",
+      "source_book": "PHB-2024",
+      "summary": "The ancestors of dragonborn hatched from the eggs of chromatic and metallic dragons. Dragonborn look like wingless, bipedal dragons - scaly, bright-eyed, and thick-boned with horns on their heads.",
+      "creature_type": "Humanoid",
+      "size_options": ["Medium"],
+      "speed": 30,
+      "senses": [{ "name": "Darkvision", "range": 60 }],
+      "traits": [
+        { "key": "darkvision", "name": "Darkvision", "text": "You have Darkvision with a range of 60 feet." },
+        { "key": "breath_weapon", "name": "Breath Weapon", "text": "When you take the Attack action on your turn, you can replace one of your attacks with an exhalation of magical energy in either a 15-foot Cone or a 30-foot Line that is 5 feet wide (choose the shape each time). Each creature in that area must make a Dexterity saving throw (DC 8 plus your Constitution modifier and Proficiency Bonus). On a failed save, a creature takes 1d10 damage of the type determined by your Draconic Ancestry trait; on a success, half as much. This damage increases by 1d10 at character levels 5 (2d10), 11 (3d10), and 17 (4d10). You can use this Breath Weapon a number of times equal to your Proficiency Bonus, regaining all uses on a Long Rest.",
+          "actions": [{ "name": "Breath Weapon", "type": "action", "casting_time": "Replaces one attack of the Attack action", "range": "15-ft Cone or 30-ft Line (5 ft wide)", "effect": "DEX save (DC 8 + CON + Prof); 1d10 ancestry-typed damage (half on save), scaling 2d10@5 / 3d10@11 / 4d10@17", "uses_max": 2, "uses_recharge": "long" }] },
+        { "key": "draconic_flight", "name": "Draconic Flight", "text": "When you reach character level 5, you can channel draconic magic to give yourself temporary flight. As a Bonus Action, you sprout spectral wings on your back that last for 10 minutes or until you retract them (no action) or have the Incapacitated condition. During that time, you have a Fly Speed equal to your Speed. Once you use this trait, you can't use it again until you finish a Long Rest.",
+          "level_locked": 5,
+          "actions": [{ "name": "Draconic Flight", "type": "bonus", "casting_time": "Bonus Action", "range": "Self", "effect": "Fly Speed equal to your Speed for 10 minutes", "uses_max": 1, "uses_recharge": "long" }] },
+        { "key": "draconic_ancestry", "name": "Draconic Ancestry", "text": "Your lineage stems from a dragon progenitor. Choose the kind of dragon from the Draconic Ancestors table. Your choice affects your Breath Weapon and Damage Resistance traits as well as your appearance. Damage Resistance: You have Resistance to the damage type determined by your Draconic Ancestry trait.",
+          "interaction_type": "nested_subchoice_tree",
+          "choice_label": "Draconic Ancestry",
+          "summary_table": { "headers": ["Dragon", "Damage Type"], "rows": [["Black","Acid"],["Blue","Lightning"],["Brass","Fire"],["Bronze","Lightning"],["Copper","Acid"],["Gold","Fire"],["Green","Poison"],["Red","Fire"],["Silver","Cold"],["White","Cold"]] },
+          "options": [
+            { "key": "black", "name": "Black Dragon", "text": "Acid damage type for Breath Weapon and Damage Resistance.", "derived_modifiers": [{ "target": "RESISTANCE", "value": "Acid" }] },
+            { "key": "blue", "name": "Blue Dragon", "text": "Lightning damage type for Breath Weapon and Damage Resistance.", "derived_modifiers": [{ "target": "RESISTANCE", "value": "Lightning" }] },
+            { "key": "brass", "name": "Brass Dragon", "text": "Fire damage type for Breath Weapon and Damage Resistance.", "derived_modifiers": [{ "target": "RESISTANCE", "value": "Fire" }] },
+            { "key": "bronze", "name": "Bronze Dragon", "text": "Lightning damage type for Breath Weapon and Damage Resistance.", "derived_modifiers": [{ "target": "RESISTANCE", "value": "Lightning" }] },
+            { "key": "copper", "name": "Copper Dragon", "text": "Acid damage type for Breath Weapon and Damage Resistance.", "derived_modifiers": [{ "target": "RESISTANCE", "value": "Acid" }] },
+            { "key": "gold", "name": "Gold Dragon", "text": "Fire damage type for Breath Weapon and Damage Resistance.", "derived_modifiers": [{ "target": "RESISTANCE", "value": "Fire" }] },
+            { "key": "green", "name": "Green Dragon", "text": "Poison damage type for Breath Weapon and Damage Resistance.", "derived_modifiers": [{ "target": "RESISTANCE", "value": "Poison" }] },
+            { "key": "red", "name": "Red Dragon", "text": "Fire damage type for Breath Weapon and Damage Resistance.", "derived_modifiers": [{ "target": "RESISTANCE", "value": "Fire" }] },
+            { "key": "silver", "name": "Silver Dragon", "text": "Cold damage type for Breath Weapon and Damage Resistance.", "derived_modifiers": [{ "target": "RESISTANCE", "value": "Cold" }] },
+            { "key": "white", "name": "White Dragon", "text": "Cold damage type for Breath Weapon and Damage Resistance.", "derived_modifiers": [{ "target": "RESISTANCE", "value": "Cold" }] }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Dwarf",
+      "key": "dwarf",
+      "source_book": "PHB-2024",
+      "summary": "Dwarves were raised from the earth in the elder days by a deity of the forge. They have an affinity for stone and metal and for living underground, with a life span of about 350 years.",
+      "creature_type": "Humanoid",
+      "size_options": ["Medium"],
+      "speed": 30,
+      "senses": [{ "name": "Darkvision", "range": 120 }],
+      "traits": [
+        { "key": "darkvision", "name": "Darkvision", "text": "You have Darkvision with a range of 120 feet." },
+        { "key": "dwarven_resilience", "name": "Dwarven Resilience", "text": "You have Resistance to Poison damage. You also have Advantage on saving throws you make to avoid or end the Poisoned condition.",
+          "derived_modifiers": [{ "target": "RESISTANCE", "value": "Poison" }] },
+        { "key": "dwarven_toughness", "name": "Dwarven Toughness", "text": "Your Hit Point maximum increases by 1, and it increases by 1 again whenever you gain a level.",
+          "interaction_type": "derived_value_multiplier", "target": "HP_PER_LEVEL", "delta": 1, "per": "character_level" },
+        { "key": "stonecunning", "name": "Stonecunning", "text": "As a Bonus Action, you gain Tremorsense with a range of 60 feet for 10 minutes. You must be on a stone surface or touching a stone surface to use this Tremorsense. The stone can be natural or worked. You can use this Bonus Action a number of times equal to your Proficiency Bonus, and you regain all expended uses when you finish a Long Rest.",
+          "actions": [{ "name": "Stonecunning", "type": "bonus", "casting_time": "Bonus Action", "range": "Self (Tremorsense 60 ft)", "effect": "Gain Tremorsense 60 ft for 10 minutes while on/touching stone", "uses_max": 2, "uses_recharge": "long" }] }
+      ]
+    },
+    {
+      "name": "Elf",
+      "key": "elf",
+      "source_book": "PHB-2024",
+      "summary": "Created by the god Corellon, elves have pointed ears and lack facial and body hair. They live for around 750 years and don't sleep, instead entering a trance. An environment subtly transforms elves after a millennium, granting them certain kinds of magic.",
+      "creature_type": "Humanoid",
+      "size_options": ["Medium"],
+      "speed": 30,
+      "senses": [{ "name": "Darkvision", "range": 60 }],
+      "traits": [
+        { "key": "darkvision", "name": "Darkvision", "text": "You have Darkvision with a range of 60 feet." },
+        { "key": "fey_ancestry", "name": "Fey Ancestry", "text": "You have Advantage on saving throws you make to avoid or end the Charmed condition." },
+        { "key": "keen_senses", "name": "Keen Senses", "text": "You have proficiency in the Insight, Perception, or Survival skill.",
+          "interaction_type": "proficiency_allocation_matrix", "pick_count": 1, "target": "skills", "value_per_pick": 1, "allowed": ["Insight", "Perception", "Survival"] },
+        { "key": "trance", "name": "Trance", "text": "You don't need to sleep, and magic can't put you to sleep. You can finish a Long Rest in 4 hours if you spend those hours in a trancelike meditation, during which you retain consciousness." },
+        { "key": "elven_lineage", "name": "Elven Lineage", "text": "You are part of a lineage that grants you supernatural abilities. Choose a lineage from the Elven Lineages table. You gain the level 1 benefit of that lineage. When you reach character levels 3 and 5, you learn a higher-level spell, as shown on the table. You always have that spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest. You can also cast the spell using any spell slots you have of the appropriate level. Intelligence, Wisdom, or Charisma is your spellcasting ability for the spells you cast with this trait (choose the ability when you select the lineage).",
+          "interaction_type": "nested_subchoice_tree",
+          "choice_label": "Elven Lineage",
+          "summary_table": { "headers": ["Lineage", "Level 1", "Level 3", "Level 5"], "rows": [["Drow","Darkvision 120 ft; Dancing Lights cantrip","Faerie Fire","Darkness"],["High Elf","Prestidigitation cantrip (swappable)","Detect Magic","Misty Step"],["Wood Elf","Speed 35 ft; Druidcraft cantrip","Longstrider","Pass without Trace"]] },
+          "options": [
+            { "key": "drow", "name": "Drow", "text": "The range of your Darkvision increases to 120 feet. You also know the Dancing Lights cantrip.",
+              "senses": [{ "name": "Darkvision", "range": 120 }],
+              "spells": [
+                { "name": "Dancing Lights", "level": 0, "school": "Evocation", "casting_time": "1 Action", "range": "120 feet", "components": "V, S, M (phosphorescent moss, glowworms, or other natural luminescence)", "duration": "Concentration, up to 1 minute", "effect": "Create up to four Tiny torch-sized lights (or one Medium humanoid form); move them up to 60 ft each turn as a Bonus Action." },
+                { "name": "Faerie Fire", "level": 1, "school": "Evocation", "casting_time": "1 Action", "range": "60 feet", "components": "V", "duration": "Concentration, up to 1 minute", "effect": "Each object/creature in a 20-ft Cube makes a DEX save; on a fail it is outlined in light, sheds Dim Light 10 ft, can't benefit from Invisibility, and attack rolls against it have Advantage. Castable once per Long Rest without a slot (learned at character level 3)." },
+                { "name": "Darkness", "level": 2, "school": "Evocation", "casting_time": "1 Action", "range": "60 feet", "components": "V, M (a bat's fur dipped in pitch)", "duration": "Concentration, up to 10 minutes", "effect": "Magical Darkness fills a 15-ft-radius Sphere; Darkvision can't see through it. Castable once per Long Rest without a slot (learned at character level 5)." }
+              ] },
+            { "key": "high_elf", "name": "High Elf", "text": "You know the Prestidigitation cantrip. Whenever you finish a Long Rest, you can replace that cantrip with a different cantrip from the Wizard spell list.",
+              "spells": [
+                { "name": "Prestidigitation", "level": 0, "school": "Transmutation", "casting_time": "1 Action", "range": "10 feet", "components": "V, S", "duration": "Up to 1 hour", "effect": "Create a minor magical effect: a harmless sensory effect, light/snuff a small flame, clean or soil an object, chill/warm/flavor up to 1 cubic foot of nonliving material, make a mark appear, or create a Tiny nonmagical trinket/illusory image." },
+                { "name": "Detect Magic", "level": 1, "school": "Divination", "casting_time": "1 Action (Ritual)", "range": "Self", "components": "V, S", "duration": "Concentration, up to 10 minutes", "effect": "Sense the presence of magic within 30 feet; as an action, see a faint aura around any visible magical creature/object and learn its school of magic. Castable once per Long Rest without a slot (learned at character level 3)." },
+                { "name": "Misty Step", "level": 2, "school": "Conjuration", "casting_time": "1 Bonus Action", "range": "Self", "components": "V", "duration": "Instantaneous", "effect": "Teleport up to 30 feet to an unoccupied space you can see. Castable once per Long Rest without a slot (learned at character level 5)." }
+              ] },
+            { "key": "wood_elf", "name": "Wood Elf", "text": "Your Speed increases to 35 feet. You also know the Druidcraft cantrip.",
+              "derived_modifiers": [{ "target": "SPEED", "delta": 5 }],
+              "spells": [
+                { "name": "Druidcraft", "level": 0, "school": "Transmutation", "casting_time": "1 Action", "range": "30 feet", "components": "V, S", "duration": "Instantaneous", "effect": "Create one of: a harmless sensory weather effect, instantly bloom a flower/seed pod, a tiny harmless sensory effect, or light/snuff a Small fire." },
+                { "name": "Longstrider", "level": 1, "school": "Transmutation", "casting_time": "1 Action", "range": "Touch", "components": "V, S, M (a pinch of dirt)", "duration": "1 hour", "effect": "Target's Speed increases by 10 feet. Castable once per Long Rest without a slot (learned at character level 3)." },
+                { "name": "Pass without Trace", "level": 2, "school": "Abjuration", "casting_time": "1 Action", "range": "Self", "components": "V, S, M (ashes from a burned leaf of mistletoe and a sprig of spruce)", "duration": "Concentration, up to 1 hour", "effect": "You and creatures of your choice within 30 ft gain +10 to Stealth checks and can't be tracked except by magical means. Castable once per Long Rest without a slot (learned at character level 5)." }
+              ] }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Gnome",
+      "key": "gnome",
+      "source_book": "PHB-2024",
+      "summary": "Gnomes are magical folk created by gods of invention, illusions, and life underground. They are petite folk with big eyes and pointed ears, who live around 425 years.",
+      "creature_type": "Humanoid",
+      "size_options": ["Small"],
+      "speed": 30,
+      "senses": [{ "name": "Darkvision", "range": 60 }],
+      "traits": [
+        { "key": "darkvision", "name": "Darkvision", "text": "You have Darkvision with a range of 60 feet." },
+        { "key": "gnomish_cunning", "name": "Gnomish Cunning", "text": "You have Advantage on Intelligence, Wisdom, and Charisma saving throws." },
+        { "key": "gnomish_lineage", "name": "Gnomish Lineage", "text": "You are part of a lineage that grants you supernatural abilities. Choose one of the following options; whichever one you choose, Intelligence, Wisdom, or Charisma is your spellcasting ability for the spells you cast with this trait (choose the ability when you select the lineage).",
+          "interaction_type": "nested_subchoice_tree",
+          "choice_label": "Gnomish Lineage",
+          "options": [
+            { "key": "forest_gnome", "name": "Forest Gnome", "text": "You know the Minor Illusion cantrip. You also always have the Speak with Animals spell prepared. You can cast it without a spell slot a number of times equal to your Proficiency Bonus, and you regain all expended uses when you finish a Long Rest. You can also use any spell slots you have to cast the spell.",
+              "spells": [
+                { "name": "Minor Illusion", "level": 0, "school": "Illusion", "casting_time": "1 Action", "range": "30 feet", "components": "S, M (a bit of fleece)", "duration": "1 minute", "effect": "Create a sound or an image of an object within range that lasts for the duration. An Investigation check against your spell save DC reveals an illusion as illusory." },
+                { "name": "Speak with Animals", "level": 1, "school": "Divination", "casting_time": "1 Action (Ritual)", "range": "Self", "components": "V, S", "duration": "10 minutes", "effect": "You gain the ability to comprehend and verbally communicate with Beasts for the duration. Castable Proficiency Bonus times per Long Rest without a slot." }
+              ] },
+            { "key": "rock_gnome", "name": "Rock Gnome", "text": "You know the Mending and Prestidigitation cantrips. In addition, you can spend 10 minutes casting Prestidigitation to create a Tiny clockwork device (AC 5, 1 HP), such as a toy, a fire starter, or a music box. When you create the device, you determine its function by choosing one effect from Prestidigitation; the device produces that effect whenever you or another creature takes a Bonus Action to activate it with a touch. You can have three such devices in existence at a time, and each falls apart 8 hours after its creation or when you dismantle it with a touch as a Utilize action.",
+              "spells": [
+                { "name": "Mending", "level": 0, "school": "Transmutation", "casting_time": "1 Minute", "range": "Touch", "components": "V, S, M (two lodestones)", "duration": "Instantaneous", "effect": "Repair a single break or tear in an object you touch (no larger than 1 foot in any dimension)." },
+                { "name": "Prestidigitation", "level": 0, "school": "Transmutation", "casting_time": "1 Action", "range": "10 feet", "components": "V, S", "duration": "Up to 1 hour", "effect": "Create a minor magical effect: harmless sensory effect, light/snuff a flame, clean/soil an object, chill/warm/flavor material, make a mark, or create a Tiny trinket/illusory image." }
+              ] }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Goliath",
+      "key": "goliath",
+      "source_book": "PHB-2024",
+      "summary": "Towering over most folk, goliaths are distant descendants of giants. Each goliath bears the favors of the first giants - favors that manifest in various supernatural boons, including the ability to quickly grow and temporarily approach the height of their gigantic kin.",
+      "creature_type": "Humanoid",
+      "size_options": ["Medium"],
+      "speed": 35,
+      "senses": [],
+      "traits": [
+        { "key": "large_form", "name": "Large Form", "text": "Starting at character level 5, you can change your size to Large as a Bonus Action if you're in a big enough space. This transformation lasts for 10 minutes or until you end it (no action required). For that duration, you have Advantage on Strength checks, and your Speed increases by 10 feet. Once you use this trait, you can't use it again until you finish a Long Rest.",
+          "level_locked": 5,
+          "actions": [{ "name": "Large Form", "type": "bonus", "casting_time": "Bonus Action", "range": "Self", "effect": "Become Large for 10 min; Advantage on STR checks; Speed +10 ft", "uses_max": 1, "uses_recharge": "long" }] },
+        { "key": "powerful_build", "name": "Powerful Build", "text": "You have Advantage on any saving throw you make to end the Grappled condition. You also count as one size larger when determining your carrying capacity." },
+        { "key": "giant_ancestry", "name": "Giant Ancestry", "text": "You are descended from Giants. Choose one of the following benefits - a supernatural boon from your ancestry. You can use the chosen benefit a number of times equal to your Proficiency Bonus, and you regain all expended uses when you finish a Long Rest.",
+          "interaction_type": "nested_subchoice_tree",
+          "choice_label": "Giant Ancestry",
+          "options": [
+            { "key": "clouds_jaunt", "name": "Cloud's Jaunt (Cloud Giant)", "text": "As a Bonus Action, you magically teleport up to 30 feet to an unoccupied space you can see.",
+              "actions": [{ "name": "Cloud's Jaunt", "type": "bonus", "casting_time": "Bonus Action", "range": "30 feet", "effect": "Teleport up to 30 ft to an unoccupied space you can see", "uses_max": 2, "uses_recharge": "long" }] },
+            { "key": "fires_burn", "name": "Fire's Burn (Fire Giant)", "text": "When you hit a target with an attack roll and deal damage to it, you can also deal 1d10 Fire damage to that target.",
+              "actions": [{ "name": "Fire's Burn", "type": "other", "casting_time": "On a hit (no action)", "range": "Attack range", "effect": "Deal an extra 1d10 Fire damage to the target", "uses_max": 2, "uses_recharge": "long" }] },
+            { "key": "frosts_chill", "name": "Frost's Chill (Frost Giant)", "text": "When you hit a target with an attack roll and deal damage to it, you can also deal 1d6 Cold damage to that target and reduce its Speed by 10 feet until the start of your next turn.",
+              "actions": [{ "name": "Frost's Chill", "type": "other", "casting_time": "On a hit (no action)", "range": "Attack range", "effect": "Deal an extra 1d6 Cold damage and reduce target Speed by 10 ft until start of your next turn", "uses_max": 2, "uses_recharge": "long" }] },
+            { "key": "hills_tumble", "name": "Hill's Tumble (Hill Giant)", "text": "When you hit a Large or smaller creature with an attack roll and deal damage to it, you can give that target the Prone condition.",
+              "actions": [{ "name": "Hill's Tumble", "type": "other", "casting_time": "On a hit (no action)", "range": "Attack range", "effect": "Give a Large or smaller target the Prone condition", "uses_max": 2, "uses_recharge": "long" }] },
+            { "key": "stones_endurance", "name": "Stone's Endurance (Stone Giant)", "text": "When you take damage, you can take a Reaction to roll 1d12. Add your Constitution modifier to the number rolled, and reduce the damage by that total.",
+              "actions": [{ "name": "Stone's Endurance", "type": "reaction", "casting_time": "Reaction (when you take damage)", "range": "Self", "effect": "Reduce the damage taken by 1d12 + your Constitution modifier", "uses_max": 2, "uses_recharge": "long" }] },
+            { "key": "storms_thunder", "name": "Storm's Thunder (Storm Giant)", "text": "When you take damage from a creature within 60 feet of you, you can take a Reaction to deal 1d8 Thunder damage to that creature.",
+              "actions": [{ "name": "Storm's Thunder", "type": "reaction", "casting_time": "Reaction (when you take damage from a creature within 60 ft)", "range": "60 feet", "effect": "Deal 1d8 Thunder damage to that creature", "uses_max": 2, "uses_recharge": "long" }] }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Halfling",
+      "key": "halfling",
+      "source_book": "PHB-2024",
+      "summary": "Cherished and guided by gods who value life, home, and hearth, halflings gravitate toward bucolic havens. Their size, similar to that of a human child, helps them pass through crowds unnoticed. They live about 150 years.",
+      "creature_type": "Humanoid",
+      "size_options": ["Small"],
+      "speed": 30,
+      "senses": [],
+      "traits": [
+        { "key": "brave", "name": "Brave", "text": "You have Advantage on saving throws you make to avoid or end the Frightened condition." },
+        { "key": "halfling_nimbleness", "name": "Halfling Nimbleness", "text": "You can move through the space of any creature that is a size larger than you, but you can't stop in the same space." },
+        { "key": "luck", "name": "Luck", "text": "When you roll a 1 on the d20 of a D20 Test, you can reroll the die, and you must use the new roll." },
+        { "key": "naturally_stealthy", "name": "Naturally Stealthy", "text": "You can take the Hide action even when you are obscured only by a creature that is at least one size larger than you." }
+      ]
+    },
+    {
+      "name": "Human",
+      "key": "human",
+      "source_book": "PHB-2024",
+      "summary": "Found throughout the multiverse, humans are as varied as they are numerous, and they endeavor to achieve as much as they can in the years they are given. Their ambition and resourcefulness are commended, respected, and feared on many worlds.",
+      "creature_type": "Humanoid",
+      "size_options": ["Medium", "Small"],
+      "speed": 30,
+      "senses": [],
+      "traits": [
+        { "key": "resourceful", "name": "Resourceful", "text": "You gain Heroic Inspiration whenever you finish a Long Rest." },
+        { "key": "skillful", "name": "Skillful", "text": "You gain proficiency in one skill of your choice.",
+          "interaction_type": "proficiency_allocation_matrix", "pick_count": 1, "target": "skills", "value_per_pick": 1,
+          "allowed": ["Acrobatics","Animal Handling","Arcana","Athletics","Deception","History","Insight","Intimidation","Investigation","Medicine","Nature","Perception","Performance","Persuasion","Religion","Sleight of Hand","Stealth","Survival"] },
+        { "key": "versatile", "name": "Versatile", "text": "You gain an Origin feat of your choice (see the feats catalogue). Skilled is recommended.",
+          "interaction_type": "nested_subchoice_tree", "choice_label": "Origin Feat", "options": [],
+          "subchoice_source": "feats.json (category=Origin)" }
+      ]
+    },
+    {
+      "name": "Orc",
+      "key": "orc",
+      "source_book": "PHB-2024",
+      "summary": "Orcs trace their creation to Gruumsh, a powerful god who equipped his children with gifts to help them wander great plains, vast caverns, and churning seas. Orcs are, on average, tall and broad, with gray skin, sharply pointed ears, and prominent lower canines that resemble small tusks.",
+      "creature_type": "Humanoid",
+      "size_options": ["Medium"],
+      "speed": 30,
+      "senses": [{ "name": "Darkvision", "range": 120 }],
+      "traits": [
+        { "key": "adrenaline_rush", "name": "Adrenaline Rush", "text": "You can take the Dash action as a Bonus Action. When you do so, you gain a number of Temporary Hit Points equal to your Proficiency Bonus. You can use this trait a number of times equal to your Proficiency Bonus, and you regain all expended uses when you finish a Short or Long Rest.",
+          "actions": [{ "name": "Adrenaline Rush", "type": "bonus", "casting_time": "Bonus Action", "range": "Self", "effect": "Take the Dash action; gain Temp HP equal to your Proficiency Bonus", "uses_max": 2, "uses_recharge": "short_or_long" }] },
+        { "key": "darkvision", "name": "Darkvision", "text": "You have Darkvision with a range of 120 feet." },
+        { "key": "relentless_endurance", "name": "Relentless Endurance", "text": "When you are reduced to 0 Hit Points but not killed outright, you can drop to 1 Hit Point instead. Once you use this trait, you can't do so again until you finish a Long Rest.",
+          "actions": [{ "name": "Relentless Endurance", "type": "other", "casting_time": "No action (when reduced to 0 HP)", "range": "Self", "effect": "Drop to 1 HP instead of 0", "uses_max": 1, "uses_recharge": "long" }] }
+      ]
+    },
+    {
+      "name": "Tiefling",
+      "key": "tiefling",
+      "source_book": "PHB-2024",
+      "summary": "Tieflings are either born in the Lower Planes or have fiendish ancestors who originated there. A tiefling is linked by blood to a devil, a demon, or some other Fiend. This connection is the tiefling's fiendish legacy, which comes with the promise of power yet has no effect on the tiefling's moral outlook.",
+      "creature_type": "Humanoid",
+      "size_options": ["Medium", "Small"],
+      "speed": 30,
+      "senses": [{ "name": "Darkvision", "range": 60 }],
+      "traits": [
+        { "key": "darkvision", "name": "Darkvision", "text": "You have Darkvision with a range of 60 feet." },
+        { "key": "otherworldly_presence", "name": "Otherworldly Presence", "text": "You know the Thaumaturgy cantrip. When you cast it with this trait, the spell uses the same spellcasting ability you use for your Fiendish Legacy trait.",
+          "spells": [{ "name": "Thaumaturgy", "level": 0, "school": "Transmutation", "casting_time": "1 Action", "range": "30 feet", "components": "V", "duration": "Up to 1 minute", "effect": "Manifest a minor wonder: your voice booms three times as loud, flames flicker/brighten/dim/change color, harmless tremors, an instantaneous sound, a door/window opens or slams, or alter the appearance of your eyes." }] },
+        { "key": "fiendish_legacy", "name": "Fiendish Legacy", "text": "You are the recipient of a legacy that grants you supernatural abilities. Choose a legacy from the Fiendish Legacies table. You gain the level 1 benefit of the chosen legacy. When you reach character levels 3 and 5, you learn a higher-level spell, as shown on the table. You always have that spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest. You can also cast the spell using any spell slots you have of the appropriate level. Intelligence, Wisdom, or Charisma is your spellcasting ability for the spells you cast with this trait (choose the ability when you select the legacy).",
+          "interaction_type": "nested_subchoice_tree",
+          "choice_label": "Fiendish Legacy",
+          "summary_table": { "headers": ["Legacy", "Level 1", "Level 3", "Level 5"], "rows": [["Abyssal","Poison Resistance; Poison Spray cantrip","Ray of Sickness","Hold Person"],["Chthonic","Necrotic Resistance; Chill Touch cantrip","False Life","Ray of Enfeeblement"],["Infernal","Fire Resistance; Fire Bolt cantrip","Hellish Rebuke","Darkness"]] },
+          "options": [
+            { "key": "abyssal", "name": "Abyssal", "text": "You have Resistance to Poison damage. You also know the Poison Spray cantrip.",
+              "derived_modifiers": [{ "target": "RESISTANCE", "value": "Poison" }],
+              "spells": [
+                { "name": "Poison Spray", "level": 0, "school": "Conjuration", "casting_time": "1 Action", "range": "30 feet", "components": "V, S", "duration": "Instantaneous", "effect": "One creature makes a Constitution saving throw or takes 1d12 Poison damage. Scales: 2d12 at level 5, 3d12 at level 11, 4d12 at level 17." },
+                { "name": "Ray of Sickness", "level": 1, "school": "Necromancy", "casting_time": "1 Action", "range": "60 feet", "components": "V, S", "duration": "Instantaneous", "effect": "Ranged spell attack; on a hit, 2d8 Poison damage and the target makes a CON save or has the Poisoned condition until the end of your next turn. Castable once per Long Rest without a slot (learned at character level 3)." },
+                { "name": "Hold Person", "level": 2, "school": "Enchantment", "casting_time": "1 Action", "range": "60 feet", "components": "V, S, M (a straight piece of iron)", "duration": "Concentration, up to 1 minute", "effect": "One Humanoid makes a WIS save or has the Paralyzed condition; it repeats the save at the end of each of its turns. Castable once per Long Rest without a slot (learned at character level 5)." }
+              ] },
+            { "key": "chthonic", "name": "Chthonic", "text": "You have Resistance to Necrotic damage. You also know the Chill Touch cantrip.",
+              "derived_modifiers": [{ "target": "RESISTANCE", "value": "Necrotic" }],
+              "spells": [
+                { "name": "Chill Touch", "level": 0, "school": "Necromancy", "casting_time": "1 Action", "range": "Touch", "components": "V, S", "duration": "Instantaneous", "effect": "Melee spell attack; on a hit, 1d10 Necrotic damage and the target can't regain Hit Points until the start of your next turn. Scales: 2d10 at level 5, 3d10 at level 11, 4d10 at level 17. (PHB 2024 revises Chill Touch to a touch-range Necromancy cantrip.)" },
+                { "name": "False Life", "level": 1, "school": "Necromancy", "casting_time": "1 Action", "range": "Self", "components": "V, S, M (a drop of alcohol)", "duration": "Instantaneous", "effect": "You gain 2d4 + 4 Temporary Hit Points. Castable once per Long Rest without a slot (learned at character level 3)." },
+                { "name": "Ray of Enfeeblement", "level": 2, "school": "Necromancy", "casting_time": "1 Action", "range": "60 feet", "components": "V, S", "duration": "Concentration, up to 1 minute", "effect": "Ranged spell attack; on a hit, the target deals only half damage with Strength-based attacks until the spell ends (CON save at end of its turns ends the effect). Castable once per Long Rest without a slot (learned at character level 5)." }
+              ] },
+            { "key": "infernal", "name": "Infernal", "text": "You have Resistance to Fire damage. You also know the Fire Bolt cantrip.",
+              "derived_modifiers": [{ "target": "RESISTANCE", "value": "Fire" }],
+              "spells": [
+                { "name": "Fire Bolt", "level": 0, "school": "Evocation", "casting_time": "1 Action", "range": "120 feet", "components": "V, S", "duration": "Instantaneous", "effect": "Ranged spell attack; on a hit, 1d10 Fire damage. A flammable object hit by this spell ignites if it isn't being worn or carried. Scales: 2d10 at level 5, 3d10 at level 11, 4d10 at level 17." },
+                { "name": "Hellish Rebuke", "level": 1, "school": "Evocation", "casting_time": "1 Reaction (taken in response to being damaged by a creature within 60 feet that you can see)", "range": "60 feet", "components": "V, S", "duration": "Instantaneous", "effect": "The triggering creature makes a DEX save, taking 2d10 Fire damage on a failure or half as much on a success. Castable once per Long Rest without a slot (learned at character level 3)." },
+                { "name": "Darkness", "level": 2, "school": "Evocation", "casting_time": "1 Action", "range": "60 feet", "components": "V, M (a burned-out torch)", "duration": "Concentration, up to 10 minutes", "effect": "Magical Darkness fills a 15-ft-radius Sphere; Darkvision can't see through it and nonmagical light can't illuminate it. Castable once per Long Rest without a slot (learned at character level 5)." }
+              ] }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Centaur",
+      "key": "centaur",
+      "source_book": "GGR",
+      "summary": "In the sprawling city of Ravnica, centaurs retain a love of wide spaces and the freedom to travel. They have the upper bodies of muscular humans and the lower bodies of small horses. They favor the rubblebelts of the Gruul Clans and the wide plazas of the Selesnya Conclave.",
+      "creature_type": "Fey",
+      "size_options": ["Medium"],
+      "speed": 40,
+      "senses": [],
+      "ability_score_increase": { "fixed": { "STR": 2, "WIS": 1 } },
+      "traits": [
+        { "key": "fey", "name": "Fey", "text": "Your creature type is fey, rather than humanoid." },
+        { "key": "charge", "name": "Charge", "text": "If you move at least 30 feet straight toward a target and then hit it with a melee weapon attack on the same turn, you can immediately follow that attack with a bonus action, making one attack against the target with your hooves.",
+          "actions": [{ "name": "Charge (Hooves Attack)", "type": "bonus", "casting_time": "Bonus Action (after moving 30 ft straight and hitting with a melee weapon)", "range": "Melee", "effect": "Make one hooves attack against the target" }] },
+        { "key": "hooves", "name": "Hooves", "text": "Your hooves are natural melee weapons, which you can use to make unarmed strikes. If you hit with them, you deal bludgeoning damage equal to 1d4 + your Strength modifier, instead of the bludgeoning damage normal for an unarmed strike.",
+          "actions": [{ "name": "Hooves", "type": "attack", "casting_time": "Part of the Attack action", "range": "Melee (5 ft)", "effect": "1d4 + STR modifier bludgeoning damage", "damage": { "count": 1, "die": 4, "type": "bludgeoning" } }] },
+        { "key": "equine_build", "name": "Equine Build", "text": "You count as one size larger when determining your carrying capacity and the weight you can push or drag. In addition, any climb that requires hands and feet is especially difficult for you because of your equine legs. When you make such a climb, each foot of movement costs you 4 extra feet, instead of the normal 1 extra foot." },
+        { "key": "survivor", "name": "Survivor", "text": "You have proficiency in one of the following skills of your choice: Animal Handling, Medicine, Nature, or Survival.",
+          "interaction_type": "proficiency_allocation_matrix", "pick_count": 1, "target": "skills", "value_per_pick": 1, "allowed": ["Animal Handling", "Medicine", "Nature", "Survival"] },
+        { "key": "languages", "name": "Languages", "text": "You can speak, read, and write Common and Sylvan." }
+      ]
+    },
+    {
+      "name": "Goblin (Ravnica)",
+      "key": "goblin_ggr",
+      "source_book": "GGR",
+      "summary": "Goblins of Ravnica are wretched and inconsequential in the eyes of most other folk, but in their own minds they are content to lurk in the shadows until they receive the recognition they believe they deserve. They are credited for their tenacity, agility, crafty ingenuity, and dumb luck.",
+      "creature_type": "Humanoid",
+      "size_options": ["Small"],
+      "speed": 30,
+      "senses": [{ "name": "Darkvision", "range": 60 }],
+      "ability_score_increase": { "fixed": { "DEX": 2, "CON": 1 } },
+      "traits": [
+        { "key": "darkvision", "name": "Darkvision", "text": "You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray." },
+        { "key": "fury_of_the_small", "name": "Fury of the Small", "text": "When you damage a creature with an attack or a spell and the creature's size is larger than yours, you can cause the attack or spell to deal extra damage to the creature. The extra damage equals your level. Once you use this trait, you can't use it again until you finish a short or long rest.",
+          "actions": [{ "name": "Fury of the Small", "type": "other", "casting_time": "No action (on a hit against a larger creature)", "range": "Attack/spell range", "effect": "Deal extra damage equal to your character level", "uses_max": 1, "uses_recharge": "short_or_long" }] },
+        { "key": "nimble_escape", "name": "Nimble Escape", "text": "You can take the Disengage or Hide action as a bonus action on each of your turns.",
+          "actions": [{ "name": "Nimble Escape", "type": "bonus", "casting_time": "Bonus Action", "range": "Self", "effect": "Take the Disengage or Hide action as a Bonus Action" }] },
+        { "key": "languages", "name": "Languages", "text": "You can speak, read, and write Common and Goblin." }
+      ]
+    },
+    {
+      "name": "Loxodon",
+      "key": "loxodon",
+      "source_book": "GGR",
+      "summary": "The humanoid elephants called loxodons are often oases of calm in the busy streets of Ravnica. They hum or chant in sonorous tones and move slowly. Their serene wisdom, fierce loyalty, and unwavering conviction are tremendous assets to their guilds. They live about 450 years.",
+      "creature_type": "Humanoid",
+      "size_options": ["Medium"],
+      "speed": 30,
+      "senses": [],
+      "ability_score_increase": { "fixed": { "CON": 2, "WIS": 1 } },
+      "traits": [
+        { "key": "powerful_build", "name": "Powerful Build", "text": "You count as one size larger when determining your carrying capacity and the weight you can push, drag, or lift." },
+        { "key": "loxodon_serenity", "name": "Loxodon Serenity", "text": "You have advantage on saving throws against being charmed or frightened." },
+        { "key": "natural_armor", "name": "Natural Armor", "text": "You have thick, leathery skin. When you aren't wearing armor, your AC is 12 + your Constitution modifier. You can use your natural armor to determine your AC if the armor you wear would leave you with a lower AC. A shield's benefits apply as normal while you use your natural armor.",
+          "interaction_type": "derived_value_multiplier", "target": "AC_FORMULA", "delta": 0, "formula": "12 + CON" },
+        { "key": "trunk", "name": "Trunk", "text": "You can grasp things with your trunk, and you can use it as a snorkel. It has a reach of 5 feet, and it can lift a number of pounds equal to five times your Strength score. You can use it to lift, drop, hold, push, or pull an object or a creature; open or close a door or container; grapple someone; or make an unarmed strike. Your trunk can't wield weapons or shields or do anything that requires manual precision." },
+        { "key": "keen_smell", "name": "Keen Smell", "text": "Thanks to your sensitive trunk, you have advantage on Wisdom (Perception), Wisdom (Survival), and Intelligence (Investigation) checks that involve smell." },
+        { "key": "languages", "name": "Languages", "text": "You can speak, read, and write Common and Loxodon." }
+      ]
+    },
+    {
+      "name": "Minotaur",
+      "key": "minotaur",
+      "source_book": "GGR",
+      "summary": "The minotaurs of Ravnica are strong in body, dedication, and courage. They are at home on the battlefield, combining a burning fury in battle with keen tactics that make them excellent commanders as well as valuable shock troops.",
+      "creature_type": "Humanoid",
+      "size_options": ["Medium"],
+      "speed": 30,
+      "senses": [],
+      "ability_score_increase": { "fixed": { "STR": 2, "CON": 1 } },
+      "traits": [
+        { "key": "horns", "name": "Horns", "text": "Your horns are natural melee weapons, which you can use to make unarmed strikes. If you hit with them, you deal piercing damage equal to 1d6 + your Strength modifier, instead of the bludgeoning damage normal for an unarmed strike.",
+          "actions": [{ "name": "Horns", "type": "attack", "casting_time": "Part of the Attack action", "range": "Melee (5 ft)", "effect": "1d6 + STR modifier piercing damage", "damage": { "count": 1, "die": 6, "type": "piercing" } }] },
+        { "key": "goring_rush", "name": "Goring Rush", "text": "Immediately after you use the Dash action on your turn and move at least 20 feet, you can make one melee attack with your horns as a bonus action.",
+          "actions": [{ "name": "Goring Rush", "type": "bonus", "casting_time": "Bonus Action (after Dash + moving 20 ft)", "range": "Melee", "effect": "Make one melee attack with your horns" }] },
+        { "key": "hammering_horns", "name": "Hammering Horns", "text": "Immediately after you hit a creature with a melee attack as part of the Attack action on your turn, you can use a bonus action to attempt to shove that target with your horns. The target must be no more than one size larger than you and within 5 feet of you. Unless it succeeds on a Strength saving throw against a DC equal to 8 + your proficiency bonus + your Strength modifier, you push it up to 10 feet away from you.",
+          "actions": [{ "name": "Hammering Horns", "type": "bonus", "casting_time": "Bonus Action (after a melee hit during the Attack action)", "range": "Melee (5 ft)", "effect": "Target makes STR save (DC 8 + Prof + STR) or is pushed up to 10 ft away" }] },
+        { "key": "imposing_presence", "name": "Imposing Presence", "text": "You have proficiency in one of the following skills of your choice: Intimidation or Persuasion.",
+          "interaction_type": "proficiency_allocation_matrix", "pick_count": 1, "target": "skills", "value_per_pick": 1, "allowed": ["Intimidation", "Persuasion"] },
+        { "key": "languages", "name": "Languages", "text": "You can speak, read, and write Common and Minotaur." }
+      ]
+    },
+    {
+      "name": "Simic Hybrid",
+      "key": "simic_hybrid",
+      "source_book": "GGR",
+      "summary": "The Simic Combine uses magic to fuse different life forms together. Simic hybrids are humans, elves, or vedalken magically augmented with the traits of various animals - mostly aquatic, reptilian, or amphibian creatures - as part of the Guardian Project. They sometimes call themselves guardians.",
+      "creature_type": "Humanoid",
+      "size_options": ["Medium"],
+      "speed": 30,
+      "senses": [{ "name": "Darkvision", "range": 60 }],
+      "ability_score_increase": { "fixed": { "CON": 2 }, "choice": { "count": 1, "amount": 1, "from": ["STR","DEX","INT","WIS","CHA"] } },
+      "traits": [
+        { "key": "darkvision", "name": "Darkvision", "text": "You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray." },
+        { "key": "languages", "name": "Languages", "text": "You can speak, read, and write Common and your choice of Elvish or Vedalken." },
+        { "key": "animal_enhancement", "name": "Animal Enhancement", "text": "Your body has been altered to incorporate certain animal characteristics. You choose one animal enhancement at 1st level and a second enhancement at 5th level. At 5th level, choose one of the options you didn't take at 1st level, or one of the level-5-only options.",
+          "interaction_type": "nested_subchoice_tree",
+          "choice_label": "Animal Enhancement (1st-level pick, then a second at character level 5)",
+          "pick_count": 2,
+          "level_locked_picks": { "1": 1, "5": 1 },
+          "options": [
+            { "key": "manta_glide", "name": "Manta Glide", "available_at_level": 1, "text": "You have ray-like fins that you can use as wings to slow your fall or allow you to glide. When you fall and aren't incapacitated, you can subtract up to 100 feet from the fall when calculating falling damage, and you can move up to 2 feet horizontally for every 1 foot you descend." },
+            { "key": "nimble_climber", "name": "Nimble Climber", "available_at_level": 1, "text": "You have a climbing speed equal to your walking speed.",
+              "derived_modifiers": [{ "target": "CLIMB_SPEED", "delta": 0, "note": "Climbing speed equals walking speed" }] },
+            { "key": "underwater_adaptation", "name": "Underwater Adaptation", "available_at_level": 1, "text": "You can breathe air and water, and you have a swimming speed equal to your walking speed.",
+              "senses": [],
+              "derived_modifiers": [{ "target": "SWIM_SPEED", "delta": 0, "note": "Swimming speed equals walking speed" }] },
+            { "key": "grappling_appendages", "name": "Grappling Appendages", "available_at_level": 5, "text": "You have two special appendages growing alongside your arms. Choose whether they're both claws or tentacles. As an action, you can use one of them to try to grapple a creature. Each one is also a natural weapon, which you can use to make an unarmed strike. If you hit with it, the target takes bludgeoning damage equal to 1d6 + your Strength modifier. Immediately after hitting, you can try to grapple the target as a bonus action.",
+              "actions": [{ "name": "Grappling Appendage", "type": "attack", "casting_time": "Action (grapple) or part of Attack action (strike)", "range": "Melee (5 ft)", "effect": "1d6 + STR bludgeoning; may grapple as a Bonus Action immediately after a hit", "damage": { "count": 1, "die": 6, "type": "bludgeoning" } }] },
+            { "key": "carapace", "name": "Carapace", "available_at_level": 5, "text": "Your skin in places is covered by a thick shell. You gain a +1 bonus to AC when you're not wearing heavy armor.",
+              "derived_modifiers": [{ "target": "AC", "delta": 1, "note": "Only while not wearing heavy armor" }] },
+            { "key": "acid_spit", "name": "Acid Spit", "available_at_level": 5, "text": "As an action, you can spray acid from glands in your mouth, targeting one creature or object you can see within 30 feet of you. The target takes 2d10 acid damage unless it succeeds on a Dexterity saving throw against a DC equal to 8 + your Constitution modifier + your proficiency bonus. This damage increases by 1d10 when you reach 11th level (3d10) and 17th level (4d10). You can use this trait a number of times equal to your Constitution modifier (minimum of once), and you regain all expended uses when you finish a long rest.",
+              "actions": [{ "name": "Acid Spit", "type": "action", "casting_time": "1 Action", "range": "30 feet", "components": "—", "effect": "DEX save (DC 8 + CON + Prof); 2d10 acid damage (none on save), scaling 3d10@11 / 4d10@17", "uses_max": 3, "uses_recharge": "long" }] }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Vedalken",
+      "key": "vedalken",
+      "source_book": "GGR",
+      "summary": "Vedalken believe nothing is perfect and rejoice in it - every imperfection is a chance for improvement. They are tall and slender, with hairless blue-shaded skin and dark eyes. Cool rationality guides their actions. They reach maturity around age 40 and live typically 350 years.",
+      "creature_type": "Humanoid",
+      "size_options": ["Medium"],
+      "speed": 30,
+      "senses": [],
+      "ability_score_increase": { "fixed": { "INT": 2, "WIS": 1 } },
+      "traits": [
+        { "key": "vedalken_dispassion", "name": "Vedalken Dispassion", "text": "You have advantage on all Intelligence, Wisdom, and Charisma saving throws." },
+        { "key": "tireless_precision", "name": "Tireless Precision", "text": "You are proficient in one of the following skills of your choice: Arcana, History, Investigation, Medicine, Performance, or Sleight of Hand. You are also proficient with one tool of your choice. Whenever you make an ability check with the chosen skill or tool, roll a d4 and add the number rolled to the check's total.",
+          "interaction_type": "proficiency_allocation_matrix", "pick_count": 1, "target": "skills", "value_per_pick": 1, "allowed": ["Arcana", "History", "Investigation", "Medicine", "Performance", "Sleight of Hand"] },
+        { "key": "partially_amphibious", "name": "Partially Amphibious", "text": "By absorbing oxygen through your skin, you can breathe underwater for up to 1 hour. Once you've reached that limit, you can't use this trait again until you finish a long rest." },
+        { "key": "languages", "name": "Languages", "text": "You can speak, read, and write Common, Vedalken, and one other language of your choice." }
+      ]
+    },
+    {
+      "name": "Dhampir",
+      "key": "dhampir",
+      "source_book": "VRGR",
+      "summary": "Poised between the worlds of the living and the dead, dhampirs retain their grip on life yet are endlessly tested by vicious hungers. Their ties to the undead grant a taste of a vampire's deathless prowess - increased speed, darkvision, and a life-draining bite. Dhampir is a lineage that can be chosen at character creation or replace a character's race.",
+      "creature_type": "Humanoid",
+      "size_options": ["Medium", "Small"],
+      "speed": 35,
+      "senses": [{ "name": "Darkvision", "range": 60 }],
+      "traits": [
+        { "key": "ancestral_legacy", "name": "Ancestral Legacy", "text": "If you replace a race with this lineage, you can keep the following elements of that race: any skill proficiencies you gained from it and any climbing, flying, or swimming speed you gained from it. If you don't keep any of those elements or you choose this lineage at character creation, you gain proficiency in two skills of your choice.",
+          "interaction_type": "proficiency_allocation_matrix", "pick_count": 2, "target": "skills", "value_per_pick": 1,
+          "allowed": ["Acrobatics","Animal Handling","Arcana","Athletics","Deception","History","Insight","Intimidation","Investigation","Medicine","Nature","Perception","Performance","Persuasion","Religion","Sleight of Hand","Stealth","Survival"] },
+        { "key": "darkvision", "name": "Darkvision", "text": "You can see in dim light within 60 feet of you as if it were bright light and in darkness as if it were dim light. You discern colors in that darkness as shades of gray." },
+        { "key": "deathless_nature", "name": "Deathless Nature", "text": "You don't need to breathe." },
+        { "key": "spider_climb", "name": "Spider Climb", "text": "You have a climbing speed equal to your walking speed. In addition, at 3rd level, you can move up, down, and across vertical surfaces and upside down along ceilings, while leaving your hands free.",
+          "level_locked": 3,
+          "derived_modifiers": [{ "target": "CLIMB_SPEED", "delta": 0, "note": "Climbing speed equals walking speed; full Spider Climb at character level 3" }] },
+        { "key": "vampiric_bite", "name": "Vampiric Bite", "text": "Your fanged bite is a natural weapon, which counts as a simple melee weapon with which you are proficient. You add your Constitution modifier, instead of your Strength modifier, to the attack and damage rolls when you attack with this bite. It deals 1d4 piercing damage on a hit. While you are missing half or more of your hit points, you have advantage on attack rolls you make with this bite. When you hit a creature that isn't a Construct or an Undead, you can empower yourself in one of two ways: (a) regain hit points equal to the piercing damage dealt, or (b) gain a bonus to your next ability check or attack roll equal to the piercing damage dealt. You can empower yourself this way a number of times equal to your proficiency bonus, regaining all uses on a long rest.",
+          "actions": [{ "name": "Vampiric Bite", "type": "attack", "casting_time": "Part of the Attack action", "range": "Melee (5 ft)", "components": "—", "effect": "1d4 + CON modifier piercing damage; on a hit vs a non-Construct/non-Undead, empower yourself (heal HP equal to bite damage, OR gain that value as a bonus to your next ability check/attack roll)", "damage": { "count": 1, "die": 4, "type": "piercing" }, "uses_max": 2, "uses_recharge": "long", "uses_note": "Empower uses equal Proficiency Bonus" }] }
+      ]
+    },
+    {
+      "name": "Hexblood",
+      "key": "hexblood",
+      "source_book": "VRGR",
+      "summary": "Hexbloods are individuals infused with eldritch magic, fey energy, or mysterious witchcraft, often after a bargain with a hag. They manifest hag-like traits and an irremovable living crown called an eldercross. Hexblood is a lineage that can be chosen at character creation or replace a character's race.",
+      "creature_type": "Fey",
+      "size_options": ["Medium", "Small"],
+      "speed": 30,
+      "senses": [{ "name": "Darkvision", "range": 60 }],
+      "traits": [
+        { "key": "ancestral_legacy", "name": "Ancestral Legacy", "text": "If you replace a race with this lineage, you can keep the following elements of that race: any skill proficiencies you gained from it and any climbing, flying, or swimming speed you gained from it. If you don't keep any of those elements or you choose this lineage at character creation, you gain proficiency in two skills of your choice.",
+          "interaction_type": "proficiency_allocation_matrix", "pick_count": 2, "target": "skills", "value_per_pick": 1,
+          "allowed": ["Acrobatics","Animal Handling","Arcana","Athletics","Deception","History","Insight","Intimidation","Investigation","Medicine","Nature","Perception","Performance","Persuasion","Religion","Sleight of Hand","Stealth","Survival"] },
+        { "key": "darkvision", "name": "Darkvision", "text": "You can see in dim light within 60 feet of you as if it were bright light and in darkness as if it were dim light. You discern colors in that darkness as shades of gray." },
+        { "key": "eerie_token", "name": "Eerie Token", "text": "As a bonus action, you can harmlessly remove a lock of your hair, one of your nails, or one of your teeth. This token is imbued with magic until you finish a long rest. While imbued, you can use an action to send a telepathic message of up to twenty-five words to whoever holds the token (within 10 miles), or enter a 1-minute trance to see and hear from the token's location (within 10 miles), during which you are blinded and deafened to your own surroundings. Once you create a token, you can't do so again until you finish a long rest.",
+          "actions": [{ "name": "Eerie Token", "type": "bonus", "casting_time": "Bonus Action (to create); Action (to use Telepathic Message or Remote Viewing)", "range": "10 miles", "effect": "Telepathic message of 25 words, or a 1-minute scrying trance through the token", "uses_max": 1, "uses_recharge": "long" }] },
+        { "key": "hex_magic", "name": "Hex Magic", "text": "You can cast the Disguise Self and Hex spells with this trait. Once you cast either of these spells with this trait, you can't cast that spell with it again until you finish a long rest. You can also cast these spells using any spell slots you have. Intelligence, Wisdom, or Charisma is your spellcasting ability for these spells (choose the ability when you gain this lineage).",
+          "spells": [
+            { "name": "Disguise Self", "level": 1, "school": "Illusion", "casting_time": "1 Action", "range": "Self", "components": "V, S", "duration": "1 hour", "effect": "You make yourself - including clothing, armor, weapons, and other belongings - look different until the spell ends. A creature can use its action to inspect you and discern the disguise with an Investigation check against your spell save DC. Castable once per Long Rest without a slot via Hex Magic." },
+            { "name": "Hex", "level": 1, "school": "Enchantment", "casting_time": "1 Bonus Action", "range": "90 feet", "components": "V, S, M (the petrified eye of a newt)", "duration": "Concentration, up to 1 hour", "effect": "Curse a creature: it takes an extra 1d6 Necrotic damage whenever you hit it with an attack, and it has Disadvantage on ability checks made with one ability score of your choice. If the target drops to 0 HP, you can move the curse to a new creature as a Bonus Action. Castable once per Long Rest without a slot via Hex Magic." }
+          ] }
+      ]
+    },
+    {
+      "name": "Reborn",
+      "key": "reborn",
+      "source_book": "VRGR",
+      "summary": "The reborn are individuals who have died yet, somehow, still live. Some bear the scars of fatal ends; others are marvels of magic or science, stitched together or bearing mysterious minds in manufactured bodies. Reborn is a lineage that can be chosen at character creation or replace a character's race.",
+      "creature_type": "Humanoid",
+      "size_options": ["Medium", "Small"],
+      "speed": 30,
+      "senses": [],
+      "traits": [
+        { "key": "ancestral_legacy", "name": "Ancestral Legacy", "text": "If you replace a race with this lineage, you can keep the following elements of that race: any skill proficiencies you gained from it and any climbing, flying, or swimming speed you gained from it. If you don't keep any of those elements or you choose this lineage at character creation, you gain proficiency in two skills of your choice.",
+          "interaction_type": "proficiency_allocation_matrix", "pick_count": 2, "target": "skills", "value_per_pick": 1,
+          "allowed": ["Acrobatics","Animal Handling","Arcana","Athletics","Deception","History","Insight","Intimidation","Investigation","Medicine","Nature","Perception","Performance","Persuasion","Religion","Sleight of Hand","Stealth","Survival"] },
+        { "key": "deathless_nature", "name": "Deathless Nature", "text": "You have escaped death, represented by the following benefits: you have advantage on saving throws against disease and being poisoned, and you have resistance to poison damage; you have advantage on death saving throws; you don't need to eat, drink, or breathe; and you don't need to sleep, and magic can't put you to sleep. You can finish a long rest in 4 hours if you spend those hours in an inactive, motionless state, during which you retain consciousness.",
+          "derived_modifiers": [{ "target": "RESISTANCE", "value": "Poison" }] },
+        { "key": "knowledge_from_a_past_life", "name": "Knowledge from a Past Life", "text": "You temporarily remember glimpses of the past. When you make an ability check that uses a skill, you can roll a d6 immediately after seeing the number on the d20 and add the number on the d6 to the check. You can use this feature a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.",
+          "actions": [{ "name": "Knowledge from a Past Life", "type": "other", "casting_time": "No action (after seeing a d20 ability check result)", "range": "Self", "effect": "Add 1d6 to a skill-based ability check", "uses_max": 2, "uses_recharge": "long" }] }
+      ]
+    },
+    {
+      "name": "Custom Lineage",
+      "key": "custom_lineage",
+      "source_book": "TCE",
+      "summary": "Instead of choosing one of the game's species for your character at 1st level, you can use the Custom Lineage traits to represent your character's origin, giving you full control over how your character's origin shaped them.",
+      "creature_type": "Humanoid",
+      "size_options": ["Medium", "Small"],
+      "speed": 30,
+      "senses": [],
+      "ability_score_increase": { "choice": { "count": 1, "amount": 2, "from": ["STR","DEX","CON","INT","WIS","CHA"] } },
+      "traits": [
+        { "key": "ability_score_increase", "name": "Ability Score Increase", "text": "One ability score of your choice increases by 2." },
+        { "key": "feat", "name": "Feat", "text": "You gain one feat of your choice for which you qualify.",
+          "interaction_type": "nested_subchoice_tree", "choice_label": "Feat", "options": [], "subchoice_source": "feats.json (any feat you qualify for)" },
+        { "key": "variable_trait", "name": "Variable Trait", "text": "You gain one of the following options of your choice: (a) Darkvision with a range of 60 feet, or (b) proficiency in one skill of your choice.",
+          "interaction_type": "nested_subchoice_tree",
+          "choice_label": "Variable Trait",
+          "options": [
+            { "key": "variable_darkvision", "name": "Darkvision", "text": "You gain Darkvision with a range of 60 feet.", "senses": [{ "name": "Darkvision", "range": 60 }] },
+            { "key": "variable_skill", "name": "Skill Proficiency", "text": "You gain proficiency in one skill of your choice.",
+              "traits": [{ "key": "custom_skill_pick", "name": "Choose a Skill", "text": "Pick one skill proficiency.", "interaction_type": "proficiency_allocation_matrix", "pick_count": 1, "target": "skills", "value_per_pick": 1, "allowed": ["Acrobatics","Animal Handling","Arcana","Athletics","Deception","History","Insight","Intimidation","Investigation","Medicine","Nature","Perception","Performance","Persuasion","Religion","Sleight of Hand","Stealth","Survival"] }] }
+          ]
+        },
+        { "key": "languages", "name": "Languages", "text": "You can speak, read, and write Common and one other language that you and your DM agree is appropriate for your character." }
+      ]
+    }
+  ]
+}

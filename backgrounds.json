@@ -1,0 +1,2431 @@
+{
+  "schema_version": "2.0",
+  "extraction_notes": {
+    "extracted_books": [
+      "PHB-2024",
+      "GGR",
+      "VRGR"
+    ],
+    "no_backgrounds_in_book": [
+      "TCE",
+      "XGE"
+    ],
+    "comment": "Tasha's Cauldron of Everything adds Group Patrons (a party-level mechanic) but no individual character backgrounds. Xanathar's Guide to Everything (readable text PDF, verified via full-document scan) contains NO standard structural character backgrounds: its Chapter 1 'Character Options' covers subclasses and racial feats, and its 'This Is Your Life' section provides random backstory tables (family, life events) rather than mechanical Background entries with skill proficiencies, features, and equipment. Correction to an earlier note: the 12 backgrounds (City Watch, Clan Crafter, Cloistered Scholar, Courtier, Faction Agent, Far Traveler, Inheritor, Knight of the Order, Mercenary Veteran, Urban Bounty Hunter, Uthgardt Tribe Member, Waterdhavian Noble) belong to the Sword Coast Adventurer's Guide, which was not among the uploaded files.",
+    "total_backgrounds": 28
+  },
+  "items": [
+    {
+      "name": "Acolyte",
+      "source_book": "PHB-2024",
+      "description": "You devoted yourself to service in a temple, either nestled in a town or secluded in a sacred grove. There you performed rites in honor of a god or pantheon. You served under a priest and studied religion. Thanks to your priest's instruction and your own devotion, you also learned how to channel a modicum of divine power in service to your place of worship and the people who prayed there.\n\nAbility Scores: Intelligence, Wisdom, Charisma\nFeat: Magic Initiate (Cleric)\nSkill Proficiencies: Insight and Religion\nTool Proficiency: Calligrapher's Supplies",
+      "fixed_skill_proficiencies": [
+        "Insight",
+        "Religion"
+      ],
+      "optional_skill_picks": {
+        "count": 0,
+        "from": []
+      },
+      "fixed_tool_proficiencies": [
+        "Calligrapher's Supplies"
+      ],
+      "optional_tool_picks": {
+        "count": 0,
+        "from": []
+      },
+      "granted_feature_id": "magic_initiate_cleric",
+      "interaction_type": "fixed_allocation_picker",
+      "asi_configuration": {
+        "choice_patterns": [
+          "+2/+1",
+          "+1/+1/+1"
+        ],
+        "allowed_scores": [
+          "INT",
+          "WIS",
+          "CHA"
+        ]
+      },
+      "equipment_packages": {
+        "package_a": {
+          "items": [
+            {
+              "name": "Calligrapher's Supplies",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Book (prayers)",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Holy Symbol",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Parchment Sheets",
+              "qty": 10,
+              "container": "carried"
+            },
+            {
+              "name": "Robe",
+              "qty": 1,
+              "container": "worn"
+            }
+          ],
+          "gold": 8
+        },
+        "package_b": {
+          "items": [],
+          "gold": 50
+        }
+      },
+      "form_metadata": {
+        "requires_alignment_picker": true,
+        "requires_lifestyle_picker": true,
+        "requires_biography_inputs": [
+          "Age",
+          "Gender",
+          "Appearance",
+          "Personality Traits",
+          "Ideals",
+          "Bonds",
+          "Flaws"
+        ]
+      }
+    },
+    {
+      "name": "Artisan",
+      "source_book": "PHB-2024",
+      "description": "You began mopping floors and scrubbing counters in an artisan's workshop for a few coppers per day as soon as you were strong enough to carry a bucket. When you were old enough to apprentice, you learned to create basic crafts of your own, as well as how to sweet-talk the occasional demanding customer. Your trade has also given you a keen eye for detail.\n\nAbility Scores: Strength, Dexterity, Intelligence\nFeat: Crafter\nSkill Proficiencies: Investigation and Persuasion\nTool Proficiency: Choose one kind of Artisan's Tools",
+      "fixed_skill_proficiencies": [
+        "Investigation",
+        "Persuasion"
+      ],
+      "optional_skill_picks": {
+        "count": 0,
+        "from": []
+      },
+      "fixed_tool_proficiencies": [],
+      "optional_tool_picks": {
+        "count": 1,
+        "from": [
+          "Alchemist's Supplies",
+          "Brewer's Supplies",
+          "Calligrapher's Supplies",
+          "Carpenter's Tools",
+          "Cartographer's Tools",
+          "Cobbler's Tools",
+          "Cook's Utensils",
+          "Glassblower's Tools",
+          "Jeweler's Tools",
+          "Leatherworker's Tools",
+          "Mason's Tools",
+          "Painter's Supplies",
+          "Potter's Tools",
+          "Smith's Tools",
+          "Tinker's Tools",
+          "Weaver's Tools",
+          "Woodcarver's Tools"
+        ]
+      },
+      "granted_feature_id": "crafter",
+      "interaction_type": "fixed_allocation_picker",
+      "asi_configuration": {
+        "choice_patterns": [
+          "+2/+1",
+          "+1/+1/+1"
+        ],
+        "allowed_scores": [
+          "STR",
+          "DEX",
+          "INT"
+        ]
+      },
+      "equipment_packages": {
+        "package_a": {
+          "items": [
+            {
+              "name": "Artisan's Tools (chosen)",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Pouch",
+              "qty": 2,
+              "container": "worn"
+            },
+            {
+              "name": "Traveler's Clothes",
+              "qty": 1,
+              "container": "worn"
+            }
+          ],
+          "gold": 32
+        },
+        "package_b": {
+          "items": [],
+          "gold": 50
+        }
+      },
+      "form_metadata": {
+        "requires_alignment_picker": true,
+        "requires_lifestyle_picker": true,
+        "requires_biography_inputs": [
+          "Age",
+          "Gender",
+          "Appearance",
+          "Personality Traits",
+          "Ideals",
+          "Bonds",
+          "Flaws"
+        ]
+      }
+    },
+    {
+      "name": "Charlatan",
+      "source_book": "PHB-2024",
+      "description": "Once you were old enough to order an ale, you soon had a favorite stool in every tavern within ten miles of where you were born. As you traveled the circuit from public house to watering hole, you learned to prey on unfortunates who were in the market for a comforting lie or two - perhaps a sham potion or forged ancestry records.\n\nAbility Scores: Dexterity, Constitution, Charisma\nFeat: Skilled\nSkill Proficiencies: Deception and Sleight of Hand\nTool Proficiency: Forgery Kit",
+      "fixed_skill_proficiencies": [
+        "Deception",
+        "Sleight of Hand"
+      ],
+      "optional_skill_picks": {
+        "count": 0,
+        "from": []
+      },
+      "fixed_tool_proficiencies": [
+        "Forgery Kit"
+      ],
+      "optional_tool_picks": {
+        "count": 0,
+        "from": []
+      },
+      "granted_feature_id": "skilled",
+      "interaction_type": "fixed_allocation_picker",
+      "asi_configuration": {
+        "choice_patterns": [
+          "+2/+1",
+          "+1/+1/+1"
+        ],
+        "allowed_scores": [
+          "DEX",
+          "CON",
+          "CHA"
+        ]
+      },
+      "equipment_packages": {
+        "package_a": {
+          "items": [
+            {
+              "name": "Forgery Kit",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Costume",
+              "qty": 1,
+              "container": "worn"
+            },
+            {
+              "name": "Fine Clothes",
+              "qty": 1,
+              "container": "worn"
+            }
+          ],
+          "gold": 15
+        },
+        "package_b": {
+          "items": [],
+          "gold": 50
+        }
+      },
+      "form_metadata": {
+        "requires_alignment_picker": true,
+        "requires_lifestyle_picker": true,
+        "requires_biography_inputs": [
+          "Age",
+          "Gender",
+          "Appearance",
+          "Personality Traits",
+          "Ideals",
+          "Bonds",
+          "Flaws"
+        ]
+      }
+    },
+    {
+      "name": "Criminal",
+      "source_book": "PHB-2024",
+      "description": "You eked out a living in dark alleyways, cutting purses or burgling shops. Perhaps you were part of a small gang of like-minded wrongdoers who looked out for each other. Or maybe you were a lone wolf, fending for yourself against the local thieves' guild and more fearsome lawbreakers.\n\nAbility Scores: Dexterity, Constitution, Intelligence\nFeat: Alert\nSkill Proficiencies: Sleight of Hand and Stealth\nTool Proficiency: Thieves' Tools",
+      "fixed_skill_proficiencies": [
+        "Sleight of Hand",
+        "Stealth"
+      ],
+      "optional_skill_picks": {
+        "count": 0,
+        "from": []
+      },
+      "fixed_tool_proficiencies": [
+        "Thieves' Tools"
+      ],
+      "optional_tool_picks": {
+        "count": 0,
+        "from": []
+      },
+      "granted_feature_id": "alert",
+      "interaction_type": "fixed_allocation_picker",
+      "asi_configuration": {
+        "choice_patterns": [
+          "+2/+1",
+          "+1/+1/+1"
+        ],
+        "allowed_scores": [
+          "DEX",
+          "CON",
+          "INT"
+        ]
+      },
+      "equipment_packages": {
+        "package_a": {
+          "items": [
+            {
+              "name": "Dagger",
+              "qty": 2,
+              "container": "worn"
+            },
+            {
+              "name": "Thieves' Tools",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Crowbar",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Pouch",
+              "qty": 2,
+              "container": "worn"
+            },
+            {
+              "name": "Traveler's Clothes",
+              "qty": 1,
+              "container": "worn"
+            }
+          ],
+          "gold": 16
+        },
+        "package_b": {
+          "items": [],
+          "gold": 50
+        }
+      },
+      "form_metadata": {
+        "requires_alignment_picker": true,
+        "requires_lifestyle_picker": true,
+        "requires_biography_inputs": [
+          "Age",
+          "Gender",
+          "Appearance",
+          "Personality Traits",
+          "Ideals",
+          "Bonds",
+          "Flaws"
+        ]
+      }
+    },
+    {
+      "name": "Entertainer",
+      "source_book": "PHB-2024",
+      "description": "You spent much of your youth following roving fairs and carnivals, performing odd jobs for musicians and acrobats in exchange for lessons. You may have learned how to walk a tightrope, how to play a lute in a distinct style, or how to recite poetry with impeccable diction. To this day, you thrive on applause and long for the stage.\n\nAbility Scores: Strength, Dexterity, Charisma\nFeat: Musician\nSkill Proficiencies: Acrobatics and Performance\nTool Proficiency: Choose one kind of Musical Instrument",
+      "fixed_skill_proficiencies": [
+        "Acrobatics",
+        "Performance"
+      ],
+      "optional_skill_picks": {
+        "count": 0,
+        "from": []
+      },
+      "fixed_tool_proficiencies": [],
+      "optional_tool_picks": {
+        "count": 1,
+        "from": [
+          "Bagpipes",
+          "Drum",
+          "Dulcimer",
+          "Flute",
+          "Horn",
+          "Lute",
+          "Lyre",
+          "Pan Flute",
+          "Shawm",
+          "Viol"
+        ]
+      },
+      "granted_feature_id": "musician",
+      "interaction_type": "fixed_allocation_picker",
+      "asi_configuration": {
+        "choice_patterns": [
+          "+2/+1",
+          "+1/+1/+1"
+        ],
+        "allowed_scores": [
+          "STR",
+          "DEX",
+          "CHA"
+        ]
+      },
+      "equipment_packages": {
+        "package_a": {
+          "items": [
+            {
+              "name": "Musical Instrument (chosen)",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Costume",
+              "qty": 2,
+              "container": "worn"
+            },
+            {
+              "name": "Mirror",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Perfume",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Traveler's Clothes",
+              "qty": 1,
+              "container": "worn"
+            }
+          ],
+          "gold": 11
+        },
+        "package_b": {
+          "items": [],
+          "gold": 50
+        }
+      },
+      "form_metadata": {
+        "requires_alignment_picker": true,
+        "requires_lifestyle_picker": true,
+        "requires_biography_inputs": [
+          "Age",
+          "Gender",
+          "Appearance",
+          "Personality Traits",
+          "Ideals",
+          "Bonds",
+          "Flaws"
+        ]
+      }
+    },
+    {
+      "name": "Farmer",
+      "source_book": "PHB-2024",
+      "description": "You grew up close to the land. Years tending animals and cultivating the earth rewarded you with patience and good health. You have a keen appreciation for nature's bounty alongside a healthy respect for nature's wrath.\n\nAbility Scores: Strength, Constitution, Wisdom\nFeat: Tough\nSkill Proficiencies: Animal Handling and Nature\nTool Proficiency: Carpenter's Tools",
+      "fixed_skill_proficiencies": [
+        "Animal Handling",
+        "Nature"
+      ],
+      "optional_skill_picks": {
+        "count": 0,
+        "from": []
+      },
+      "fixed_tool_proficiencies": [
+        "Carpenter's Tools"
+      ],
+      "optional_tool_picks": {
+        "count": 0,
+        "from": []
+      },
+      "granted_feature_id": "tough",
+      "interaction_type": "fixed_allocation_picker",
+      "asi_configuration": {
+        "choice_patterns": [
+          "+2/+1",
+          "+1/+1/+1"
+        ],
+        "allowed_scores": [
+          "STR",
+          "CON",
+          "WIS"
+        ]
+      },
+      "equipment_packages": {
+        "package_a": {
+          "items": [
+            {
+              "name": "Sickle",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Carpenter's Tools",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Healer's Kit",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Iron Pot",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Shovel",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Traveler's Clothes",
+              "qty": 1,
+              "container": "worn"
+            }
+          ],
+          "gold": 30
+        },
+        "package_b": {
+          "items": [],
+          "gold": 50
+        }
+      },
+      "form_metadata": {
+        "requires_alignment_picker": true,
+        "requires_lifestyle_picker": true,
+        "requires_biography_inputs": [
+          "Age",
+          "Gender",
+          "Appearance",
+          "Personality Traits",
+          "Ideals",
+          "Bonds",
+          "Flaws"
+        ]
+      }
+    },
+    {
+      "name": "Guard",
+      "source_book": "PHB-2024",
+      "description": "Your feet ache when you remember the countless hours you spent at your post in the tower. You were trained to keep one eye looking outside the wall, watching for marauders sweeping from the nearby forest, and your other eye looking inside the wall, searching for cutpurses and troublemakers.\n\nAbility Scores: Strength, Intelligence, Wisdom\nFeat: Alert\nSkill Proficiencies: Athletics and Perception\nTool Proficiency: Choose one kind of Gaming Set",
+      "fixed_skill_proficiencies": [
+        "Athletics",
+        "Perception"
+      ],
+      "optional_skill_picks": {
+        "count": 0,
+        "from": []
+      },
+      "fixed_tool_proficiencies": [],
+      "optional_tool_picks": {
+        "count": 1,
+        "from": [
+          "Dice Set",
+          "Dragonchess Set",
+          "Playing Card Set",
+          "Three-Dragon Ante Set"
+        ]
+      },
+      "granted_feature_id": "alert",
+      "interaction_type": "fixed_allocation_picker",
+      "asi_configuration": {
+        "choice_patterns": [
+          "+2/+1",
+          "+1/+1/+1"
+        ],
+        "allowed_scores": [
+          "STR",
+          "INT",
+          "WIS"
+        ]
+      },
+      "equipment_packages": {
+        "package_a": {
+          "items": [
+            {
+              "name": "Spear",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Light Crossbow",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Crossbow Bolts",
+              "qty": 20,
+              "container": "quiver"
+            },
+            {
+              "name": "Gaming Set (chosen)",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Hooded Lantern",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Manacles",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Quiver",
+              "qty": 1,
+              "container": "worn"
+            },
+            {
+              "name": "Traveler's Clothes",
+              "qty": 1,
+              "container": "worn"
+            }
+          ],
+          "gold": 12
+        },
+        "package_b": {
+          "items": [],
+          "gold": 50
+        }
+      },
+      "form_metadata": {
+        "requires_alignment_picker": true,
+        "requires_lifestyle_picker": true,
+        "requires_biography_inputs": [
+          "Age",
+          "Gender",
+          "Appearance",
+          "Personality Traits",
+          "Ideals",
+          "Bonds",
+          "Flaws"
+        ]
+      }
+    },
+    {
+      "name": "Guide",
+      "source_book": "PHB-2024",
+      "description": "You came of age outdoors, far from settled lands. Your home was anywhere you chose to spread your bedroll. There are wonders in the wilderness - strange monsters, pristine forests and streams, overgrown ruins of great halls once trod by giants - and you learned to fend for yourself as you explored them. From time to time, you guided friendly nature priests who instructed you in the fundamentals of channeling the magic of the wild.\n\nAbility Scores: Dexterity, Constitution, Wisdom\nFeat: Magic Initiate (Druid)\nSkill Proficiencies: Stealth and Survival\nTool Proficiency: Cartographer's Tools",
+      "fixed_skill_proficiencies": [
+        "Stealth",
+        "Survival"
+      ],
+      "optional_skill_picks": {
+        "count": 0,
+        "from": []
+      },
+      "fixed_tool_proficiencies": [
+        "Cartographer's Tools"
+      ],
+      "optional_tool_picks": {
+        "count": 0,
+        "from": []
+      },
+      "granted_feature_id": "magic_initiate_druid",
+      "interaction_type": "fixed_allocation_picker",
+      "asi_configuration": {
+        "choice_patterns": [
+          "+2/+1",
+          "+1/+1/+1"
+        ],
+        "allowed_scores": [
+          "DEX",
+          "CON",
+          "WIS"
+        ]
+      },
+      "equipment_packages": {
+        "package_a": {
+          "items": [
+            {
+              "name": "Shortbow",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Arrows",
+              "qty": 20,
+              "container": "quiver"
+            },
+            {
+              "name": "Cartographer's Tools",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Bedroll",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Quiver",
+              "qty": 1,
+              "container": "worn"
+            },
+            {
+              "name": "Tent",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Traveler's Clothes",
+              "qty": 1,
+              "container": "worn"
+            }
+          ],
+          "gold": 3
+        },
+        "package_b": {
+          "items": [],
+          "gold": 50
+        }
+      },
+      "form_metadata": {
+        "requires_alignment_picker": true,
+        "requires_lifestyle_picker": true,
+        "requires_biography_inputs": [
+          "Age",
+          "Gender",
+          "Appearance",
+          "Personality Traits",
+          "Ideals",
+          "Bonds",
+          "Flaws"
+        ]
+      }
+    },
+    {
+      "name": "Hermit",
+      "source_book": "PHB-2024",
+      "description": "You spent your early years secluded in a hut or monastery located well beyond the outskirts of the nearest settlement. In those days, your only companions were the creatures of the forest and those who would occasionally visit to bring news of the outside world and supplies. The solitude allowed you to spend many hours pondering the mysteries of creation.\n\nAbility Scores: Constitution, Wisdom, Charisma\nFeat: Healer\nSkill Proficiencies: Medicine and Religion\nTool Proficiency: Herbalism Kit",
+      "fixed_skill_proficiencies": [
+        "Medicine",
+        "Religion"
+      ],
+      "optional_skill_picks": {
+        "count": 0,
+        "from": []
+      },
+      "fixed_tool_proficiencies": [
+        "Herbalism Kit"
+      ],
+      "optional_tool_picks": {
+        "count": 0,
+        "from": []
+      },
+      "granted_feature_id": "healer",
+      "interaction_type": "fixed_allocation_picker",
+      "asi_configuration": {
+        "choice_patterns": [
+          "+2/+1",
+          "+1/+1/+1"
+        ],
+        "allowed_scores": [
+          "CON",
+          "WIS",
+          "CHA"
+        ]
+      },
+      "equipment_packages": {
+        "package_a": {
+          "items": [
+            {
+              "name": "Quarterstaff",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Herbalism Kit",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Bedroll",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Book (philosophy)",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Lamp",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Oil (flask)",
+              "qty": 3,
+              "container": "carried"
+            },
+            {
+              "name": "Traveler's Clothes",
+              "qty": 1,
+              "container": "worn"
+            }
+          ],
+          "gold": 16
+        },
+        "package_b": {
+          "items": [],
+          "gold": 50
+        }
+      },
+      "form_metadata": {
+        "requires_alignment_picker": true,
+        "requires_lifestyle_picker": true,
+        "requires_biography_inputs": [
+          "Age",
+          "Gender",
+          "Appearance",
+          "Personality Traits",
+          "Ideals",
+          "Bonds",
+          "Flaws"
+        ]
+      }
+    },
+    {
+      "name": "Merchant",
+      "source_book": "PHB-2024",
+      "description": "You were apprenticed to a trader, caravan master, or shopkeeper, learning the fundamentals of commerce. You traveled broadly, and you earned a living by buying and selling the raw materials artisans need to practice their craft or finished works from such crafters. You might have transported goods from one place to another (by ship, wagon, or caravan) or bought them from traveling traders and sold them in your own shop.\n\nAbility Scores: Constitution, Intelligence, Charisma\nFeat: Lucky\nSkill Proficiencies: Animal Handling and Persuasion\nTool Proficiency: Navigator's Tools",
+      "fixed_skill_proficiencies": [
+        "Animal Handling",
+        "Persuasion"
+      ],
+      "optional_skill_picks": {
+        "count": 0,
+        "from": []
+      },
+      "fixed_tool_proficiencies": [
+        "Navigator's Tools"
+      ],
+      "optional_tool_picks": {
+        "count": 0,
+        "from": []
+      },
+      "granted_feature_id": "lucky",
+      "interaction_type": "fixed_allocation_picker",
+      "asi_configuration": {
+        "choice_patterns": [
+          "+2/+1",
+          "+1/+1/+1"
+        ],
+        "allowed_scores": [
+          "CON",
+          "INT",
+          "CHA"
+        ]
+      },
+      "equipment_packages": {
+        "package_a": {
+          "items": [
+            {
+              "name": "Navigator's Tools",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Pouch",
+              "qty": 2,
+              "container": "worn"
+            },
+            {
+              "name": "Traveler's Clothes",
+              "qty": 1,
+              "container": "worn"
+            }
+          ],
+          "gold": 22
+        },
+        "package_b": {
+          "items": [],
+          "gold": 50
+        }
+      },
+      "form_metadata": {
+        "requires_alignment_picker": true,
+        "requires_lifestyle_picker": true,
+        "requires_biography_inputs": [
+          "Age",
+          "Gender",
+          "Appearance",
+          "Personality Traits",
+          "Ideals",
+          "Bonds",
+          "Flaws"
+        ]
+      }
+    },
+    {
+      "name": "Noble",
+      "source_book": "PHB-2024",
+      "description": "You were raised in a castle, surrounded by wealth, power, and privilege. Your family of minor aristocrats ensured that you received a first-class education, some of which you appreciated and some of which you resented. Your time in the castle, especially the many hours you spent observing your family at court, also taught you a great deal about leadership.\n\nAbility Scores: Strength, Intelligence, Charisma\nFeat: Skilled\nSkill Proficiencies: History and Persuasion\nTool Proficiency: Choose one kind of Gaming Set",
+      "fixed_skill_proficiencies": [
+        "History",
+        "Persuasion"
+      ],
+      "optional_skill_picks": {
+        "count": 0,
+        "from": []
+      },
+      "fixed_tool_proficiencies": [],
+      "optional_tool_picks": {
+        "count": 1,
+        "from": [
+          "Dice Set",
+          "Dragonchess Set",
+          "Playing Card Set",
+          "Three-Dragon Ante Set"
+        ]
+      },
+      "granted_feature_id": "skilled",
+      "interaction_type": "fixed_allocation_picker",
+      "asi_configuration": {
+        "choice_patterns": [
+          "+2/+1",
+          "+1/+1/+1"
+        ],
+        "allowed_scores": [
+          "STR",
+          "INT",
+          "CHA"
+        ]
+      },
+      "equipment_packages": {
+        "package_a": {
+          "items": [
+            {
+              "name": "Gaming Set (chosen)",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Fine Clothes",
+              "qty": 1,
+              "container": "worn"
+            },
+            {
+              "name": "Perfume",
+              "qty": 1,
+              "container": "carried"
+            }
+          ],
+          "gold": 29
+        },
+        "package_b": {
+          "items": [],
+          "gold": 50
+        }
+      },
+      "form_metadata": {
+        "requires_alignment_picker": true,
+        "requires_lifestyle_picker": true,
+        "requires_biography_inputs": [
+          "Age",
+          "Gender",
+          "Appearance",
+          "Personality Traits",
+          "Ideals",
+          "Bonds",
+          "Flaws"
+        ]
+      }
+    },
+    {
+      "name": "Sage",
+      "source_book": "PHB-2024",
+      "description": "You spent your formative years traveling between manors and monasteries, performing various odd jobs and services in exchange for access to their libraries. You whiled away many a long evening studying books and scrolls, learning the lore of the multiverse - even the rudiments of magic - and your mind yearns for more.\n\nAbility Scores: Constitution, Intelligence, Wisdom\nFeat: Magic Initiate (Wizard)\nSkill Proficiencies: Arcana and History\nTool Proficiency: Calligrapher's Supplies",
+      "fixed_skill_proficiencies": [
+        "Arcana",
+        "History"
+      ],
+      "optional_skill_picks": {
+        "count": 0,
+        "from": []
+      },
+      "fixed_tool_proficiencies": [
+        "Calligrapher's Supplies"
+      ],
+      "optional_tool_picks": {
+        "count": 0,
+        "from": []
+      },
+      "granted_feature_id": "magic_initiate_wizard",
+      "interaction_type": "fixed_allocation_picker",
+      "asi_configuration": {
+        "choice_patterns": [
+          "+2/+1",
+          "+1/+1/+1"
+        ],
+        "allowed_scores": [
+          "CON",
+          "INT",
+          "WIS"
+        ]
+      },
+      "equipment_packages": {
+        "package_a": {
+          "items": [
+            {
+              "name": "Quarterstaff",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Calligrapher's Supplies",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Book (history)",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Parchment Sheets",
+              "qty": 8,
+              "container": "carried"
+            },
+            {
+              "name": "Robe",
+              "qty": 1,
+              "container": "worn"
+            }
+          ],
+          "gold": 8
+        },
+        "package_b": {
+          "items": [],
+          "gold": 50
+        }
+      },
+      "form_metadata": {
+        "requires_alignment_picker": true,
+        "requires_lifestyle_picker": true,
+        "requires_biography_inputs": [
+          "Age",
+          "Gender",
+          "Appearance",
+          "Personality Traits",
+          "Ideals",
+          "Bonds",
+          "Flaws"
+        ]
+      }
+    },
+    {
+      "name": "Sailor",
+      "source_book": "PHB-2024",
+      "description": "You lived as a seafarer, wind at your back and decks swaying beneath your feet. You've perched on barstools in more ports of call than you can remember, faced mighty storms, and swapped stories with folk who live beneath the waves.\n\nAbility Scores: Strength, Dexterity, Wisdom\nFeat: Tavern Brawler\nSkill Proficiencies: Acrobatics and Perception\nTool Proficiency: Navigator's Tools",
+      "fixed_skill_proficiencies": [
+        "Acrobatics",
+        "Perception"
+      ],
+      "optional_skill_picks": {
+        "count": 0,
+        "from": []
+      },
+      "fixed_tool_proficiencies": [
+        "Navigator's Tools"
+      ],
+      "optional_tool_picks": {
+        "count": 0,
+        "from": []
+      },
+      "granted_feature_id": "tavern_brawler",
+      "interaction_type": "fixed_allocation_picker",
+      "asi_configuration": {
+        "choice_patterns": [
+          "+2/+1",
+          "+1/+1/+1"
+        ],
+        "allowed_scores": [
+          "STR",
+          "DEX",
+          "WIS"
+        ]
+      },
+      "equipment_packages": {
+        "package_a": {
+          "items": [
+            {
+              "name": "Dagger",
+              "qty": 1,
+              "container": "worn"
+            },
+            {
+              "name": "Navigator's Tools",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Rope (50 ft hempen)",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Traveler's Clothes",
+              "qty": 1,
+              "container": "worn"
+            }
+          ],
+          "gold": 20
+        },
+        "package_b": {
+          "items": [],
+          "gold": 50
+        }
+      },
+      "form_metadata": {
+        "requires_alignment_picker": true,
+        "requires_lifestyle_picker": true,
+        "requires_biography_inputs": [
+          "Age",
+          "Gender",
+          "Appearance",
+          "Personality Traits",
+          "Ideals",
+          "Bonds",
+          "Flaws"
+        ]
+      }
+    },
+    {
+      "name": "Scribe",
+      "source_book": "PHB-2024",
+      "description": "You spent formative years in a scriptorium, a monastery dedicated to the preservation of knowledge, or a government agency, where you learned to write with a clear hand and produce finely written texts. Perhaps you scribed government documents or copied tomes of literature. You might have some skill as a writer of poetry, narrative, or scholarly research. Above all, you have a careful attention to detail.\n\nAbility Scores: Dexterity, Intelligence, Wisdom\nFeat: Skilled\nSkill Proficiencies: Investigation and Perception\nTool Proficiency: Calligrapher's Supplies",
+      "fixed_skill_proficiencies": [
+        "Investigation",
+        "Perception"
+      ],
+      "optional_skill_picks": {
+        "count": 0,
+        "from": []
+      },
+      "fixed_tool_proficiencies": [
+        "Calligrapher's Supplies"
+      ],
+      "optional_tool_picks": {
+        "count": 0,
+        "from": []
+      },
+      "granted_feature_id": "skilled",
+      "interaction_type": "fixed_allocation_picker",
+      "asi_configuration": {
+        "choice_patterns": [
+          "+2/+1",
+          "+1/+1/+1"
+        ],
+        "allowed_scores": [
+          "DEX",
+          "INT",
+          "WIS"
+        ]
+      },
+      "equipment_packages": {
+        "package_a": {
+          "items": [
+            {
+              "name": "Calligrapher's Supplies",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Fine Clothes",
+              "qty": 1,
+              "container": "worn"
+            },
+            {
+              "name": "Lamp",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Oil (flask)",
+              "qty": 3,
+              "container": "carried"
+            },
+            {
+              "name": "Parchment Sheets",
+              "qty": 12,
+              "container": "carried"
+            }
+          ],
+          "gold": 23
+        },
+        "package_b": {
+          "items": [],
+          "gold": 50
+        }
+      },
+      "form_metadata": {
+        "requires_alignment_picker": true,
+        "requires_lifestyle_picker": true,
+        "requires_biography_inputs": [
+          "Age",
+          "Gender",
+          "Appearance",
+          "Personality Traits",
+          "Ideals",
+          "Bonds",
+          "Flaws"
+        ]
+      }
+    },
+    {
+      "name": "Soldier",
+      "source_book": "PHB-2024",
+      "description": "You began training for war as soon as you reached adulthood and carry precious few memories of life before you took up arms. Battle is in your blood. Sometimes you catch yourself reflexively performing the basic fighting exercises you learned first. Eventually, you put that training to use on the battlefield, protecting the realm by waging war.\n\nAbility Scores: Strength, Dexterity, Constitution\nFeat: Savage Attacker\nSkill Proficiencies: Athletics and Intimidation\nTool Proficiency: Choose one kind of Gaming Set",
+      "fixed_skill_proficiencies": [
+        "Athletics",
+        "Intimidation"
+      ],
+      "optional_skill_picks": {
+        "count": 0,
+        "from": []
+      },
+      "fixed_tool_proficiencies": [],
+      "optional_tool_picks": {
+        "count": 1,
+        "from": [
+          "Dice Set",
+          "Dragonchess Set",
+          "Playing Card Set",
+          "Three-Dragon Ante Set"
+        ]
+      },
+      "granted_feature_id": "savage_attacker",
+      "interaction_type": "fixed_allocation_picker",
+      "asi_configuration": {
+        "choice_patterns": [
+          "+2/+1",
+          "+1/+1/+1"
+        ],
+        "allowed_scores": [
+          "STR",
+          "DEX",
+          "CON"
+        ]
+      },
+      "equipment_packages": {
+        "package_a": {
+          "items": [
+            {
+              "name": "Spear",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Shortbow",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Arrows",
+              "qty": 20,
+              "container": "quiver"
+            },
+            {
+              "name": "Gaming Set (chosen)",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Healer's Kit",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Quiver",
+              "qty": 1,
+              "container": "worn"
+            },
+            {
+              "name": "Traveler's Clothes",
+              "qty": 1,
+              "container": "worn"
+            }
+          ],
+          "gold": 14
+        },
+        "package_b": {
+          "items": [],
+          "gold": 50
+        }
+      },
+      "form_metadata": {
+        "requires_alignment_picker": true,
+        "requires_lifestyle_picker": true,
+        "requires_biography_inputs": [
+          "Age",
+          "Gender",
+          "Appearance",
+          "Personality Traits",
+          "Ideals",
+          "Bonds",
+          "Flaws"
+        ]
+      }
+    },
+    {
+      "name": "Wayfarer",
+      "source_book": "PHB-2024",
+      "description": "You grew up on the streets surrounded by similarly ill-fated castoffs, a few of them friends and a few of them rivals. You slept where you could and did odd jobs for food. At times, when the hunger became unbearable, you resorted to theft. Still, you never lost your pride and never abandoned hope. Fate is not yet finished with you.\n\nAbility Scores: Dexterity, Wisdom, Charisma\nFeat: Lucky\nSkill Proficiencies: Insight and Stealth\nTool Proficiency: Thieves' Tools",
+      "fixed_skill_proficiencies": [
+        "Insight",
+        "Stealth"
+      ],
+      "optional_skill_picks": {
+        "count": 0,
+        "from": []
+      },
+      "fixed_tool_proficiencies": [
+        "Thieves' Tools"
+      ],
+      "optional_tool_picks": {
+        "count": 0,
+        "from": []
+      },
+      "granted_feature_id": "lucky",
+      "interaction_type": "fixed_allocation_picker",
+      "asi_configuration": {
+        "choice_patterns": [
+          "+2/+1",
+          "+1/+1/+1"
+        ],
+        "allowed_scores": [
+          "DEX",
+          "WIS",
+          "CHA"
+        ]
+      },
+      "equipment_packages": {
+        "package_a": {
+          "items": [
+            {
+              "name": "Dagger",
+              "qty": 2,
+              "container": "worn"
+            },
+            {
+              "name": "Thieves' Tools",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Gaming Set (any)",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Bedroll",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Pouch",
+              "qty": 2,
+              "container": "worn"
+            },
+            {
+              "name": "Traveler's Clothes",
+              "qty": 1,
+              "container": "worn"
+            }
+          ],
+          "gold": 16
+        },
+        "package_b": {
+          "items": [],
+          "gold": 50
+        }
+      },
+      "form_metadata": {
+        "requires_alignment_picker": true,
+        "requires_lifestyle_picker": true,
+        "requires_biography_inputs": [
+          "Age",
+          "Gender",
+          "Appearance",
+          "Personality Traits",
+          "Ideals",
+          "Bonds",
+          "Flaws"
+        ]
+      }
+    },
+    {
+      "name": "Azorius Functionary",
+      "source_book": "GGR",
+      "description": "The brutes are at the gate, chaos is looming, and the only thing standing in the way of disaster is the foundation of law and order - as embodied in the Azorius Senate. You're a proud member of the Azorius guild, which both enacts and enforces the laws that make Ravnican society function smoothly and safely.\n\nSkill Proficiencies: Insight, Intimidation\nLanguages: Two of your choice\nEquipment: An Azorius insignia, a scroll containing the text of a law important to you, a bottle of blue ink, a pen, a set of fine clothes, and a belt pouch containing 10 gp.\n\nFeature: Legal Authority. You have the authority to enforce the laws of Ravnica, and that status inspires a certain amount of respect and even fear in the populace. People mind their manners in your presence and avoid drawing your attention; they assume you have the right to be wherever you are. Showing your Azorius insignia gets you an audience with anyone you want to talk to. If you abuse this privilege, you can get in serious trouble with your superiors and even be stripped of your position.",
+      "fixed_skill_proficiencies": [
+        "Insight",
+        "Intimidation"
+      ],
+      "optional_skill_picks": {
+        "count": 0,
+        "from": []
+      },
+      "fixed_tool_proficiencies": [],
+      "optional_tool_picks": {
+        "count": 0,
+        "from": []
+      },
+      "granted_feature_id": "legal_authority",
+      "interaction_type": "fixed_allocation_picker",
+      "asi_configuration": {
+        "choice_patterns": [],
+        "allowed_scores": []
+      },
+      "equipment_packages": {
+        "package_a": {
+          "items": [
+            {
+              "name": "Azorius Insignia",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Scroll (text of an important law)",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Bottle of Blue Ink",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Pen",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Fine Clothes",
+              "qty": 1,
+              "container": "worn"
+            },
+            {
+              "name": "Belt Pouch",
+              "qty": 1,
+              "container": "worn"
+            }
+          ],
+          "gold": 10
+        },
+        "package_b": {
+          "items": [],
+          "gold": 0
+        }
+      },
+      "form_metadata": {
+        "requires_alignment_picker": true,
+        "requires_lifestyle_picker": true,
+        "requires_biography_inputs": [
+          "Age",
+          "Gender",
+          "Appearance",
+          "Personality Traits",
+          "Ideals",
+          "Bonds",
+          "Flaws"
+        ]
+      }
+    },
+    {
+      "name": "Boros Legionnaire",
+      "source_book": "GGR",
+      "description": "As a member of the Boros Legion, your life is devoted to the service of angels and consecrated to the work of establishing justice and peace on the streets of Ravnica. You might be a true believer, inspired by the example of the angels, or a cynic in the ranks who reluctantly followed in the footsteps of a Boros parent.\n\nSkill Proficiencies: Athletics, Intimidation\nTool Proficiencies: One type of gaming set\nLanguages: Choose one of Celestial, Draconic, Goblin, or Minotaur\nEquipment: A Boros insignia, a feather from an angel's wing, a tattered piece of a Boros banner, a set of common clothes, and a belt pouch containing 2 gp.\n\nFeature: Legion Station. You have an established place in the hierarchy of the Boros Legion. You can requisition simple equipment for temporary use, and you can gain access to any Boros garrison in Ravnica, where you can rest in safety and receive the attention of medics. You are also paid a salary of 1 gp per week, which enables you to maintain a poor lifestyle between adventures.",
+      "fixed_skill_proficiencies": [
+        "Athletics",
+        "Intimidation"
+      ],
+      "optional_skill_picks": {
+        "count": 0,
+        "from": []
+      },
+      "fixed_tool_proficiencies": [],
+      "optional_tool_picks": {
+        "count": 1,
+        "from": [
+          "Dice Set",
+          "Dragonchess Set",
+          "Playing Card Set",
+          "Three-Dragon Ante Set"
+        ]
+      },
+      "granted_feature_id": "legion_station",
+      "interaction_type": "fixed_allocation_picker",
+      "asi_configuration": {
+        "choice_patterns": [],
+        "allowed_scores": []
+      },
+      "equipment_packages": {
+        "package_a": {
+          "items": [
+            {
+              "name": "Boros Insignia",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Angel Feather",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Tattered Boros Banner Piece",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Common Clothes",
+              "qty": 1,
+              "container": "worn"
+            },
+            {
+              "name": "Belt Pouch",
+              "qty": 1,
+              "container": "worn"
+            }
+          ],
+          "gold": 2
+        },
+        "package_b": {
+          "items": [],
+          "gold": 0
+        }
+      },
+      "form_metadata": {
+        "requires_alignment_picker": true,
+        "requires_lifestyle_picker": true,
+        "requires_biography_inputs": [
+          "Age",
+          "Gender",
+          "Appearance",
+          "Personality Traits",
+          "Ideals",
+          "Bonds",
+          "Flaws"
+        ]
+      }
+    },
+    {
+      "name": "Dimir Operative",
+      "source_book": "GGR",
+      "description": "You're a spy. Secrets and misinformation are your stock in trade. You skulk in the shadows, infiltrate other guilds, and steal the most precious secrets, whether they're written in locked journals or hidden away in someone's mind. As part of your covert work for House Dimir, you maintain a false identity as a member of another guild.\n\nSkill Proficiencies: Deception, Stealth\nTool Proficiencies: Disguise kit\nLanguages: One of your choice\nEquipment: A Dimir insignia, three small knives, a set of dark-colored common clothes, and the starting equipment of the background for your secondary guild.\n\nFeature: False Identity. You have more than one identity. The one you wear most of the time makes you appear to be a member of a guild other than House Dimir. You have documentation, established acquaintances, and disguises that allow you to assume that persona and fit into the secondary guild. Whenever you choose, you can drop this identity and blend into the guildless masses of the city.",
+      "fixed_skill_proficiencies": [
+        "Deception",
+        "Stealth"
+      ],
+      "optional_skill_picks": {
+        "count": 0,
+        "from": []
+      },
+      "fixed_tool_proficiencies": [
+        "Disguise Kit"
+      ],
+      "optional_tool_picks": {
+        "count": 0,
+        "from": []
+      },
+      "granted_feature_id": "false_identity",
+      "interaction_type": "fixed_allocation_picker",
+      "asi_configuration": {
+        "choice_patterns": [],
+        "allowed_scores": []
+      },
+      "equipment_packages": {
+        "package_a": {
+          "items": [
+            {
+              "name": "Dimir Insignia",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Small Knife",
+              "qty": 3,
+              "container": "worn"
+            },
+            {
+              "name": "Dark-Colored Common Clothes",
+              "qty": 1,
+              "container": "worn"
+            }
+          ],
+          "gold": 0
+        },
+        "package_b": {
+          "items": [],
+          "gold": 0
+        }
+      },
+      "form_metadata": {
+        "requires_alignment_picker": true,
+        "requires_lifestyle_picker": true,
+        "requires_biography_inputs": [
+          "Age",
+          "Gender",
+          "Appearance",
+          "Personality Traits",
+          "Ideals",
+          "Bonds",
+          "Flaws"
+        ]
+      }
+    },
+    {
+      "name": "Golgari Agent",
+      "source_book": "GGR",
+      "description": "You are a member of a teeming horde - one small part of a sprawling organism. Just as you are part of the swarm, the swarm is part of a larger ecosystem, a never-ending cycle of life, death, rot, and rebirth. There is little squeamishness among the Golgari, no fear of death or taboo about the dead, just a fierce affirmation of the cycle.\n\nSkill Proficiencies: Nature, Survival\nTool Proficiencies: Poisoner's kit\nLanguages: Choose one of Elvish, Giant, or Kraul\nEquipment: A Golgari insignia, a poisoner's kit, a pet beetle or spider, a set of common clothes, and a belt pouch containing 10 gp worth of mixed coins.\n\nFeature: Undercity Paths. You know hidden, underground pathways that you can use to bypass crowds, obstacles, and observation as you move through the city. When you aren't in combat, you and companions you lead can travel between any two locations in the city twice as fast as your speed would normally allow. The paths of the undercity are haunted by dangers, so your journey isn't guaranteed to be safe.",
+      "fixed_skill_proficiencies": [
+        "Nature",
+        "Survival"
+      ],
+      "optional_skill_picks": {
+        "count": 0,
+        "from": []
+      },
+      "fixed_tool_proficiencies": [
+        "Poisoner's Kit"
+      ],
+      "optional_tool_picks": {
+        "count": 0,
+        "from": []
+      },
+      "granted_feature_id": "undercity_paths",
+      "interaction_type": "fixed_allocation_picker",
+      "asi_configuration": {
+        "choice_patterns": [],
+        "allowed_scores": []
+      },
+      "equipment_packages": {
+        "package_a": {
+          "items": [
+            {
+              "name": "Golgari Insignia",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Poisoner's Kit",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Pet Beetle or Spider",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Common Clothes",
+              "qty": 1,
+              "container": "worn"
+            },
+            {
+              "name": "Belt Pouch",
+              "qty": 1,
+              "container": "worn"
+            }
+          ],
+          "gold": 10
+        },
+        "package_b": {
+          "items": [],
+          "gold": 0
+        }
+      },
+      "form_metadata": {
+        "requires_alignment_picker": true,
+        "requires_lifestyle_picker": true,
+        "requires_biography_inputs": [
+          "Age",
+          "Gender",
+          "Appearance",
+          "Personality Traits",
+          "Ideals",
+          "Bonds",
+          "Flaws"
+        ]
+      }
+    },
+    {
+      "name": "Gruul Anarch",
+      "source_book": "GGR",
+      "description": "The entire world of Ravnica is a sprawling metropolis, but you are a native of the wild areas that still exist - the abandoned districts, the rubblebelts, the overgrown parks, and the crumbling ruins. You are part of a savage society that clings desperately to the Old Ways - attuned to nature, full of primal rage, and given short shrift by a world consumed with civilization's march of progress.\n\nSkill Proficiencies: Animal Handling, Athletics\nTool Proficiencies: Herbalism kit\nLanguages: Choose one of Draconic, Giant, Goblin, or Sylvan\nEquipment: A Gruul insignia, a hunting trap, an herbalism kit, the skull of a boar, a beast-hide cloak, a set of traveler's clothes, and a belt pouch containing 10 gp.\n\nFeature: Rubblebelt Refuge. You are intimately familiar with areas of the city that most people shun: ruined neighborhoods, overgrown parks, and the vast, sprawling rubblebelts of broken terrain. You can find a suitable place for you and your allies to hide or rest in these areas. In addition, you can find food and fresh water in these areas for yourself and up to five other people each day.",
+      "fixed_skill_proficiencies": [
+        "Animal Handling",
+        "Athletics"
+      ],
+      "optional_skill_picks": {
+        "count": 0,
+        "from": []
+      },
+      "fixed_tool_proficiencies": [
+        "Herbalism Kit"
+      ],
+      "optional_tool_picks": {
+        "count": 0,
+        "from": []
+      },
+      "granted_feature_id": "rubblebelt_refuge",
+      "interaction_type": "fixed_allocation_picker",
+      "asi_configuration": {
+        "choice_patterns": [],
+        "allowed_scores": []
+      },
+      "equipment_packages": {
+        "package_a": {
+          "items": [
+            {
+              "name": "Gruul Insignia",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Hunting Trap",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Herbalism Kit",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Skull of a Boar",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Beast-Hide Cloak",
+              "qty": 1,
+              "container": "worn"
+            },
+            {
+              "name": "Traveler's Clothes",
+              "qty": 1,
+              "container": "worn"
+            },
+            {
+              "name": "Belt Pouch",
+              "qty": 1,
+              "container": "worn"
+            }
+          ],
+          "gold": 10
+        },
+        "package_b": {
+          "items": [],
+          "gold": 0
+        }
+      },
+      "form_metadata": {
+        "requires_alignment_picker": true,
+        "requires_lifestyle_picker": true,
+        "requires_biography_inputs": [
+          "Age",
+          "Gender",
+          "Appearance",
+          "Personality Traits",
+          "Ideals",
+          "Bonds",
+          "Flaws"
+        ]
+      }
+    },
+    {
+      "name": "Izzet Engineer",
+      "source_book": "GGR",
+      "description": "Armed with an inventive intellect, a love of magical technology, and an unquenchable energy, you are an enthusiastic participant in the research work of the Izzet League. Though you're likely to begin your career as a mere attendant, you can aspire to become a skilled mage or alchemist, a laboratory supervisor, or even a flamethrower-wielding scorchbringer tasked with defending Izzet laboratories.\n\nSkill Proficiencies: Arcana, Investigation\nTool Proficiencies: One type of artisan's tools\nLanguages: Choose one of Draconic, Goblin, or Vedalken\nEquipment: An Izzet insignia, one set of artisan's tools, the charred remains of a failed experiment, a hammer, a block and tackle, a set of common clothes, and a belt pouch containing 5 gp.\n\nFeature: Urban Infrastructure. You have a basic knowledge of the structure of buildings, including the stuff behind the walls. You can also find blueprints of a specific building in order to learn the details of its construction. Such blueprints might provide knowledge of entry points, structural weaknesses, or secret spaces. Your access to such information isn't unlimited.",
+      "fixed_skill_proficiencies": [
+        "Arcana",
+        "Investigation"
+      ],
+      "optional_skill_picks": {
+        "count": 0,
+        "from": []
+      },
+      "fixed_tool_proficiencies": [],
+      "optional_tool_picks": {
+        "count": 1,
+        "from": [
+          "Alchemist's Supplies",
+          "Brewer's Supplies",
+          "Calligrapher's Supplies",
+          "Carpenter's Tools",
+          "Cartographer's Tools",
+          "Cobbler's Tools",
+          "Cook's Utensils",
+          "Glassblower's Tools",
+          "Jeweler's Tools",
+          "Leatherworker's Tools",
+          "Mason's Tools",
+          "Painter's Supplies",
+          "Potter's Tools",
+          "Smith's Tools",
+          "Tinker's Tools",
+          "Weaver's Tools",
+          "Woodcarver's Tools"
+        ]
+      },
+      "granted_feature_id": "urban_infrastructure",
+      "interaction_type": "fixed_allocation_picker",
+      "asi_configuration": {
+        "choice_patterns": [],
+        "allowed_scores": []
+      },
+      "equipment_packages": {
+        "package_a": {
+          "items": [
+            {
+              "name": "Izzet Insignia",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Artisan's Tools (chosen)",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Charred Remains of Failed Experiment",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Hammer",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Block and Tackle",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Common Clothes",
+              "qty": 1,
+              "container": "worn"
+            },
+            {
+              "name": "Belt Pouch",
+              "qty": 1,
+              "container": "worn"
+            }
+          ],
+          "gold": 5
+        },
+        "package_b": {
+          "items": [],
+          "gold": 0
+        }
+      },
+      "form_metadata": {
+        "requires_alignment_picker": true,
+        "requires_lifestyle_picker": true,
+        "requires_biography_inputs": [
+          "Age",
+          "Gender",
+          "Appearance",
+          "Personality Traits",
+          "Ideals",
+          "Bonds",
+          "Flaws"
+        ]
+      }
+    },
+    {
+      "name": "Orzhov Representative",
+      "source_book": "GGR",
+      "description": "The prospect of immense wealth is the promise of membership in the Orzhov Syndicate. All of the guild's endeavors channel wealth from Ravnican society into the ranks of the Orzhov. As a functionary in that system, your best hope is to claim as much as possible of the money that passes through your hands on its way up, so that you can work your way into a more prominent position.\n\nSkill Proficiencies: Intimidation, Religion\nLanguages: Two of your choice\nEquipment: An Orzhov insignia, a foot-long chain made of ten gold coins, vestments, a set of fine clothes, and a belt pouch containing 1 pp.\n\nFeature: Leverage. You can exert leverage over one or more individuals below you in the guild's hierarchy and demand their help as needs warrant. For example, you can have a message carried across a neighborhood, procure a short carriage ride without paying, or have others clean up a mess.",
+      "fixed_skill_proficiencies": [
+        "Intimidation",
+        "Religion"
+      ],
+      "optional_skill_picks": {
+        "count": 0,
+        "from": []
+      },
+      "fixed_tool_proficiencies": [],
+      "optional_tool_picks": {
+        "count": 0,
+        "from": []
+      },
+      "granted_feature_id": "leverage",
+      "interaction_type": "fixed_allocation_picker",
+      "asi_configuration": {
+        "choice_patterns": [],
+        "allowed_scores": []
+      },
+      "equipment_packages": {
+        "package_a": {
+          "items": [
+            {
+              "name": "Orzhov Insignia",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Foot-Long Chain of Ten Gold Coins",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Vestments",
+              "qty": 1,
+              "container": "worn"
+            },
+            {
+              "name": "Fine Clothes",
+              "qty": 1,
+              "container": "worn"
+            },
+            {
+              "name": "Belt Pouch (1 pp)",
+              "qty": 1,
+              "container": "worn"
+            }
+          ],
+          "gold": 10
+        },
+        "package_b": {
+          "items": [],
+          "gold": 0
+        }
+      },
+      "form_metadata": {
+        "requires_alignment_picker": true,
+        "requires_lifestyle_picker": true,
+        "requires_biography_inputs": [
+          "Age",
+          "Gender",
+          "Appearance",
+          "Personality Traits",
+          "Ideals",
+          "Bonds",
+          "Flaws"
+        ]
+      }
+    },
+    {
+      "name": "Rakdos Cultist",
+      "source_book": "GGR",
+      "description": "You're an entertainer at heart, a performer with a flair for the dramatic and a love of the spotlight. The wild applause, the screams of the crowds, the mayhem and terror spreading into the streets - this is what you live for. You're also a member of a cult devoted to an ancient demon who delights in violence and chaos.\n\nSkill Proficiencies: Acrobatics, Performance\nTool Proficiencies: One type of musical instrument\nLanguages: Choose either Abyssal or Giant\nEquipment: A Rakdos insignia, a musical instrument, a costume, a hooded lantern made of wrought iron, a 10-foot length of spiked chain, a tinderbox, 10 torches, a set of common clothes, a belt pouch containing 10 gp, and a bottle of sweet red juice.\n\nFeature: Fearsome Reputation. People recognize you as a member of the Cult of Rakdos, and they're careful not to draw your anger or ridicule. You can get away with minor criminal offenses, such as refusing to pay for food at a restaurant or breaking down a door at a local shop, if no legal authorities witness the crime.",
+      "fixed_skill_proficiencies": [
+        "Acrobatics",
+        "Performance"
+      ],
+      "optional_skill_picks": {
+        "count": 0,
+        "from": []
+      },
+      "fixed_tool_proficiencies": [],
+      "optional_tool_picks": {
+        "count": 1,
+        "from": [
+          "Bagpipes",
+          "Drum",
+          "Dulcimer",
+          "Flute",
+          "Horn",
+          "Lute",
+          "Lyre",
+          "Pan Flute",
+          "Shawm",
+          "Viol"
+        ]
+      },
+      "granted_feature_id": "fearsome_reputation",
+      "interaction_type": "fixed_allocation_picker",
+      "asi_configuration": {
+        "choice_patterns": [],
+        "allowed_scores": []
+      },
+      "equipment_packages": {
+        "package_a": {
+          "items": [
+            {
+              "name": "Rakdos Insignia",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Musical Instrument (chosen)",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Costume",
+              "qty": 1,
+              "container": "worn"
+            },
+            {
+              "name": "Hooded Lantern (wrought iron)",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Spiked Chain (10 ft)",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Tinderbox",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Torch",
+              "qty": 10,
+              "container": "carried"
+            },
+            {
+              "name": "Common Clothes",
+              "qty": 1,
+              "container": "worn"
+            },
+            {
+              "name": "Bottle of Sweet Red Juice",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Belt Pouch",
+              "qty": 1,
+              "container": "worn"
+            }
+          ],
+          "gold": 10
+        },
+        "package_b": {
+          "items": [],
+          "gold": 0
+        }
+      },
+      "form_metadata": {
+        "requires_alignment_picker": true,
+        "requires_lifestyle_picker": true,
+        "requires_biography_inputs": [
+          "Age",
+          "Gender",
+          "Appearance",
+          "Personality Traits",
+          "Ideals",
+          "Bonds",
+          "Flaws"
+        ]
+      }
+    },
+    {
+      "name": "Selesnya Initiate",
+      "source_book": "GGR",
+      "description": "You are a member of a blessed community, built on the ideals of harmony. Here, nature and civilization coexist peacefully, living and growing in accordance with the will of the Worldsoul, Mat'Selesnya. As a member of the Selesnya Conclave, you are surrounded by people who share your worldview and your longing for deeper spiritual communion with the world.\n\nSkill Proficiencies: Nature, Persuasion\nTool Proficiencies: One type of artisan's tools or one musical instrument\nLanguages: Choose one of Elvish, Loxodon, or Sylvan\nEquipment: A Selesnya insignia, a healer's kit, robes, a set of common clothes, and a belt pouch containing 5 gp.\n\nFeature: Conclave's Shelter. As a member of the Selesnya Conclave, you can count on your guild mates to provide shelter and aid. You and your companions can find a place to hide or rest in any Selesnya enclave in the city, unless you have proven to be a danger to them. In addition, as a guild member you can receive free healing and care at a Selesnya enclave, though you must provide any material components needed for spells.",
+      "fixed_skill_proficiencies": [
+        "Nature",
+        "Persuasion"
+      ],
+      "optional_skill_picks": {
+        "count": 0,
+        "from": []
+      },
+      "fixed_tool_proficiencies": [],
+      "optional_tool_picks": {
+        "count": 1,
+        "from": [
+          "Alchemist's Supplies",
+          "Brewer's Supplies",
+          "Calligrapher's Supplies",
+          "Carpenter's Tools",
+          "Cartographer's Tools",
+          "Cobbler's Tools",
+          "Cook's Utensils",
+          "Glassblower's Tools",
+          "Jeweler's Tools",
+          "Leatherworker's Tools",
+          "Mason's Tools",
+          "Painter's Supplies",
+          "Potter's Tools",
+          "Smith's Tools",
+          "Tinker's Tools",
+          "Weaver's Tools",
+          "Woodcarver's Tools",
+          "Bagpipes",
+          "Drum",
+          "Dulcimer",
+          "Flute",
+          "Horn",
+          "Lute",
+          "Lyre",
+          "Pan Flute",
+          "Shawm",
+          "Viol"
+        ]
+      },
+      "granted_feature_id": "conclaves_shelter",
+      "interaction_type": "fixed_allocation_picker",
+      "asi_configuration": {
+        "choice_patterns": [],
+        "allowed_scores": []
+      },
+      "equipment_packages": {
+        "package_a": {
+          "items": [
+            {
+              "name": "Selesnya Insignia",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Healer's Kit",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Robes",
+              "qty": 1,
+              "container": "worn"
+            },
+            {
+              "name": "Common Clothes",
+              "qty": 1,
+              "container": "worn"
+            },
+            {
+              "name": "Belt Pouch",
+              "qty": 1,
+              "container": "worn"
+            }
+          ],
+          "gold": 5
+        },
+        "package_b": {
+          "items": [],
+          "gold": 0
+        }
+      },
+      "form_metadata": {
+        "requires_alignment_picker": true,
+        "requires_lifestyle_picker": true,
+        "requires_biography_inputs": [
+          "Age",
+          "Gender",
+          "Appearance",
+          "Personality Traits",
+          "Ideals",
+          "Bonds",
+          "Flaws"
+        ]
+      }
+    },
+    {
+      "name": "Simic Scientist",
+      "source_book": "GGR",
+      "description": "Imagine a perfect world: one in which nature and civilization exist in harmony, adapted to each other. That's the world you have been trying to grow in the laboratories of the Simic Combine. Nature needs some help from biomancers and terraformers, and if, along the way, you happen to create super-soldiers and mutant monsters that can bolster the combine's defenses, so much the better.\n\nSkill Proficiencies: Arcana, Medicine\nLanguages: Two of your choice\nEquipment: A Simic insignia, a set of commoner's clothes, a book of research notes, an ink pen, a bottle of squid ink, a flask of oil, a vial of acid, a vial of fish scales, a vial of seaweed, a vial of jellyfish stingers, a glass bottle of unidentified slime, and a belt pouch containing 10 gp.\n\nFeature: Researcher. When you attempt to learn or recall a magical or scientific fact, if you don't know that information, you often know where and from whom you can obtain it. Usually, this information comes from a library, scriptorium, university, or other Simic laboratory.",
+      "fixed_skill_proficiencies": [
+        "Arcana",
+        "Medicine"
+      ],
+      "optional_skill_picks": {
+        "count": 0,
+        "from": []
+      },
+      "fixed_tool_proficiencies": [],
+      "optional_tool_picks": {
+        "count": 0,
+        "from": []
+      },
+      "granted_feature_id": "researcher_simic",
+      "interaction_type": "fixed_allocation_picker",
+      "asi_configuration": {
+        "choice_patterns": [],
+        "allowed_scores": []
+      },
+      "equipment_packages": {
+        "package_a": {
+          "items": [
+            {
+              "name": "Simic Insignia",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Commoner's Clothes",
+              "qty": 1,
+              "container": "worn"
+            },
+            {
+              "name": "Book of Research Notes",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Ink Pen",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Bottle of Squid Ink",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Flask of Oil",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Vial of Acid",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Vial of Fish Scales",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Vial of Seaweed",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Vial of Jellyfish Stingers",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Glass Bottle of Unidentified Slime",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Belt Pouch",
+              "qty": 1,
+              "container": "worn"
+            }
+          ],
+          "gold": 10
+        },
+        "package_b": {
+          "items": [],
+          "gold": 0
+        }
+      },
+      "form_metadata": {
+        "requires_alignment_picker": true,
+        "requires_lifestyle_picker": true,
+        "requires_biography_inputs": [
+          "Age",
+          "Gender",
+          "Appearance",
+          "Personality Traits",
+          "Ideals",
+          "Bonds",
+          "Flaws"
+        ]
+      }
+    },
+    {
+      "name": "Haunted One",
+      "source_book": "VRGR",
+      "description": "You are haunted by something so terrible that you dare not speak of it. You've tried to bury it and run away from it, to no avail. Whatever this thing is that haunts you can't be slain with a sword or banished with a spell. It might come to you as a shadow on the wall, a bloodcurdling nightmare, a memory that refuses to die, or a demonic whisper in the dark. The burden has taken its toll, isolating you from most people and making you question your sanity. You must find a way to overcome it before it destroys you.\n\nSkill Proficiencies: Choose two from among Arcana, Investigation, Religion, or Survival\nLanguages: Choose two, one of which must be Abyssal, Celestial, Deep Speech, Draconic, Infernal, Primordial, Sylvan, or Undercommon\nEquipment: A monster hunter's pack (containing a chest, a crowbar, a hammer, three wooden stakes, a holy symbol, a flask of holy water, a set of manacles, a steel mirror, a flask of oil, a tinderbox, and 3 torches), one trinket of special significance, a set of common clothes, and 1 sp.\n\nFeature: Heart of Darkness. Those who look into your eyes can see that you have faced unimaginable horror and that you are no stranger to darkness. Though they might fear you, commoners will extend you every courtesy and do their utmost to help you. Unless you have shown yourself to be a danger to them, they will even take up arms to fight alongside you, should you find yourself facing an enemy alone.",
+      "fixed_skill_proficiencies": [],
+      "optional_skill_picks": {
+        "count": 2,
+        "from": [
+          "Arcana",
+          "Investigation",
+          "Religion",
+          "Survival"
+        ]
+      },
+      "fixed_tool_proficiencies": [],
+      "optional_tool_picks": {
+        "count": 0,
+        "from": []
+      },
+      "granted_feature_id": "heart_of_darkness",
+      "interaction_type": "fixed_allocation_picker",
+      "asi_configuration": {
+        "choice_patterns": [],
+        "allowed_scores": []
+      },
+      "equipment_packages": {
+        "package_a": {
+          "items": [
+            {
+              "name": "Chest",
+              "qty": 1,
+              "container": "Monster Hunter's Pack"
+            },
+            {
+              "name": "Crowbar",
+              "qty": 1,
+              "container": "Monster Hunter's Pack"
+            },
+            {
+              "name": "Hammer",
+              "qty": 1,
+              "container": "Monster Hunter's Pack"
+            },
+            {
+              "name": "Wooden Stake",
+              "qty": 3,
+              "container": "Monster Hunter's Pack"
+            },
+            {
+              "name": "Holy Symbol",
+              "qty": 1,
+              "container": "Monster Hunter's Pack"
+            },
+            {
+              "name": "Flask of Holy Water",
+              "qty": 1,
+              "container": "Monster Hunter's Pack"
+            },
+            {
+              "name": "Manacles",
+              "qty": 1,
+              "container": "Monster Hunter's Pack"
+            },
+            {
+              "name": "Steel Mirror",
+              "qty": 1,
+              "container": "Monster Hunter's Pack"
+            },
+            {
+              "name": "Flask of Oil",
+              "qty": 1,
+              "container": "Monster Hunter's Pack"
+            },
+            {
+              "name": "Tinderbox",
+              "qty": 1,
+              "container": "Monster Hunter's Pack"
+            },
+            {
+              "name": "Torch",
+              "qty": 3,
+              "container": "Monster Hunter's Pack"
+            },
+            {
+              "name": "Trinket of Special Significance",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Common Clothes",
+              "qty": 1,
+              "container": "worn"
+            }
+          ],
+          "gold": 0.1
+        },
+        "package_b": {
+          "items": [],
+          "gold": 0
+        }
+      },
+      "form_metadata": {
+        "requires_alignment_picker": true,
+        "requires_lifestyle_picker": true,
+        "requires_biography_inputs": [
+          "Age",
+          "Gender",
+          "Appearance",
+          "Personality Traits",
+          "Ideals",
+          "Bonds",
+          "Flaws",
+          "Harrowing Event"
+        ]
+      }
+    },
+    {
+      "name": "Investigator",
+      "source_book": "VRGR",
+      "description": "You relentlessly seek the truth. Perhaps you're motivated by belief in the law and a sense of universal justice, or maybe that very law has failed you and you seek to make things right. You could have witnessed something remarkable or terrible, and now you must know more about this hidden truth. Or maybe you're a detective for hire, uncovering secrets for well-paying clients. Whether the mysteries you're embroiled in are local crimes or realm-spanning conspiracies, you're driven by a personal need to hunt down even the most elusive clues and reveal what others would keep hidden in the shadows.\n\nSkill Proficiencies: Choose two from among Insight, Investigation, or Perception\nTool Proficiencies: Disguise kit, thieves' tools\nEquipment: A magnifying glass, evidence from a past case, a set of common clothes, and 10 gp.\n\nFeature: Official Inquiry. You're experienced at gaining access to people and places to get the information you need. Through a combination of fast-talking, determination, and official-looking documentation, you can gain access to a place or an individual related to a crime you're investigating. Those who aren't involved in your investigation avoid impeding you or pass along your requests. Additionally, local law enforcement has firm opinions about you, viewing you as either a nuisance or one of their own.",
+      "fixed_skill_proficiencies": [],
+      "optional_skill_picks": {
+        "count": 2,
+        "from": [
+          "Insight",
+          "Investigation",
+          "Perception"
+        ]
+      },
+      "fixed_tool_proficiencies": [
+        "Disguise Kit",
+        "Thieves' Tools"
+      ],
+      "optional_tool_picks": {
+        "count": 0,
+        "from": []
+      },
+      "granted_feature_id": "official_inquiry",
+      "interaction_type": "fixed_allocation_picker",
+      "asi_configuration": {
+        "choice_patterns": [],
+        "allowed_scores": []
+      },
+      "equipment_packages": {
+        "package_a": {
+          "items": [
+            {
+              "name": "Magnifying Glass",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Evidence from a Past Case",
+              "qty": 1,
+              "container": "carried"
+            },
+            {
+              "name": "Common Clothes",
+              "qty": 1,
+              "container": "worn"
+            }
+          ],
+          "gold": 10
+        },
+        "package_b": {
+          "items": [],
+          "gold": 0
+        }
+      },
+      "form_metadata": {
+        "requires_alignment_picker": true,
+        "requires_lifestyle_picker": true,
+        "requires_biography_inputs": [
+          "Age",
+          "Gender",
+          "Appearance",
+          "Personality Traits",
+          "Ideals",
+          "Bonds",
+          "Flaws",
+          "First Case"
+        ]
+      }
+    }
+  ]
+}
